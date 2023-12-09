@@ -230,6 +230,16 @@ class Earning extends CI_Model
     {
        
 
+        $this->db->select('id,position,rank')->from('member')->where('id', $position);   
+        $this->db->where('rank!=', 'Agent')->where('rank!=', 'sub_agent');  
+        $posion = $this->db->get()->row_array();
+
+      
+
+        if (empty($posion)) {
+            return 0;
+        }
+        $position = $posion['id'];
 
         $get_topup = $this->db_model->select('topup', 'member', array('id' => $userid));
         
@@ -270,7 +280,7 @@ class Earning extends CI_Model
                     }
 
                     if ($pay_upline > 0 && $e > 0) {
-                        $me=$this->db->select('rank,signup_package')->from('member')->where('id',$pay_upline)->get()->row_array();
+                        $me=$this->db->select('rank')->from('member')->where('id',$pay_upline)->get()->row_array();
                         if($me['rank']=='Agent' || $me['rank']=='sub_agent' )
                         {
                             echo "<br>nikhil".$me['rank']."<br>";
@@ -284,8 +294,9 @@ class Earning extends CI_Model
                             $this->pay_earning($pay_upline, $userid, 'Level Income', $e);
                         }
                         else{
+                            $mem=$this->db->select('signup_package')->from('member')->where('id',$pay_upline)->get()->row_array();
                             echo "<br>ishu".$j."<br>";
-                            if($me['signup_package']>=$j)
+                            if($mem['signup_package']>=$j)
                             {
                                 echo "<br>hello" .$j;
                                 $this->pay_earning($pay_upline, $userid, 'Level Income', $e);
@@ -318,7 +329,8 @@ class Earning extends CI_Model
     {
         if ($i > 0) {
 
-            $this->db->select('position,id,rank')->from('member')->where('id', $position);               
+            $this->db->select('position,id,rank')->from('member')->where('id', $position); 
+            $this->db->where('rank!=', 'Agent')->where('rank!=', 'sub_agent');    
             $result = $this->db->get()->row();
             print_r($result);
           
