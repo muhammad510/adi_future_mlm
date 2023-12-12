@@ -14,12 +14,12 @@
 </div>
 <div class="row view">
     <div class="col-sm-6"><strong>Member Name: </strong> <?php echo $data->name ?></div>
-    <div class="col-sm-6"><strong>Member ID: </strong> <?php echo config_item('ID_EXT') . $data->id ?>
+    <div class="col-sm-6"><strong>Member ID: </strong> <?php echo  $data->prefix . $data->id ?>
     </div>
     <div class="col-sm-6"><strong>Email ID: </strong> <?php echo $data->email ?></div>
     <div class="col-sm-6"><strong>Phone No: </strong> <?php echo $data->phone ?></div>
-    <div class="col-sm-6"><strong>Sponsor ID: </strong> <?php echo config_item('ID_EXT') . $data->sponsor ?></div>
-    <div class="col-sm-6"><strong>Position ID: </strong> <?php echo config_item('ID_EXT') . $data->position ?></div>
+    <div class="col-sm-6"><strong>Sponsor ID: </strong> <?php echo  $data->sponsor ?></div>
+    <div class="col-sm-6"><strong>Position ID: </strong> <?php echo  $data->position ?></div>
 </div>
 <p class="hr_divider">&nbsp;</p>
 <div class="row view">

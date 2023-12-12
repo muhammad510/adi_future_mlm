@@ -17,8 +17,8 @@
             cordially invite you  as <b> &nbsp;<?php if($this->session->_rank_=='Agent'){echo 'Agent';}elseif($this->session->_rank_=='sub_agent'){echo "sub Agent";}else{echo "Member";}?>&nbsp;</b>to our home, where we make friends to earn and learn together. Below is your detail of
             Registration.</p>
             <div class="mb-5">
-                <strong>Sponsor ID :</strong> <?php echo config_item('ID_EXT') . $this->session->_sponsor_ ?><br/>
-                <strong>User ID :</strong> <?php echo config_item('ID_EXT') . $this->session->_user_id_ ?><br/>
+                <strong>Sponsor ID :</strong> <?php echo $this->session->_prefix_ . $this->session->_sponsor_ ?><br/>
+                <strong>User ID :</strong> <?php echo $this->session->_prefix_ . $this->session->_user_id_ ?><br/>
                 <strong>Password :</strong> (<em>You have entered already.</em>)
             </div>
             <br>

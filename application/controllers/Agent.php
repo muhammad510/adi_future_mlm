@@ -57,8 +57,7 @@ class Agent extends CI_Controller
 
         $this->db->select('id, name, phone, sponsor, topup, join_time, total_a, total_b, total_c, total_d, total_e,rank')
                  ->from('member')->where('rank','Agent');
-
-        $this->db->limit($config['per_page'], $page)->ORDER_BY('secret','DESC'); 
+        $this->db->limit($config['per_page'], $page)->ORDER_BY('secret','DESC');
 
         $data['members'] = $this->db->get()->result_array();
 

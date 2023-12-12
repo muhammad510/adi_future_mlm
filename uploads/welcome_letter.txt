@@ -23,7 +23,7 @@
 <div class="">
     <div class="col-md-6">
         <strong>Member ID :</strong>&nbsp;
-        <strong>{{member_id}}</strong> 
+        <strong>{{prefix}}{{member_id}}</strong> 
     </div>
     <div class="col-md-6">
         <strong>Date Of Joining:</strong> 

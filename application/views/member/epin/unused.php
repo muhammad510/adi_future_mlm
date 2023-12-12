@@ -28,7 +28,7 @@
                 <td><?php echo $sn++; ?></td>
                 <td><?php echo $e['epin']; ?></td>
                 <td><?php echo '₹  '.$e['amount']; ?></td>
-                <td><?php echo config_item('ID_EXT') . $e['issue_to']; ?></td>
+                <td><?php echo $e['issue_to']; ?></td>
                 <td><?php echo $e['generate_time']; ?></td>
                 <!-- <td><?php echo $e['type']; ?></td> -->
                 <td>

@@ -20,7 +20,7 @@ if ($this->login->check_session() == FALSE) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/css/bootstrap2/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('axxets/admin/theme.css') ?>" rel="stylesheet" id="rt_style_components" type="text/css" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/eggplant/jquery-ui.css">
-    <link rel="shortcut icon" href="<?php echo base_url('uploads/favicon.ico') ?>" />
+    <link rel="shortcut icon" href="<?php echo base_url('uploads/favicon.png') ?>" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

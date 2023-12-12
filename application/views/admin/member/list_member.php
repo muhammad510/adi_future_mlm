@@ -33,9 +33,9 @@
             foreach ($members as $e) { ?>
                 <tr>
                     <td><?php echo $sn++; ?></td>
-                    <td><a href="<?php echo site_url('users/user_detail/' . $e['id']) ?>" target="_blank"><?php echo config_item('ID_EXT') . $e['id']; ?></a></td>
+                    <td><a href="<?php echo site_url('users/user_detail/' . $e['id']) ?>" target="_blank"><?php echo $e['prefix']. $e['id']; ?></a></td>
                     <td><?php echo $e['name']; ?></td>
-                    <td><a href="<?php echo site_url('users/user_detail/' . $e['sponsor']) ?>" target="_blank"><?php echo $e['sponsor'] ? config_item('ID_EXT') . $e['sponsor'] : ''; ?></td>
+                    <td><a href="<?php echo site_url('users/user_detail/' . $e['sponsor']) ?>" target="_blank"><?php echo $e['sponsor'] ?  $e['prefix'] . $e['sponsor'] : ''; ?></td>
                     <td><?php echo '₹ ' . number_format($this->db_model->select('balance', 'wallet', array('userid' => $e['id'])), 2); ?></td>
                     <td><?php echo $e['phone']; ?></td>
                     <?php if (config_item('enable_investment') == "Yes") {

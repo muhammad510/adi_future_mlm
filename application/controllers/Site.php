@@ -358,12 +358,21 @@ class Site extends CI_Controller
             if ($sponsor == 1001 || $sps['rank'] == 'Agent') {
 
                 $rank = ($sps['id'] == 1001) ? 'Agent' : "sub_agent";
+                if($rank=="Agent")
+                {
+                    $prefix='ADIFA'; 
+                }
+                else{
+                    $prefix='ADIFS'; 
+
+                }
 
                 $data = array(
                     'id' => $id,
                     'name' => $name,
                     'email' => $email,
                     'phone' => $phone,
+                    'prefix'=>$prefix,
                     'username' => $username,
                     'password' => $password,
                     'show_password' => $this->input->post('password'),
@@ -405,6 +414,7 @@ class Site extends CI_Controller
                 $data = array(
                     'id' => $id,
                     'name' => $name,
+                    'prefix'=>"ADIFM",
                     'email' => $email,
                     'phone' => $phone,
                     'username' => $username,
@@ -566,7 +576,7 @@ class Site extends CI_Controller
             # important Data with session.
             #
             ##########################################################################
-            $md=$this->db->select('rank')->where('id',$user_id)->from('member')->get()->row();
+            $md=$this->db->select('rank,prefix')->where('id',$user_id)->from('member')->get()->row();
 
             $this->session->set_userdata('_user_id_', $user_id);
             $this->session->set_userdata('_user_id_', $user_id);
@@ -582,6 +592,7 @@ class Site extends CI_Controller
             $this->session->set_userdata('_product_', $product);
             $this->session->set_userdata('_price_', $prod_price);
             $this->session->set_userdata('_rank_', $md->rank);
+            $this->session->set_userdata('_prefix_', $md->prefix);
             if ($divert_pg == TRUE) :
                 redirect(site_url('gateway/registration_form'));
             else :
@@ -758,12 +769,14 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run() == FALSE) {
+
+            $layout['title'] = "Login";
             $layout['layout'] = "login.php";
             $this->load->view('theme/default/base', $layout);
         } else {
             $user = $this->common_model->filter($this->input->post('username'));
             $password = $this->input->post('password');
-            $data = $this->db_model->select_multi("id, name, password, email, last_login_ip, last_login, status", 'member', array('id' => $user));
+            $data = $this->db_model->select_multi("id, name,prefix,password, email, last_login_ip, last_login, status", 'member', array('id' => $user));
 
             if ($data->status !== "Active") {
                 $this->session->set_flashdata('site_flash', '<div class="alert alert-danger">Login is invalid or Your account is not active. Account status is: ' . ($data->status ? $data->status : 'N/A') . '.</div>');
@@ -777,6 +790,7 @@ class Site extends CI_Controller
                     'user_id' => $data->id,
                     'email' => $data->email,
                     'name' => $data->name,
+                    'prefix' => $data->prefix,
                     'ip' => $data->last_login_ip,
                     'last_login' => $data->last_login,
                     'session' => $session,

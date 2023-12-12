@@ -7,9 +7,10 @@
  * Developed for: Camwel Corporate Solution PVT LTD
  **************************************************************************************************/
 
-$detail = $this->db_model->select_multi('name, email, phone, address, sponsor, signup_package, join_time', 'member', array('id' => $this->session->user_id));
+$detail = $this->db_model->select_multi('name, email, phone, address,prefix,sponsor, signup_package, join_time', 'member', array('id' => $this->session->user_id));
 
 $array_src = array(
+    '{{prefix}}',
     '{{member_id}}',
     '{{member_name}}',
     '{{member_phone}}',
@@ -20,7 +21,8 @@ $array_src = array(
     '{{member_purchased}}',
 );
 
-$array_rplc = array(
+$array_rplc = array(    
+    $detail->prefix,
     $this->session->user_id,
     $detail->name,
     $detail->phone,
