@@ -285,7 +285,7 @@ class Earning extends CI_Model
                         }
                         else{
                             echo "<br>ishu".$j."<br>";
-                            if($me['signup_package']>=$j)
+                            if($me['signup_package']>=$j || $me['signup_package']==6 )
                             {
                                 echo "<br>hello" .$j;
                                 $this->pay_earning($pay_upline, $userid, 'Level Income', $e);
@@ -306,13 +306,17 @@ class Earning extends CI_Model
                     $i++;
                 }
 
-                die;
+                $this->check_level();
+
+               
             }
 
         endif;
 
         return true;
     }
+
+
 
     private function find_level_sponsor($position, $i)
     {
@@ -336,6 +340,62 @@ class Earning extends CI_Model
             return $position;
         }
     }
+
+    function check_level()
+    {
+        $up_mem=$this->db->select('l.userid,l.level1,l.level2,l.level3,l.level4,l.level5,l.level6,l.level7,l.level8,m.signup_package,m.re_topup')->where('l.level1>=',1)->from('level as l')->join('member as m','m.id=l.userid','left')->get()->result();
+       foreach($up_mem as $up)
+       {
+
+        if($up->level1==5 && $up->level2==25 && $up->signup_package==1 &&  $up->re_topup==1)
+        {
+          $va =array('re_topup'=>0);
+          $this->db->where('id',$up->userid)->update('member',$va);
+          echo $this->db->last_query();
+          
+        }
+
+        if($up->level1==5 && $up->level2==25 && $up->level3==125 && $up->signup_package==2 &&  $up->re_topup==1)
+        {
+          $va =array('re_topup'=>0);
+          $this->db->where('id',$up->userid)->update('member',$va);
+          echo $this->db->last_query();
+          
+        }
+
+        if($up->level1==5 && $up->level2==25 && $up->level3==125 && $up->level4==625 &&  $up->signup_package==3 &&  $up->re_topup==1)
+        {
+          $va =array('re_topup'=>0);
+          $this->db->where('id',$up->userid)->update('member',$va);
+          echo $this->db->last_query();
+          
+        }
+
+        if($up->level1==5 && $up->level2==25 && $up->level3==125 && $up->level4==625 && $up->level5==3125 &&  $up->signup_package==4 &&  $up->re_topup==1)
+        {
+          $va =array('re_topup'=>0);
+          $this->db->where('id',$up->userid)->update('member',$va);
+          echo $this->db->last_query();
+          
+        }
+
+       
+
+        if($up->level1==5 && $up->level2==25 && $up->level3==125 && $up->level4==625 && $up->level5==3125 && $up->level6==15625 &&  $up->signup_package==5 &&  $up->re_topup==1)
+        {
+          $va =array('re_topup'=>0);
+          $this->db->where('id',$up->userid)->update('member',$va);
+          echo $this->db->last_query();
+          
+        }
+
+
+       
+    }
+       
+      return true;
+    }
+
 
     /*  public function fix_income($userid, $sponsor, $amount)
     {

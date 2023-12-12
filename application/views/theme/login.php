@@ -1,55 +1,63 @@
-<style>
-    .vertical {
-            border-left: 3px solid #999595;
-            height: 350px;
-            position:absolute;
-            left: 35%;
-            top:35px;
-            }
-            .btn-primary:hover {
-    color: #ffffff;
-    background-color: #100f0f;
-    border-color: #131313;
-}
-</style>
-<?php echo form_open() ?>
 
-<div class="container" align="center">
-    <div class="row" >
-        <?php echo validation_errors('<div class="alert alert-danger">', '</div>') ?>
-        <?php echo $this->session->flashdata('site_flash') ?>
-        <?php if (config_item('is_demo') == TRUE) {
-            echo '<div class="alert alert-danger">Please Pay your remaining balance to remove this banner !<br/> इस बैनर को हटाने के
-        लिए कृपया अपनी शेष राशि का भुगतान करें !</div>';
-        } ?>
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-5">
-                <h2 >REGISTERED CUSTOMERS</h2><br>
-                <p style="text-align:justify;margin-left:19px">If you have an account, sign in with your ID and Password.</p><br>
-                <div class="form-group col-sm-12" style="max-width: 400px; text-align: left;">
-                    <label for="user" class="control-label">ID / Username</label>
-                    <input type="text" required class="form-control" id="user" name="username">
-                </div>
-                <div class="form-group col-sm-12" style="max-width: 400px; text-align: left;">
-                    <label for="password" class="control-label">Password*</label>
-                    <input type="password" required class="form-control" id="password" name="password">
-                </div>
-                <div class="form-group col-sm-12" style="max-width: 400px; text-align: left;">
-                    <button class="btn btn-success">Login</button>
-                    <!-- <a href="<?php echo site_url('site/forgotpw') ?>">Forgot Password ?</a> -->
-                </div>
-            </div>
-            <div id="" class="col-sm-1 site-header hidden-md hidden-sm hidden-xs main-sticky-header"> <div class="vertical"></div></div>
-            <div class="col-sm-4">
-                <h2>NEW CUSTOMERS</h2><br>
-                <p style="text-align:justify;">New to Camwel Solution LLP? Create an account and be a part of our company, enjoy benefits and promotions</p><br>
-                <a href="<?php //echo site_url('site/register') ?>" class="btn btn-lg btn-primary" style=" font-size:15px;">Create An Account </a>
-                
-                </div>
-            </div>
-        </div>
-        <br>
-    </div>
+<!-- Loder Start-->
+<div class="loader-wrapper" style="background-color: 	rgb(255, 219, 88) ">
+		<div class=" text-center" style="margin-top: 10%;">
+		  <img src="<?php echo base_url()?>theme_assets/images/adi_image/logo_2%20-%20Copy.png" alt=""  style="max-width: 100%;">
+	  </div>
+	  <!-- <div class="loder-section left-section"></div>
+	  <div class="loder-section right-section"></div> -->
+	</div>
+	<!-- Loder End -->
+<div class="main_contact_area pt-80 bg_color2 pb-90">
+	<div class="container" style="background-color:rgb(177,177,177,0.3); width:400px!important; height:auto; margin:auto; padding:44px;border-radius:8px;">
+		<div class="row" style="width:400px!important; height:auto; margin:auto;">
+			<div class="col-lg-12" style="margin-left:-56px">
+				<div class="section_title text_center mb-55">
+
+					<div class="section_main_title">
+						<h1 style="color:#0c5adb;"><span style="color:#0c5adb;">Login</span> </h1>
+
+					</div>
+					<div class="em_bar">
+						<div class="em_bar_bg"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="">
+			<div class="col-xl-12">
+				<div class="contact_from">
+					<form action="<?php echo base_url()?>Site/login" method="post">
+
+						<div class="row">
+
+							<div class="col-lg-12">
+								<div class="form_box">
+									<label for="user" class="control-label">ID / Username</label>
+									<input type="text" required class="form-control" id="user" name="username">
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form_box ">
+									<label for="password" class="control-label">Password*</label>
+									<input type="password" required class="form-control" id="password" name="password">
+								</div>
+							</div>
+							<div class="">
+								<p style="padding-left:18px;">Create a new account. <span style="padding-left:64px;"><a href="<?php echo base_url()?>Site/register">Sign Up</a></span></p>
+							</div>
+
+							<div class="col-lg-12">
+
+								<div class="quote_btn text_center">
+									<button class="btn" type="submit" name="submit">Login</button>
+								</div>
+							</div>
+						</div>
+					</form>
+					<div id="status"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<?php echo form_close() ?>

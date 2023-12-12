@@ -14,7 +14,7 @@
             <h2><?php echo $this->session->flashdata('site_flash') ?></h2>
             <p class="lead">Dear <?php echo $this->session->_user_name_ ?>,<br/>
             congratulation on your first step towards a rewarding career. We <?php echo config_item('company_name') ?> team
-            cordially invite you to our home, where we make friends to earn and learn together. Below is your detail of
+            cordially invite you  as <b> &nbsp;<?php if($this->session->_rank_=='Agent'){echo 'Agent';}elseif($this->session->_rank_=='sub_agent'){echo "sub Agent";}else{echo "Member";}?>&nbsp;</b>to our home, where we make friends to earn and learn together. Below is your detail of
             Registration.</p>
             <div class="mb-5">
                 <strong>Sponsor ID :</strong> <?php echo config_item('ID_EXT') . $this->session->_sponsor_ ?><br/>

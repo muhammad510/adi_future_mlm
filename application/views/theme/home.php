@@ -1,432 +1,984 @@
-<div id="tbay-main-content">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
-            <li data-target="#myCarousel" data-slide-to="5"></li>
-            <li data-target="#myCarousel" data-slide-to="6"></li>
-            <li data-target="#myCarousel" data-slide-to="7"></li>
-            <li data-target="#myCarousel" data-slide-to="8"></li>
-            <li data-target="#myCarousel" data-slide-to="9"></li>
-        </ol>
+<!-- Loder Start-->
+<div class="loader-wrapper" style="background-color: 	rgb(255, 219, 88) ">
+		<div class=" text-center" style="margin-top: 10%;">
+		  <img src="<?php echo base_url()?>theme_assets/images/adi_image/logo_2%20-%20Copy.png" alt=""  style="max-width: 100%;">
+	  </div>
+	  <!-- <div class="loder-section left-section"></div>
+	  <div class="loder-section right-section"></div> -->
+	</div>
+	<!-- Loder End -->
+	
+	<!--==================================================-->
+	<!-- Start adi_future Slider Area -->
+	<!--==================================================-->
+	<div class="slider_list owl-carousel">
+		<div class="slider_area d-flex align-items-center slider1" style=" background-image: url(<?php echo base_url();?>theme_assets/images/slider/slider-1.png);" id="home">
+			<div class="container">
+				<div class="row">
+					<!--Start Single Portfolio -->
+					<div class="col-lg-12">
+						<div class="single_slider">
+							<div class="slider_content">
+								<div class="slider_text">
+									<div class="slider_text_inner">
+										<h5 style="padding-left:15px;">Welcome to ADI Future </h5>
+										<h1>Stand Out From Crowd</h1>
+										<h3  style="color:white;margin-bottom:32px;margin-top:22px;padding-left:4px;">BUILD YOUR BRAND  SUCCESS </h1><br>
+									</div>
+									<div class="slider_button pt-5 d-flex" style="margin-top:-70px;">
+										<div class="button">
+											<a href="<?php echo base_url()?>Site/about">ABOUT US <i class="fa fa-long-arrow-right"></i></a>
+											<a class="active" href="<?php echo base_url()?>Site/contact">JOIN US <i class="fa fa-long-arrow-right"></i></a>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="slider_area d-flex align-items-center slider2" style="background-image: url(<?php echo base_url()?>theme_assets/images/slider/slider-2.jpeg);">
+			<div class="container">
+				<div class="row">
+					<!--Start Single Portfolio -->
+					<div class="col-lg-12">
+						<div class="single_slider">
+							<div class="slider_content">
+								<div class="slider_text">
+									<div class="slider_text_inner">
+									<h1 style="color:white!important;">ADI FUTURE</h1>
+										<h1 style="color:#00247E!important;"> </h1>
+									
+										<h5 style="color:white!important; font-size:12px;">"Welcome to ADI Future, where possibilities <br>unfold. Join our MLM journey for innovation, <br>growth, and a prosperous future together."</h5>
+									
+									</div>
+									<div class="slider_button pt-5 d-flex">
+										<div class="button">
+											<a href="javaScript:void(0);">ABOUT US <i class="fa fa-long-arrow-right"></i></a>
+											<a class="active" href="javaScript:void(0);">JOIN US <i class="fa fa-long-arrow-right"></i></a>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<!--==================================================-->
+	<!-- End adi_future Slider Area -->
+	<!--==================================================-->
+	
+	<!--==================================================-->
+	<!-- Start adi_future Flipbox Top Feature Area -->
+	<!--==================================================-->
+	<div class="flipbox_area top_feature">
+		<div class="container">
+			<div class="row nagative_margin">
+				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-6">
+					<div class="adi_future_flipbox mb-30">
+						<div class="adi_future_flipbox_font">
+								<div class="adi_future_flipbox_inner">
+									<div class="adi_future_flipbox_icon">
+										<div class="icon">
+										<i class="flaticon-developer"></i>
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <img src="<?php echo base_url(); ?>axxets/site/assets/images/slider/Banner1.png" alt="Los Angeles" style="width:100%;">
-            </div>
+											<!-- <i class="flaticon-global-1"></i> -->
+										</div>
+									</div>			
+									<div class="flipbox_title">
+										<h3>Building Networks and Teams</h3>
+									</div>
+								</div>
+						</div>
+						<div class="adi_future_flipbox_back">
+							<div class="adi_future_flipbox_inner">		
+								<div class="flipbox_title">
+									<h3>Building Networks and Teams</h3>
+								</div>
+								<div class="flipbox_desc">
+									<p>Members are encouraged to build their networks and teams by sharing the benefits of our products and business opportunity.</p>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-6">
+					<div class="adi_future_flipbox mb-30">
+						<div class="adi_future_flipbox_font">
+								<div class="adi_future_flipbox_inner">
+									<div class="adi_future_flipbox_icon">
+										<div class="icon">
+										<i class="flaticon-interaction"></i>
+										</div>
+									</div>			
+									<div class="flipbox_title">
+										<h3>Commission and Reward System</h3>
+									</div>
+								</div>
+						</div>
+						<div class="adi_future_flipbox_back">
+							<div class="adi_future_flipbox_inner">		
+								<div class="flipbox_title">
+									<h3>Commission and Reward System</h3>
+								</div>
+								<div class="flipbox_desc">
+								<p>Regular payouts and bonuses motivate members to stay committed and engaged in growing their businesses. </p>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-6">
+					<div class="adi_future_flipbox mb-30">
+						<div class="adi_future_flipbox_font">
+								<div class="adi_future_flipbox_inner">
+									<div class="adi_future_flipbox_icon">
+										<div class="icon">
+											<i class="flaticon-interaction"></i>
+										</div>
+									</div>			
+									<div class="flipbox_title">
+									<h3>Ongoing Training</h3>
+									</div>
+								</div>
+						</div>
+						<div class="adi_future_flipbox_back">
+							<div class="adi_future_flipbox_inner">		
+								<div class="flipbox_title">
+								<h3>Ongoing Training</h3>
+								</div>
+								<div class="flipbox_desc">
+								<p>The MLM industry is dynamic, and we believe in continuous learning. Regular training sessions,  and conferences keep our members updated on industry trends. </p></div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-6">
+					<div class="adi_future_flipbox mb-30">
+						<div class="adi_future_flipbox_font">
+								<div class="adi_future_flipbox_inner">
+									<div class="adi_future_flipbox_icon">
+										<div class="icon">
+											<i class="flaticon-developer"></i>
+										</div>
+									</div>			
+									<div class="flipbox_title">
+									<h3>Community and Recognition</h3>
+									</div>
+								</div>
+						</div>
+						<div class="adi_future_flipbox_back">
+							<div class="adi_future_flipbox_inner">		
+								<div class="flipbox_title">
+								<h3>Community and Recognition:</h3>	
+								</div>
+								<div class="flipbox_desc">
+								<p>We foster a sense of community among our members through events, forums, and recognition programs.</p></div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				
+			</div>
+		</div>	
+	</div>
+	<!--==================================================-->
+	<!-- End adi_future Flipbox Top Feature Area -->
+	<!--==================================================-->
+	
+	<!--==================================================-->
+	<!----- Start adi_future About Area ----->
+	<!--==================================================-->
+	<div class="about_area pt-70 pb-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+					<div class="single_about_thumb mb-3">
+						<div class="single_about_thumb_inner">
+							<img src="<?php echo base_url()?>theme_assets/images/about-img.png" alt="" />
+						</div>
+					</div>
+					<div class="single_about_shape">
+						<div class="single_about_shape_thumb bounce-animate">
+							<img src="<?php echo base_url()?>theme_assets/images/about-circle.png" alt="" />
+						</div>
+					</div>	
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+					<div class="section_title text_left mb-40 mt-3">
+						<div class="section_sub_title uppercase mb-3">
+							<h6>2 YEARS OF EXPERIENCE</h6>
+						</div>
+						<div class="section_main_title">
+							<h1>Preparing For Your Success.</h1>
+							<!-- <h1>Provide Best <span>IT Solutions.</span></h1> -->
+						</div>
+						<div class="em_bar">
+							<div class="em_bar_bg"></div>
+						</div>
+						<div class="section_content_text pt-4">
+							<p style="text-align:justiry; font-size:14px;padding-left:62px;"> Welcome to the "ADI FUTURE" Marketing Concept by Congratulations for having taken a right decision in your life. You are joining the Company which is going to create HISTORY IN THE NETWORK MARKETING BUSINESS. We have brought about a LOW-COST CONCEPT that has the power to radically change your LIFE STYLE .
+</p>
+						</div>
+					</div>
+					<div class="singel_about_left mb-30">
+						<div class="singel_about_left_inner mb-3">
+							<div class="about_icon mr-4">
+								<div class="icon mt-3">
+									<i class="flaticon-padlock"></i>
+								</div>
+							</div>
+							<div class="singel-about-content">
+								<h5>ADI Future</h5>
+								<p style="font-size:14px;">At ADI Future, we thrive on innovation, continuously exploring cutting-edge technologies and strategies to revolutionize the MLM industry</p>
+							</div>
+						</div>
+						<div class="singel_about_left_inner">
+							<div class="about_icon mr-4">
+								<div class="icon mt-3">
+								<i class="flaticon-padlock"></i>
+								</div>
+							</div>
+							<div class="singel-about-content">
+								<h5>Our commitment</h5>
+								<p class="font">Our commitment to staying ahead in the market drives us to explore new approaches, ensuring our members have
+								   access to the latest and most effective way to grow their businesses</p>
+							</div>
+						</div>
+					</div>	
+				</div>
+				
+			</div>
+		</div>	
+	</div>
+	<!--==================================================-->
+	<!-- End adi_future About Area -->
+	<!--==================================================-->
+	
+	<!--==================================================-->
+	<!-- Start adi_future Flipbox Area -->
+	<!--==================================================-->
+	
+	<div class="flipbox_area pt-85 pb-70" style="background-image:url(<?php echo base_url()?>theme_assets/images/slider/slider-4.jpg)" >
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section_title text_center white mb-55">
+						<div class="section_sub_title uppercase mb-3">
+							<!-- <h6>SERVICES</h6> -->
+						</div>
+						<div class="section_main_title">
+							<!-- <h1>Our Vision / Mission </h1> -->
+							<h1>OUR VISION / MISSION</h1>
+						</div>
+						<div class="em_bar">
+							<div class="em_bar_bg"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
+					<div class="adi_future_flipbox mb-30">
+						<div class="adi_future_flipbox_font">
+								<div class="adi_future_flipbox_inner">
+									<div class="adi_future_flipbox_icon">
+										<div class="icon">
+										<i class="flaticon-intelligent"></i>
+										</div>
+									</div>			
+									<div class="flipbox_title">
+										<h3>Empowering Futures</h3>
+									</div>
+									<div class="flipbox_desc">
+									<p class="font">"Empowering futures through education, innovation, and unity for an inclusive and thriving tomorrow.</p>
 
-            <div class="item">
-                <img src="<?php echo base_url(); ?>axxets/site/assets/images/slider/Banner2.png" alt="Chicago" style="width:100%;">
-            </div>
+									</div>
+									<div class="flipbox_desc">
+									</div>
+								</div>
+						</div>
+						<div class="adi_future_flipbox_back " style="background-image:url(<?php echo base_url()?>theme_assets/images/feature1.jpg);">
+							<div class="adi_future_flipbox_inner">		
+							
+								<div class="flipbox_desc">
+								<p class="font">Empowering Futures At ADI Future, we envision a world where individuals can achieve financial independence and personal growth through our innovative multi-level marketing platform.</p>
+									
+								</div>
+								<div class="flipbox_button">
+									<a href="javaScript:void(0);">Read More<i class="fa fa-angle-double-right"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
+					<div class="adi_future_flipbox mb-30">
+						<div class="adi_future_flipbox_font">
+								<div class="adi_future_flipbox_inner">
+									<div class="adi_future_flipbox_icon">
+										<div class="icon">
+											<i class="flaticon-intelligent"></i>
+										</div>
+									</div>			
+									<div class="flipbox_title">
+										<h3>Cutting-Edge Solutions</h3>
+									</div>
+									<div class="flipbox_desc">
+										<p class="font">Cutting-Edge Solutions Our vision revolves around pioneering advancements in the MLM industry.</p>
+									</div>
+								</div>
+						</div>
+						<div class="adi_future_flipbox_back " style="background-image:url(<?php echo base_url()?>theme_assets/images/feature1.jpg);">
+							<div class="adi_future_flipbox_inner">		
+							
+								<div class="flipbox_desc">
+									<p class="font"> We aim to continuously introduce cutting-edge tools, technologies, and training programs that enable our members to thrive in an ever-evolving market landscape.</p>
+								</div>
+								<div class="flipbox_button">
+									<a href="javaScript:void(0);">Read More<i class="fa fa-angle-double-right"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
+					<div class="adi_future_flipbox mb-30">
+						<div class="adi_future_flipbox_font">
+								<div class="adi_future_flipbox_inner">
+									<div class="adi_future_flipbox_icon">
+										<div class="icon">
+										<i class="flaticon-intelligent"></i>
+										</div>
+									</div>			
+									<div class="flipbox_title">
+										<h3>Global Impact & Unity</h3>
+									</div>
+									<div class="flipbox_desc">
+										<p class="font">"Harmonizing diversity, fostering collaboration; Global Impact & Unity for an inclusive and sustainable future. </p>
+									</div>
+								</div>
+						</div>
+						<div class="adi_future_flipbox_back " style="background-image:url(<?php echo base_url()?>theme_assets/images/feature1.jpg);">
+							<div class="adi_future_flipbox_inner">		
+								
+								<div class="flipbox_desc">
+									<p class="font">Global Impact & Unity ADI Future aims to create a global network of like-minded individuals driven by ambition, integrity, and a shared goal of achieving prosperity</p>
+								</div>
+								<div class="flipbox_button">
+									<a href="javaScript:void(0);">Read More<i class="fa fa-angle-double-right"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
+					<div class="adi_future_flipbox mb-30">
+						<div class="adi_future_flipbox_font">
+								<div class="adi_future_flipbox_inner">
+									<div class="adi_future_flipbox_icon">
+										<div class="icon">
+											<i class="flaticon-content-writing"></i>
+										</div>
+									</div>			
+									<div class="flipbox_title">
+										<h3>Empowering Opportunities </h3>
+									</div>
+									<div class="flipbox_desc">
+										<p class="font">Empowering opportunities shape a future of growth, inclusion, and success for all. Together, we rise.</p>
+									</div>
+								</div>
+						</div>
+						<div class="adi_future_flipbox_back " style="background-image:url(<?php echo base_url()?>theme_assets/images/feature3.jpg);">
+							<div class="adi_future_flipbox_inner">		
+							
+								<div class="flipbox_desc">
+									<p class="font">ADI Future is dedicated to fostering an inclusive platform that empowers individuals worldwide with accessible
+opportunities to achieve financial independence and personal growth through our innovative MLM model</p>
+								</div>
+								<div class="flipbox_button">
+									<a href="javaScript:void(0);">Read More<i class="fa fa-angle-double-right"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
+					<div class="adi_future_flipbox mb-30">
+						<div class="adi_future_flipbox_font">
+								<div class="adi_future_flipbox_inner">
+									<div class="adi_future_flipbox_icon">
+										<div class="icon">
+										<i class="flaticon-content-writing"></i>
+										</div>
+									</div>			
+									<div class="flipbox_title">
+										<h3>Quality Product Innovation</h3>
+									</div>
+									<div class="flipbox_desc">
+										<p class="font">"Quality product innovation drives a future of excellence and advancement. Together, we pioneer transformative solutions."</p>
+									</div>
+								</div>
+						</div>
+						<div class="adi_future_flipbox_back " style="background-image:url(<?php echo base_url()?>theme_assets/images/feature3.jpg);">
+							<div class="adi_future_flipbox_inner">		
+								
+								<div class="flipbox_desc">
+									<p>We are committed to consistently delivering high-quality products and services that enhance the lives of our customers.</p>
+								</div>
+								<div class="flipbox_button">
+									<a href="javaScript:void(0);">Read More<i class="fa fa-angle-double-right"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
+					<div class="adi_future_flipbox mb-30">
+						<div class="adi_future_flipbox_font">
+								<div class="adi_future_flipbox_inner">
+									<div class="adi_future_flipbox_icon">
+										<div class="icon">
+										<i class="flaticon-content-writing"></i>
+										</div>
+									</div>			
+									<div class="flipbox_title">
+										<h3>Ethical Leadership & Support</h3>
+									</div>
+									<div class="flipbox_desc">
+										<p class="font">"Ethical leadership and support foster a future of integrity, empowerment, and shared success. Together, we thrive."</p>
+									</div>
+								</div>
+						</div>
+						<div class="adi_future_flipbox_back " style="background-image:url(<?php echo base_url()?>theme_assets/images/feature3.jpg);">
+							<div class="adi_future_flipbox_inner">		
+						
+								<div class="flipbox_desc">
+									<p class="font">Our mission involves providing unwavering support, comprehensive training, and guidance to our network of members, enabling them to succeed while upholding ethical business standards.</p>
+								</div>
+								<div class="flipbox_button">
+									<a href="javaScript:void(0);">Read More<i class="fa fa-angle-double-right"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				
+			</div>
+		</div>	
+	</div>
+	
+	<!--==================================================-->
+	<!----- End adi_future Flipbox Area ----->
+	<!--==================================================-->
 
-            <div class="item">
-                <img src="<?php echo base_url(); ?>axxets/site/assets/images/slider/Banner3.png" alt="New york" style="width:100%;">
-            </div>
-            <div class="item">
-                <img src="<?php echo base_url(); ?>axxets/site/assets/images/slider/Banner4.png" alt="New york" style="width:100%;">
-            </div>
-            <div class="item">
-                <img src="<?php echo base_url(); ?>axxets/site/assets/images/slider/Banner5.png" alt="New york" style="width:100%;">
-            </div>
-            <div class="item">
-                <img src="<?php echo base_url(); ?>axxets/site/assets/images/slider/Banner6.png" alt="New york" style="width:100%;">
-            </div>
-            <div class="item">
-                <img src="<?php echo base_url(); ?>axxets/site/assets/images/slider/Banner7.png" alt="New york" style="width:100%;">
-            </div>
-            <div class="item">
-                <img src="<?php echo base_url(); ?>axxets/site/assets/images/slider/Banner8.png" alt="New york" style="width:100%;">
-            </div>
-            <div class="item">
-                <img src="<?php echo base_url(); ?>axxets/site/assets/images/slider/Banner9.png" alt="New york" style="width:100%;">
-            </div>
-            <div class="item">
-                <img src="<?php echo base_url(); ?>axxets/site/assets/images/slider/Banner10.png" alt="New york" style="width:100%;">
-            </div>
-        </div>
-
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-    <br><br>
-    <section id="main-container" class="container inner">
-
-        <div id="main-content" class="main-page clearfix">
-            <div id="main" class="site-main">
-
-
-
-                <div class="row">
-
-
-                    <div class="image-mains  col-sm-4">
-
-
-
-                        <div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4" data-rtl="no" data-layout="vertical" style="opacity: 0; transition: opacity .25s ease-in-out;">
-
-                            <figure class="woocommerce-product-gallery__wrapper">
-                                <div data-thumb="" data-thumb-alt="" class="woocommerce-product-gallery__image">
-                                    <img src="<?php echo base_url(); ?>axxets/site/assets/wp-content/uploads/sites/4/2018/10/product.png" class="" alt="" loading="lazy" title="product-07" data-caption="" data-src="https://urnawp.com/toy/<?php echo base_url(); ?>axxets/site/assets/wp-content/uploads/sites/4/2018/08/product-07.jpg" data-large_image="https://urnawp.com/toy/<?php echo base_url(); ?>axxets/site/assets/wp-content/uploads/sites/4/2018/08/product-07.jpg" />
-                                </div>
-
-                            </figure>
-
-                        </div>
-
-                    </div>
-                    <div class="information col-sm-6">
-                        <div class="summary entry-summary ">
-
-                            <h1 class="product_title entry-title">Welcome To Camwel Solution LLP</h1>
-                            <div class="woocommerce-product-details__short-description">
-                                <p style="text-align: justify;">
-                                Camwel Solution LLP is a global marketing company that offers people from all walks of life the
-                                    opportunity to build a career or second-income business by generating earnings from the millions of products and services
-                                    that people buy online every day. Our business strategy focuses on rewarding people for their marketing efforts through a
-                                    referral-based income program. As a result, Camwel Solution LLP has become the largest direct selling e-commerce company in the
-                                    world.
-                                </p>
-                            </div>
-
-                            <h1 class="product_title entry-title">Mission</h1>
-                            <div class="woocommerce-product-details__short-description">
-                                <p style="text-align: justify;">
-                                    Our mission is to capture this exponentially growing Indian market and give our consumers a chance to earn lakhs, simply
-                                    by recruiting more distributors. Our marketing and distribution system provides a distributor a true self development
-                                    opportunity to enable him to contribute positively towards the society. We share our profit margins with our consumers
-                                    who are also the distributors and aims to make their lives happy and rich.
-                                </p>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-                <div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid vc_custom_1564537966097 vc_row-has-fill">
-                    <div class="wpb_column vc_column_container vc_col-sm-12">
-                        <div class="vc_column-inner">
-                            <div class="wpb_wrapper">
-                                <div class="tbay-addon tbay-addon-carousel tbay-addon-categories categories ">
-                                    <h3 class="tbay-addon-title" style="text-align:center">
-                                        <span>Our Products</span>
-                                    </h3>
-                                    <div class="tbay-addon-content woocommerce">
-                                        <div class="carousel-wrapper">
-                                            <div class="owl-carousel categories rows-1" data-items="5" data-desktopslick="4" data-desktopsmallslick="3" data-tabletslick="3" data-landscapeslick="3" data-mobileslick="2" data-carousel="owl" data-rows="1" data-nav="true" data-pagination="false" data-loop="false" data-auto="false" data-unslick="true">
-                                                <div class="item">
-                                                    <div class="item-cat cat-img">
-                                                        <a href="javascript:void(0)">
-                                                            <img width="244" height="250" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product1.png" class="attachment-full size-full" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product1.png" />
-                                                        </a>
-                                                        <div class="content">
-                                                            <a href="javascript:void(0)" class="cat-name">Gas Safety Device</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-cat cat-img">
-                                                        <a href="javascript:void(0)">
-                                                            <img width="244" height="250" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product2.png" class="attachment-full size-full" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product2.png" />
-                                                        </a>
-                                                        <div class="content">
-                                                            <a href="javascript:void(0)" class="cat-name">Suit length</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-cat cat-img">
-                                                        <a href="javascript:void(0)">
-                                                            <img width="244" height="250" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product3.png" class="attachment-full size-full" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product3.png" />
-                                                        </a>
-                                                        <div class="content">
-                                                            <a href="javascript:void(0)" class="cat-name">Electric Automatic Geyser</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-cat cat-img">
-                                                        <a href="javascript:void(0)">
-                                                            <img width="244" height="250" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product4.png" class="attachment-full size-full" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product4.png" />
-                                                        </a>
-                                                        <div class="content">
-                                                            <a href="javascript:void(0)" class="cat-name">Power Bank</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-cat cat-img">
-                                                        <a href="javascript:void(0)">
-                                                            <img width="244" height="250" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product5.png" class="attachment-full size-full" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product5.png" />
-                                                        </a>
-                                                        <div class="content">
-                                                            <a href="javascript:void(0)" class="cat-name">Exclusive Official Kit</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-cat cat-img">
-                                                        <a href="javascript:void(0)">
-                                                            <img width="244" height="250" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product6.png" class="attachment-full size-full" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/product6.png" />
-                                                        </a>
-                                                        <div class="content">
-                                                            <a href="javascript:void(0)" class="cat-name">Gents Garments kit</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-cat cat-img">
-                                                        <a href="javascript:void(0)">
-                                                            <img width="244" height="250" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 2/product1.png" class="attachment-full size-full" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 2/product1.png" />
-                                                        </a>
-                                                        <div class="content">
-                                                            <a href="javascript:void(0)" class="cat-name">Blanket</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-cat cat-img">
-                                                        <a href="javascript:void(0)">
-                                                            <img width="244" height="250" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 2/product2.png" class="attachment-full size-full" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 2/product2.png" />
-                                                        </a>
-                                                        <div class="content">
-                                                            <a href="javascript:void(0)" class="cat-name">Mixture</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="item-cat cat-img">
-                                                        <a href="javascript:void(0)">
-                                                            <img width="244" height="250" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 2/product3.png" class="attachment-full size-full" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 2/product3.png" />
-                                                        </a>
-                                                        <div class="content">
-                                                            <a href="javascript:void(0)" class="cat-name">Cooler</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="vc_row-full-width vc_clearfix"></div>
-                <div class="vc_row wpb_row vc_row-fluid vc_custom_1564388385231">
-                    <div class="wpb_column vc_column_container vc_col-sm-12">
-                        <div class="vc_column-inner">
-                            <div class="wpb_wrapper">
-                                <div class="tbay-addon tbay-addon-products tbay-addon-categoriestabs tbay-addon-grid tbay-product-categories-tabs-ajax ajax-active">
-                                    <div class="tabs-container tab-heading has-title">
-                                        <h3 class="tbay-addon-title" style="text-align:center">
-                                            <span>Our Packages</span>
-                                        </h3>
-
-                                    </div>
-                                    <div class="tbay-addon-content woocommerce">
-                                        <div class="tbay-addon-inner">
-                                            <div class="tbay-addon-content tab-content">
-                                                <div id="tab-MKqlq-0" class="tab-pane animated fadeIn  active active-content current">
-                                                    <div class="products products-grid">
-                                                        <div class="row grid" data-xlgdesktop="4" data-desktop="4" data-desktopsmall="3" data-tablet="3" data-landscape="3" data-mobile="2">
-                                                            <div class="product type-product post-2356 status-publish instock product_cat-active-toys product_cat-building-toys product_cat-soft-toys product_tag-brogues-oxfords product_tag-espadrilles product_tag-glasses has-post-thumbnail sale taxable shipping-taxable purchasable product-type-simple">
-                                                                <div class="product-block grid v3" data-product-id="2356">
-                                                                    <div class="product-content">
-                                                                        <div class="block-inner">
-                                                                            <figure class="image ">
-                                                                                <a title="LeapFrog LeapPad Educational" href="javascript: void(0);" class="product-image">
-                                                                                    <img width="473" height="473" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/1.png" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 1/1.png" style="width:60%;" />
-                                                                                </a>
-                                                                            </figure>
-                                                                        </div>
-                                                                        <div class="caption">
-                                                                            <h3 class="name full_name">Mini Package</h3>
-                                                                            <div class="rating no-rate">
-                                                                                <div class="star-rating">
-                                                                                </div>
-                                                                                <div class="count">0</div>
-                                                                            </div>
-                                                                            <span class="price">
-                                                                                <span class="woocs_price_code" data-product-id="2356">
-                                                                                    <ins>
-                                                                                        <span class="woocommerce-Price-amount amount">
-                                                                                            <bdi>
-                                                                                                <span class="woocommerce-Price-currencySymbol">
-                                                                                                    ₹
-                                                                                                </span>
-                                                                                                7000/-
-                                                                                            </bdi>
-                                                                                        </span>
-                                                                                    </ins>
-                                                                                </span>
-                                                                            </span>
-                                                                            <p style="text-align:justify;font-size:12px;">In this Package Include <br>(Gas Safety Device & Herbal food Suppliment Kit) <br> Coupon (1,000.00 x 6) = ₹ 6,000.00 + BSM & DOP </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product type-product post-2356 status-publish instock product_cat-active-toys product_cat-building-toys product_cat-soft-toys product_tag-brogues-oxfords product_tag-espadrilles product_tag-glasses has-post-thumbnail sale taxable shipping-taxable purchasable product-type-simple">
-                                                                <div class="product-block grid v3" data-product-id="2356">
-                                                                    <div class="product-content">
-                                                                        <div class="block-inner">
-                                                                            <figure class="image ">
-                                                                                <a title="LeapFrog LeapPad Educational" href="javascript: void(0);" class="product-image">
-                                                                                    <img width="473" height="473" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 2/1.png" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 2/1.png" />
-                                                                                </a>
-                                                                            </figure>
-                                                                        </div>
-                                                                        <div class="caption">
-                                                                            <h3 class="name full_name">Premium Package</h3>
-                                                                            <div class="rating no-rate">
-                                                                                <div class="star-rating">
-                                                                                </div>
-                                                                                <div class="count">0</div>
-                                                                            </div>
-                                                                            <span class="price">
-                                                                                <span class="woocs_price_code" data-product-id="2356">
-                                                                                    <ins>
-                                                                                        <span class="woocommerce-Price-amount amount">
-                                                                                            <bdi>
-                                                                                                <span class="woocommerce-Price-currencySymbol">
-                                                                                                    ₹
-                                                                                                </span>
-                                                                                                13000/-
-                                                                                            </bdi>
-                                                                                        </span>
-                                                                                    </ins>
-                                                                                </span>
-                                                                            </span>
-                                                                            <p style="text-align:justify;font-size:12px;">In this Package Include <br>(Gas Safety Device & Herbal food Suppliment Kit, 1 Suit length, Shirt Paint Piece, Suit & Saree)<br> Coupon (1,000.00 x 12) = ₹ 12,000.00 + BSM & DOP </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product type-product post-2356 status-publish instock product_cat-active-toys product_cat-building-toys product_cat-soft-toys product_tag-brogues-oxfords product_tag-espadrilles product_tag-glasses has-post-thumbnail sale taxable shipping-taxable purchasable product-type-simple">
-                                                                <div class="product-block grid v3" data-product-id="2356">
-                                                                    <div class="product-content">
-                                                                        <div class="block-inner">
-                                                                            <figure class="image ">
-                                                                                <a title="LeapFrog LeapPad Educational" href="javascript: void(0);" class="product-image">
-                                                                                    <img width="473" height="473" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 3/tour.jpg" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 4/tour.jpg" />
-                                                                                </a>
-                                                                            </figure>
-                                                                        </div>
-                                                                        <div class="caption">
-                                                                            <h3 class="name full_name">Tours & Travel Package</h3>
-                                                                            <div class="rating no-rate">
-                                                                                <div class="star-rating">
-                                                                                </div>
-                                                                                <div class="count">0</div>
-                                                                            </div>
-                                                                            <span class="price">
-                                                                                <span class="woocs_price_code" data-product-id="2356">
-                                                                                    <ins>
-                                                                                        <span class="woocommerce-Price-amount amount">
-                                                                                            <bdi>
-                                                                                                <span class="woocommerce-Price-currencySymbol">
-                                                                                                    ₹
-                                                                                                </span>
-                                                                                                19000/-
-                                                                                            </bdi>
-                                                                                        </span>
-                                                                                    </ins>
-                                                                                </span>
-                                                                            </span>
-                                                                            <p style="text-align:justify;font-size:12px;">In this Package Include <br>India Tour for 1 Person 1 Night (Up and Down by train & 2 days services included)<br> Coupon (1,000.00 x 36) = ₹ 36,000.00 + BSM & DOP </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product type-product post-2356 status-publish instock product_cat-active-toys product_cat-building-toys product_cat-soft-toys product_tag-brogues-oxfords product_tag-espadrilles product_tag-glasses has-post-thumbnail sale taxable shipping-taxable purchasable product-type-simple">
-                                                                <div class="product-block grid v3" data-product-id="2356">
-                                                                    <div class="product-content">
-                                                                        <div class="block-inner">
-                                                                            <figure class="image ">
-                                                                                <a title="LeapFrog LeapPad Educational" href="javascript: void(0);" class="product-image">
-                                                                                    <img width="473" height="473" src="<?php echo base_url(); ?>axxets/site/assets/images/Package 4/combokit.jpg" alt="" loading="lazy" data-lazy-src="<?php echo base_url(); ?>axxets/site/assets/images/Package 3/combokit.jpg" />
-                                                                                </a>
-                                                                            </figure>
-                                                                        </div>
-                                                                        <div class="caption">
-                                                                            <h3 class="name full_name">Executive Package (Triple ID)</h3>
-                                                                            <div class="rating no-rate">
-                                                                                <div class="star-rating">
-                                                                                </div>
-                                                                                <div class="count">0</div>
-                                                                            </div>
-                                                                            <span class="price">
-                                                                                <span class="woocs_price_code" data-product-id="2356">
-                                                                                    <ins>
-                                                                                        <span class="woocommerce-Price-amount amount">
-                                                                                            <bdi>
-                                                                                                <span class="woocommerce-Price-currencySymbol">
-                                                                                                    ₹
-                                                                                                </span>
-                                                                                                25000/-
-                                                                                            </bdi>
-                                                                                        </span>
-                                                                                    </ins>
-                                                                                </span>
-                                                                            </span>
-                                                                            <p style="text-align:justify;font-size:12px;">In this Package Include <br>Gas Safety Device & Herbal food Suppliment Kit, 1 Suit length, FMCG Product, Shirt Paint Piece, Suit & Saree, Bag, Tie, Purse & Belt <br> Coupon (1,000.00 x 24) = ₹ 24,000.00 + BSM & DOP </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="product type-product post-2356 status-publish instock product_cat-active-toys product_cat-building-toys product_cat-soft-toys product_tag-brogues-oxfords product_tag-espadrilles product_tag-glasses has-post-thumbnail sale taxable shipping-taxable purchasable product-type-simple">
-                                                                <div class="product-block grid v3" data-product-id="2356">
-                                                                    <div class="product-content">
-                                                                        <h3>Latest News</h3>
-                                                                        <?php echo $news['description']; ?>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product type-product post-2356 status-publish instock product_cat-active-toys product_cat-building-toys product_cat-soft-toys product_tag-brogues-oxfords product_tag-espadrilles product_tag-glasses has-post-thumbnail sale taxable shipping-taxable purchasable product-type-simple">
-                                                                <div class="product-block grid v3" data-product-id="2356">
-                                                                    <div class="product-content">
-                                                                        <h3>Award & Reward</h3>
-                                                                        <?php foreach ($rewards as $reward) {
-                                                                            $date1 = date('Y-m-d', strtotime('+30 days', strtotime($reward['date'])));
-                                                                            if ($date1 >= date('Y-m-d')) {
-                                                                                echo '<ul style="list-style:none;"><li>' . $reward['name'] . "(" . $reward['userid'] . ")</li></ul>";
-                                                                            }
-                                                                        } ?>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+	<!--==================================================-->
+	<!----- Start adi_future Team Area ----->
+	<!--==================================================-->
+	<div class="team_area pt-80 pb-75" style="background-image:url(<?php echo base_url()?>theme_assets/images/team-bg2.jpg)" >
+		<div class="container">
+			<div class="row">
+				<!-- Start Section Tile -->
+				<div class="col-lg-9">
+					<div class="section_title text_left mb-50 mt-3">
+						
+						<div class="section_sub_title uppercase mb-3">
+							<h6>TEAM MEMBER</h6>
+						</div>
+						<div class="section_main_title">
+							<h1>Our Awesome Creative</h1>
+							<h1>Team Member</h1>
+						</div>
+						<div class="em_bar">
+							<div class="em_bar_bg"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="col-lg-3">
+					<div class="section_button mt-50">
+						<div class="button two">
+							<a href="javaScript:void(0);">Join Our Team</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
-            </div>
-            <!-- .site-main -->
-        </div>
-        <!-- .content-area -->
-    </section>
-</div>
+			<div class="row">
+				<div class="col-lg-12 grid-item">
+					<div class="row">
+						<!--portfolio owl curousel -->
+						<div class="case_study_list owl-carousel curosel-style">
+							<!--Start Single Portfolio -->
+							<div class="col-lg-12 pdn_0">
+								<div class="single_case_study">
+									<div class="single_case_study_inner">
+										<div class="single_case_study_thumb" style="padding:6px;">
+											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/2.jpg" alt="" /></a>
+										</div>
+									</div>
+									<div class="single_case_study_content">
+										<div class="single_case_study_content_inner">
+											<h2><a href="javaScript:void(0);"> Vikash Kumar Kakkar</a></h2>
+											<span> DIRECTOR</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--Start Single Portfolio -->
+							<div class="col-lg-12 pdn_0">
+								<div class="single_case_study">
+									<div class="single_case_study_inner">
+										<div class="single_case_study_thumb" style="padding:6px;">
+											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/1.jpg" alt="" /></a>
+										</div>
+
+									</div>
+									<div class="single_case_study_content">
+										<div class="single_case_study_content_inner">
+											<h2><a href="javaScript:void(0);">Pooja Kakkar</a></h2>
+											<span> MANAGER</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--Start Single Portfolio -->
+							<div class="col-lg-12 pdn_0">
+								<div class="single_case_study">
+									<div class="single_case_study_inner">
+										<div class="single_case_study_thumb" style="padding:6px;">
+											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/8.jpg" alt="" /></a>
+										</div>
+									</div>
+									<div class="single_case_study_content">
+										<div class="single_case_study_content_inner">
+											<h2><a href="javaScript:void(0);">Sonu Kumar</a></h2>
+											<span>FOUNDER</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<!--Start Single Portfolio -->
+							<div class="col-lg-12 pdn_0">
+								<div class="single_case_study">
+									<div class="single_case_study_inner">
+										<div class="single_case_study_thumb" style="padding:6px;">
+											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/3.jpg" alt="" /></a>
+										</div>
+									</div>
+									<div class="single_case_study_content">
+										<div class="single_case_study_content_inner">
+											<h2><a href="javaScript:void(0);">Rajveer Kr </a></h2>
+											<span>MANAGER</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--Start Single Portfolio -->
+							<div class="col-lg-12 pdn_0">
+								<div class="single_case_study">
+									<div class="single_case_study_inner">
+										<div class="single_case_study_thumb" style="padding:6px;">
+											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/4.jpg" alt="" /></a>
+										</div>
+									</div>
+									<div class="single_case_study_content">
+										<div class="single_case_study_content_inner">
+											<h2><a href="javaScript:void(0);">Anil Kumar </a></h2>
+											<span>FOUNDER</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--Start Single Portfolio -->
+							<div class="col-lg-12 pdn_0">
+								<div class="single_case_study">
+									<div class="single_case_study_inner"> 
+										<div class="single_case_study_thumb" style="padding:6px;">
+											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/5.jpg" alt="" /></a>
+										</div>
+									</div>
+									<div class="single_case_study_content">
+										<div class="single_case_study_content_inner">
+											<h2><a href="javaScript:void(0);">Ashish kumar </a></h2>
+											<span>FOUNDER </span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--Start Single Portfolio -->
+							<div class="col-lg-12 pdn_0">
+								<div class="single_case_study">
+									<div class="single_case_study_inner">
+										<div class="single_case_study_thumb" style="padding:6px;">
+											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/6.jpg" alt="" /></a>
+										</div>
+									</div>
+									<div class="single_case_study_content">
+										<div class="single_case_study_content_inner">
+											<h2><a href="javaScript:void(0);">Shiv Kumar </a></h2>
+											<span>FOUNDER</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--Start Single Portfolio -->
+							<div class="col-lg-12 pdn_0">
+								<div class="single_case_study">
+									<div class="single_case_study_inner">
+										<div class="single_case_study_thumb" style="padding:6px;">
+											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/7.jpg" alt="" /></a>
+										</div>
+									</div>
+									<div class="single_case_study_content">
+										<div class="single_case_study_content_inner">
+											<h2><a href="javaScript:void(0);">Anish Kumar </a></h2>
+											<span>FOUNDER</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--==================================================-->
+	<!----- End adi_future Team Area ----->
+	<!--==================================================-->
+	
+	<!--==================================================-->
+
+	<!----- End adi_future Case Study Area ----->
+	<!--==================================================-->
+	
+	<!--==================================================-->
+	<!----- Start adi_future How IT Work Area ----->
+	<!--==================================================-->
+	<div class="how_it_work pt-50 pb-65">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section_title text_center mb-60 mt-3">
+						
+						<div class="section_sub_title uppercase mb-3">
+							<h6>FEATURES CASE</h6>
+						</div>
+						<div class="section_main_title">
+							<h1>Our Working Process</h1>
+						</div>
+						<div class="em_bar">
+							<div class="em_bar_bg"></div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="single_it_work mb-4">
+						<div class="single_it_work_content pl-2 pr-2">
+							<div class="single_it_work_content_list pb-5">
+								<span>1</span>
+							</div>
+							<div class="single_work_content_title pb-2">
+								<h4>Building Networks and Teams</h4>
+							</div>
+							<div class="single_it_work_content_text pt-1">
+								<p class="font">Members are encouraged to build their networks and teams by sharing the benefits of our products and business opportunity.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="single_it_work mb-4">
+						<div class="single_it_work_content pl-2 pr-2">
+							<div class="single_it_work_content_list pb-5">
+								<span>2</span>
+							</div>
+							<div class="single_work_content_title pb-2">
+								<h4>Commission and Reward System:</h4>
+							</div>
+							<div class="single_it_work_content_text pt-1">
+								<p class="font">ADI FUTURE offers a competitive and transparent commission structure, rewarding members for their sales efforts and team-building achievements.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="single_it_work mb-4">
+						<div class="single_it_work_content pl-2 pr-2">
+							<div class="single_it_work_content_list three pb-5">
+								<span>3</span>
+							</div>
+							<div class="single_work_content_title pb-2">
+								<h4>Community and Recognition</h4>
+							</div>
+							<div class="single_it_work_content_text pt-1">
+								<p class="font">We foster a sense of community among our members through events, forums, and recognition programs.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--==================================================-->
+	<!----- End adi_future How IT Work Area ----->
+	<!--==================================================-->
+	
+	<!--==================================================-->
+	<!----- Start adi_future Call Do Action Area ----->
+	<!--==================================================-->
+	<div class="call_do_action pt-85 pb-130 bg_color" style="background-image:url(<?php echo base_url()?>theme_assets/images/call-bg.png)" >
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9">
+					<div class="section_title white text_left mb-60 mt-3">
+						<div class="phone_number mb-3">
+							<h5>+91 9955215097</h5>
+						</div>
+						<div class="section_main_title">
+							<h1>To make requests for the</h1>
+							<h1>further information</h1>
+						</div>
+						<div class="button three mt-40">
+							<a href="javaScript:void(0);">Join With Now<i class="fa fa-long-arrow-right"></i></a>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!--==================================================-->
+	<!----- End adi_future Call Do Action Area ----->
+	<!--==================================================-->
+	
+	<!--==================================================-->
+	<!----- Start adi_future Counter Area ----->
+	<!--==================================================-->
+	<div class="counter_area">
+		<div class="container">
+			<div class="row cntr_bg_up nagative_margin pt-50 pb-45">
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="single_counter text_center mb-4">
+						<div class="countr_text">
+							<h1><span class="counter">15</span><span>K</span> </h1>
+						</div>
+						<div class="counter_desc">
+							<h5>Happy Clients</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="single_counter text_center mb-4">
+						<div class="countr_text">
+							<h1><span class="counter">1280</span><span>+</span> </h1>
+						</div>
+						<div class="counter_desc">
+							<h5>Joining Member</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="single_counter text_center mb-4">
+						<div class="countr_text">
+							<h1><span class="counter">50</span></h1>
+						</div>
+						<div class="counter_desc">
+							<h5> Reward System</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="single_counter text_center mb-4">
+						<div class="countr_text">
+							<h1><span class="counter">992</span><span>+</span> </h1>
+						</div>
+						<div class="counter_desc">
+							<h5>Win Awards</h5>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!--==================================================-->
+	<!----- End adi_future Counter Area ----->
+	<!--==================================================-->
+	
+	<!--==================================================-->
+	<!----- Start adi_future Testimonial Area ----->
+	<!--==================================================-->
+	<div class="testimonial_area pt-80 pb-70">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section_title text_center mb-60 mt-3">
+						
+						<div class="section_sub_title uppercase mb-3">
+							<h6>TESTIMONIAL</h6>
+						</div>
+						<div class="section_main_title">
+							<h1>What Says</h1>
+							<h1>Our Happy Clients</h1>
+						</div>
+						<div class="em_bar">
+							<div class="em_bar_bg"></div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">	
+					<div class="row">
+						<!--testimonial owl curousel -->
+						<div class="testimonial_list owl-carousel curosel-style">
+							<!-- Start Single Testimonial -->
+							<div class="col-lg-12">
+								<div class="single_testimonial mt-3 mb-5">
+									<div class="single_testimonial_content">
+										<div class="single_testimonial_content_text mb-4" style="height:250px;">
+											<p class="font">We prioritize Adi Future member satisfaction and provide dedicated member support to address inquiries, concerns, and ensure a positive experience for our members and their   member.</p>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<!-- Start Single Testimonial -->
+							<div class="col-lg-12">
+								<div class="single_testimonial mt-3 mb-5">
+									<div class="single_testimonial_content">
+										<div class="single_testimonial_content_text mb-4" style="height:250px;">
+											<p class="font">Members are encouraged to build their networks and teams by sharing the benefits of our products and business opportunity.</p>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<!-- Start Single Testimonial -->
+							<div class="col-lg-12">
+								<div class="single_testimonial mt-3 mb-5">
+									<div class="single_testimonial_content">
+										<div class="single_testimonial_content_text mb-4" style="height:250px;">
+											<p class="font">Adi Future offers a competitive and transparent commission structure, rewarding members for their sales efforts and team-building achievements.</p>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<!-- Start Single Testimonial -->
+							<div class="col-lg-12">
+								<div class="single_testimonial mt-3 mb-5">
+									<div class="single_testimonial_content">
+										<div class="single_testimonial_content_text mb-4" style="height:250px;">
+											<p class="font">We prioritize Adi Future member satisfaction and provide dedicated member support to address inquiries, concerns, and ensure a positive experience for our members and their   member.</p>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--==================================================-->
+	<!----- End adi_future Testimonial Area ----->
+	<!--==================================================-->
+	
+	
+	<!--==================================================-->
+	<!----- Start adi_future Contact Area ----->
+	<!--==================================================-->
+	<div class="contact_area pt-85 pb-90" style="background-image:url(<?php echo base_url()?>theme_assets/images/bg-cnt.jpg)" >
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section_title white text_center mb-60 mt-3">
+						<div class="section_sub_title uppercase mb-3">
+							<h6>GET QUOTE</h6>
+						</div>
+						<div class="section_main_title">
+							<h1>Make An</h1>
+							<h1>Free Consultant</h1>
+						</div>
+						<div class="em_bar">
+							<div class="em_bar_bg"></div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="quote_wrapper">
+						<form  action="<?php echo base_url()?>Site/mail_us" method="POST"  >
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form_box mb-30">
+										<input type="text" name="name"  placeholder="Name" required>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form_box mb-30">
+										<input type="email" name="email" placeholder="Email Address" required>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form_box mb-30">
+										<input type="text" name="mobile" placeholder="Phone Number" required>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form_box mb-30">
+										<input type="text" name="address" placeholder="Address" required>
+									</div>
+								</div>
+								
+								<div class="col-lg-12">
+									<div class="form_box mb-30">
+										<textarea name="message" id="message" cols="30" rows="10" placeholder="Write a Message" required></textarea>
+									</div>
+									<div class="quote_btn text_center">
+										<button class="btn" type="submit" name="submit">Submit</button>
+									</div>
+								</div>
+							</div>
+						</form>
+						<div id="status"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--==================================================-->
+	<!----- End adi_future Contact Area ----->
+	<!--==================================================-->
+	
+	<!--==================================================-->
+	<!----- Start adi_future Blog Area ----->
+
+	<!----- End adi_future Blog Area ----->
+	<!--==================================================-->
+	
+	

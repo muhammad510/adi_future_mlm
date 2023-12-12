@@ -506,7 +506,8 @@ class Users extends CI_Controller
     {
         $this->load->model('earning');
         // reg_earning($userid, $position, $packageid, $need_topup = true, $qty = 1)
-        $this->earning->reg_earning(4354720, 8321697, 1, $need_topup = true, $qty = 1);
+        // $this->earning->reg_earning(4354720, 8321697, 1, $need_topup = true, $qty = 1);
+        $this->earning->check_level();
     }
 
 

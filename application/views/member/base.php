@@ -47,7 +47,14 @@
                         </a>
                     </li>
                     <li>
-                        <a style="padding-left:120px !important;"href="<?php echo base_url('member') ?>">Welcome, <?php echo $this->session->name ?>(<?php echo config_item('IT_EXT') . $this->session->user_id ?>)</a>
+                        <a style="padding-left:120px !important;" href="<?php echo base_url('member') ?>">Welcome, <?php echo $this->session->name ?>(<?php echo config_item('IT_EXT') . $this->session->user_id ?>)</a>
+                    </li>
+                    <li>
+    <?php  $member_rank = $this->db->select('signup_package,re_topup')->where('id',$this->session->user_id)->get('member')->row();  ?>
+
+                        <?php if($member_rank->signup_package!=0 && $member_rank->re_topup==0 ):?>
+                            <a class="text-danger " style="  background-color:yellow !important; text-align:center !important;">Re-topup  For Next Level</a>
+                            <?php endif;?>
                     </li>
 
                 </ul>

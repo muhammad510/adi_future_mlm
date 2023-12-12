@@ -25,6 +25,11 @@ class Site extends CI_Controller
     public function index()
     {
         $layout['layout'] = "home.php";
+
+        $layout['title'] = "Home";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
+
         $layout['news'] = $this->db->select('*')->get('news')->row_array();
         $layout['rewards'] = $this->db->select('r.*,m.name')->join('member as m', 'm.id =r.userid')->get('rewards as r')->result_array();
         $this->load->view('theme/default/base', $layout);
@@ -32,30 +37,146 @@ class Site extends CI_Controller
 
     public function about()
     {
+        $layout['title'] = "About US";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
         $layout['layout'] = "about.php";
         $this->load->view('theme/default/base', $layout);
     }
-    public function plan()
+
+    public function business_plan()
     {
+        $layout['title'] = "Bussiness Plan";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
+
         $layout['layout'] = "business_plan.php";
         $this->load->view('theme/default/base', $layout);
     }
+    public function event()
+    {
+        $layout['title'] = "Events";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
+        $layout['layout'] = "event.php";
+        $this->load->view('theme/default/base', $layout);
+    }
+
+    public function agent()
+    {
+        $layout['title'] = "Agent";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
+        $layout['layout'] = "agent.php";
+        $this->load->view('theme/default/base', $layout);
+    }
+
 
     public function contact()
     {
+        $layout['title'] = "Contact US";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
         $layout['layout'] = "contact.php";
         $this->load->view('theme/default/base', $layout);
     }
 
     public function bank()
     {
+        $layout['title'] = "Bank";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
         $layout['layout'] = "bank.php";
         $this->load->view('theme/default/base', $layout);
     }
 
     public function tc()
     {
+        $layout['title'] = "Term And Condition";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
         $layout['layout'] = "tandc.php";
+        $this->load->view('theme/default/base', $layout);
+    }
+
+    function mail_us()
+    {
+
+        $val = $this->input->post();
+
+        $name = $val['name'];
+
+        $email = $val['email'];
+        $mobile = $val['mobile'];
+        $address = $val['address'];
+        $message = $val['message'];
+        $product_category = $val['product_category'];
+
+
+        $to = " info@adifuture.com";
+        $subject = "Enquiry From ADI FUTURE ";
+        $headers =  'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'From: info@adifuture.com' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+
+
+        $full_message = "<html>
+    <head><title>Enquiry Data</title></head>
+    <body>
+    <table>
+        <tr>
+        <td>Name</td>
+        <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+        <td> $name</td>
+        </tr>
+        <tr>
+        <td>Email Id</td>
+        <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+        <td> $email</td>
+        </tr>
+        <tr>
+        <td>Mobile No</td>
+        <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+        <td> $mobile</td>
+        </tr>
+        <tr>
+        <td>Message</td>
+        <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+        <td> $address</td>
+        </tr>
+      <tr>
+        <td>Message</td>
+        <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+        <td> $message</td>
+        </tr>
+        
+    </table>
+    </body>
+    </html>";
+
+        $user = $email;
+        $user_subject = "Thank You $name";
+        $user_headers = 'From: info@adifuture.com' . "\r\n";
+        $user_message = "Dear $name.\nWelcome to ADI FUTURE \n We have got your query.We will reach you soon.\nThank You!";
+
+
+        if (mail($to, $subject, $full_message, $headers)) {
+            mail($user, $user_subject, $user_message, $user_headers);
+            $layout["response"] = "<h3>Dear <span   style='color:#e70780;'>$name</span>,</h3><blockquote><p>We have got your query. We will contact you soon.<br/>For Quick Enquiry <span style='color:#e70780;'>Call Us</span> at <span ><i class='fas fa-phone-alt px-2 '></i><span> +91 9955215097</span></span></p>
+<p>Thank You!</p></blockquote>";
+        } else {
+            echo $name . $mobile . $whatsapp . $email . $need . $message;
+            $layout["response"] = "<h3>Dear <span  style='color:#e70780;'>$name</span>,</h3><blockquote><p>Something is wrong. It seems like internet is not working well.<br/>For Quick Enquiry <span style='color:#e70780;'>Call Us<span> at <span ><i class='fas fa-phone-alt px-2 '></i><span>+91 9955215097</span></span></p>
+<p>Please, try again!</p><p>Thank You!</p></blockquote>";
+        }
+
+
+
+        $layout['title'] = "Thank You";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
+        $layout['layout'] = "thanku.php";
         $this->load->view('theme/default/base', $layout);
     }
 
@@ -94,7 +215,7 @@ class Site extends CI_Controller
             $leg = $this->input->post('leg') ? $this->input->post('leg') : 'A';
             $position = $this->input->post('position') ? $this->common_model->filter($this->input->post('position')) : $sponsor;
             //  $product = $this->input->post('product');
-             $product = 0;
+            $product = 0;
             $epin = $this->input->post('epin');
             $pg = $this->input->post('pg');
             $address_1 = $this->input->post('address_1');
@@ -230,9 +351,10 @@ class Site extends CI_Controller
             endif;
 
 
-            // agent registration start
+            // ###################agent registration start######################################
 
             $sps = $this->db->select('id,rank')->where('id', $sponsor)->get('member')->row_array();
+
             if ($sponsor == 1001 || $sps['rank'] == 'Agent') {
 
                 $rank = ($sps['id'] == 1001) ? 'Agent' : "sub_agent";
@@ -254,6 +376,48 @@ class Site extends CI_Controller
                     'join_time' => date('Y-m-d'),
                     'placement_leg' => $leg,
                     'registration_ip' => $this->input->ip_address(),
+                    'topup' => 1,
+                    'my_business' => ($mybusiness) ? $mybusiness : 0,
+                    'mypv' => $product_detail->pv ? $product_detail->pv : 0,
+                    'status' => 'active',
+                );
+                $this->db->insert('member', $data);
+
+
+                $user_id = $this->db_model->select('id', 'member', array(
+                    'phone' => $phone,
+                    'username' => $username,
+                    'registration_ip' => $this->input->ip_address,
+                    'epin' => $epin,
+                ));
+
+                // $layout['layout'] = "success1.php";
+                // $this->load->view('theme/default/base', $layout);
+
+                // redirect('Site/register', 'refresh');
+            }
+
+          
+
+            //############################ agent registration end########################
+
+            else{
+                $data = array(
+                    'id' => $id,
+                    'name' => $name,
+                    'email' => $email,
+                    'phone' => $phone,
+                    'username' => $username,
+                    'password' => $password,
+                    'show_password' => $this->input->post('password'),
+                    'sponsor' => $sponsor,
+                    'position' => $position,
+                    'signup_package' => $product,
+                    'epin' => $epin,
+                    'address' => $address_1 . "<br/>" . $address_2,
+                    'join_time' => date('Y-m-d'),
+                    'placement_leg' => $leg,
+                    'registration_ip' => $this->input->ip_address(),
                     'topup' => $prod_price,
                     'my_business' => ($mybusiness) ? $mybusiness : 0,
                     'mypv' => $product_detail->pv ? $product_detail->pv : 0,
@@ -261,50 +425,16 @@ class Site extends CI_Controller
                 );
                 $this->db->insert('member', $data);
 
-                //   echo $this->db->last_query();
-                //   die;
-            $this->session->set_userdata('_user_id_', $user_id);
+                $user_id = $this->db_model->select('id', 'member', array(
+                    'phone' => $phone,
+                    'username' => $username,
+                    'registration_ip' => $this->input->ip_address,
+                    'epin' => $epin,
+                ));
 
-                redirect(site_url('site/complete_registration'));
+               
+            }
 
-                // redirect('Site/register', 'refresh');
-            }  
-
-            // agent registration end
-
-
-
-            $data = array(
-                'id' => $id,
-                'name' => $name,
-                'email' => $email,
-                'phone' => $phone,
-                'username' => $username,
-                'password' => $password,
-                'show_password' => $this->input->post('password'),
-                'sponsor' => $sponsor,
-                'position' => $position,
-                'signup_package' => $product,
-                'epin' => $epin,
-                'address' => $address_1 . "<br/>" . $address_2,
-                'join_time' => date('Y-m-d'),
-                'placement_leg' => $leg,
-                'registration_ip' => $this->input->ip_address(),
-                'topup' => $prod_price,
-                'my_business' => ($mybusiness) ? $mybusiness : 0,
-                'mypv' => $product_detail->pv ? $product_detail->pv : 0,
-                'status' => 'Suspend',
-            );
-
-            $this->db->insert('member', $data);
-
-
-            $user_id = $this->db_model->select('id', 'member', array(
-                'phone' => $phone,
-                'username' => $username,
-                'registration_ip' => $this->input->ip_address,
-                'epin' => $epin,
-            ));
             if ($user_id) :
 
                 $data = array(
@@ -327,7 +457,7 @@ class Site extends CI_Controller
                     'userid' => $user_id,
                 );
                 $this->db->insert('level', $data);
-            $this->update_level($user_id);
+                $this->update_level($user_id);
 
             else :
                 $this->session->set_flashdata('site_flash', '<div class="alert alert-danger">Some error occured while registering. please contact admin or try again.</div>');
@@ -402,6 +532,12 @@ class Site extends CI_Controller
                 $this->db->update('epin', $data);
             endif;
 
+
+
+
+            
+         
+
             ##########################################################################
             #
             # Now will send welcome email and SMS.
@@ -430,6 +566,9 @@ class Site extends CI_Controller
             # important Data with session.
             #
             ##########################################################################
+            $md=$this->db->select('rank')->where('id',$user_id)->from('member')->get()->row();
+
+            $this->session->set_userdata('_user_id_', $user_id);
             $this->session->set_userdata('_user_id_', $user_id);
             $this->session->set_tempdata('_auto_user_id_', $user_id, '300');
             $this->session->set_tempdata('_inv_id_', $user_id);
@@ -442,6 +581,7 @@ class Site extends CI_Controller
             $this->session->set_userdata('_phone_', $phone);
             $this->session->set_userdata('_product_', $product);
             $this->session->set_userdata('_price_', $prod_price);
+            $this->session->set_userdata('_rank_', $md->rank);
             if ($divert_pg == TRUE) :
                 redirect(site_url('gateway/registration_form'));
             else :
@@ -460,6 +600,11 @@ class Site extends CI_Controller
             ))->order_by('prod_name', 'ASC');
             $layout['products'] = $this->db->get('product')->result_array();
             $layout['leg'] = $this->plan_model->create_leg();
+
+
+            $layout['title'] = "Register";
+            $layout['description'] = "Home, Adi future private ltd";
+            $layout['keyword'] = "Best mlm company, earn online";
             $layout['layout'] = "register.php";
             $this->load->view('theme/default/base', $layout);
         }
@@ -531,7 +676,7 @@ class Site extends CI_Controller
             if (config_item('fix_income') == "Yes" && $this->session->userdata('_price_') > 0) {
                 $status = $this->earning->fix_income($this->session->userdata('_user_id_'), $this->session->userdata('_sponsor_'), $this->session->userdata('_price_'));
             } else {
-              
+
                 $status = $this->earning->reg_earning($this->session->userdata('_user_id_'), $this->session->userdata('_sponsor_'), $this->session->userdata('_product_'), $need_topup = TRUE);
             }
             if ($status == TRUE) {

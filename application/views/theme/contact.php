@@ -1,127 +1,186 @@
-<div id="tbay-main-content">
-            <section id="tbay-breadscrumb"  class="tbay-breadscrumb  breadcrumbs-color active-nav-right show-title">
-               <div class="container">
-                  <div class="breadscrumb-inner" >
-                     <ol class="breadcrumb">
-                        <li><a href="https://urnawp.com/toy" class="active">Home</a>  / </li>
-                        <li class="active">Page</li>
-                     </ol>
-                     <a href="javascript:history.back()" class="urna-back-btn"><i class="linear-icon-arrow-left"></i><span class="text">Previous page</span></a>
-                  </div>
-               </div>
-            </section>
-            <section id="tbay-breadscrumb-title">
-               <div class="container">
-                  <h1 class="page-title">Contact Us</h1>
-               </div>
-            </section>
-            <section id="main-container" class="container inner">
-               <div id="main-content" class="main-page clearfix">
-                  <div id="main" class="site-main">
-                     <div class="vc_row wpb_row vc_row-fluid vc_custom_1542600293676">
-                        <div class="contact-wrapper wpb_column vc_column_container vc_col-sm-12 vc_col-md-6">
-                           <div class="vc_column-inner">
-                              <div class="wpb_wrapper">
-                                 <div class="wpb_text_column wpb_content_element " >
-                                    <div class="wpb_wrapper">
-                                       <ul class="contact-info">
-                                          <li><span class="head"><i class="linear-icon-telephone"></i>Call Us:</span>+91 990XXXXX</li>
-                                          <li><span class="head"><i class="linear-icon-envelope"></i>Email Address:</span> camwel@gmail.com</li>
-                                          <li><span class="head"><i class="linear-icon-map-marker"></i>Address:</span>Patna, Bihar
-                                          </li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                                 <div class="tbay-addon tbay-addon-social  has-icon">
-                                    <h3 class="tbay-addon-title">
-                                       <span>Follow Us:</span>
-                                    </h3>
-                                    <div class="tbay-addon-content">
-                                       <ul class="social list-inline style2">
-                                          <li>
-                                             <a  href="javascript:void(0)" class="facebook"><i class="zmdi zmdi-facebook"></i></a>
-                                          </li>
-                                          <li>
-                                             <a  href="javascript:void(0)" class="twitter"><i class="zmdi zmdi-twitter"></i></a>
-                                          </li>
-                                          <li>
-                                             <a  href="javascript:void(0)" class="instagram"><i class="zmdi zmdi-instagram"></i></a>
-                                          </li>
-                                          <li>
-                                             <a  href="javascript:void(0)" class="pinterest"><i class="zmdi zmdi-pinterest"></i></a>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-md-6">
-                           <div class="vc_column-inner">
-                              <div class="wpb_wrapper">
-                                 <div class="wpb_gmaps_widget wpb_content_element">
-                                    <div class="wpb_wrapper">
-                                       <div class="wpb_map_wraper">
-                                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115132.86107235146!2d85.07300191831742!3d25.608175570492524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f29937c52d4f05%3A0x831a0e05f607b270!2sPatna%2C%20Bihar!5e0!3m2!1sen!2sin!4v1626852786508!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="vc_row wpb_row vc_row-fluid contact-detail vc_custom_1551779781200">
-                        <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-md-12">
-                           <div class="vc_column-inner">
-                              <div class="wpb_wrapper">
-                                 <div class="tbay-addon tbay-addon-text-heading  ">
-                                    <h3 class="tbay-addon-title" >
-                                       <span>Get In Touch</span>
-                                       <span class="subtitle">Your email address will not be published. Required fields are marked (*)</span>
-                                    </h3>
-                                 </div>
-                                 <div role="form" class="wpcf7" id="wpcf7-f559-p3169-o1" lang="en-US" dir="ltr">
-                                    <div class="screen-reader-response">
-                                       <p role="status" aria-live="polite" aria-atomic="true"></p>
-                                       <ul></ul>
-                                    </div>
-                                    <form action="/toy/contact-us/#wpcf7-f559-p3169-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
-                                       <div style="display: none;">
-                                          <input type="hidden" name="_wpcf7" value="559" />
-                                          <input type="hidden" name="_wpcf7_version" value="5.4.1" />
-                                          <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                                          <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f559-p3169-o1" />
-                                          <input type="hidden" name="_wpcf7_container_post" value="3169" />
-                                          <input type="hidden" name="_wpcf7_posted_data_hash" value="" />
-                                          <input type="hidden" name="_wpcf7_recaptcha_response" value="" />
-                                       </div>
-                                       <div class="form-horizontal row">
-                                          <div class="col-md-4"><label for="name">Name<span class="required">*</span>:</label><br />
-                                             <span class="wpcf7-form-control-wrap text-799"><input type="text" name="text-799" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required required form-control" id="your_name" aria-required="true" aria-invalid="false" /></span>
-                                          </div>
-                                          <div class="col-md-4"><label class="control-label" for="email">Email<span class="required">*</span>:</label><br />
-                                             <span class="wpcf7-form-control-wrap email-257"><input type="email" name="email-257" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email required" id="your_email" aria-required="true" aria-invalid="false" /></span>
-                                          </div>
-                                          <div class="col-md-4"><label for="name">Subject<span class="required">*</span>:</label><br />
-                                             <span class="wpcf7-form-control-wrap text-599"><input type="text" name="text-599" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required required form-subject" id="your_subject" aria-required="true" aria-invalid="false" /></span>
-                                          </div>
-                                          <div class="col-md-12"><label class="control-label" for="message">Message<span class="required">*</span>:</label><br />
-                                             <span class="wpcf7-form-control-wrap textarea-552"><textarea name="textarea-552" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea required" id="your_message" aria-invalid="false"></textarea></span>
-                                          </div>
-                                          <div class="col-md-2 col-md-offset-10">
-                                             <input type="submit" value="submit" class="wpcf7-form-control wpcf7-submit btn btn-default" />
-                                          </div>
-                                       </div>
-                                       <div class="wpcf7-response-output" aria-hidden="true"></div>
-                                    </form>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- .site-main -->
-               </div>
-               <!-- .content-area -->
-            </section>
-         </div>
+<!-- Loder Start-->
+<div class="loader-wrapper" style="background-color: 	rgb(255, 219, 88) ">
+		<div class=" text-center" style="margin-top: 10%;">
+		  <img src="<?php echo base_url()?>theme_assets/images/adi_image/logo_2%20-%20Copy.png" alt=""  style="max-width: 100%;">
+	  </div>
+	  <!-- <div class="loder-section left-section"></div>
+	  <div class="loder-section right-section"></div> -->
+	</div>
+	<!-- Loder End -->
+	
+	<!-- ============================================================== -->
+	<!-- Start adi_future Breatcome Area -->
+	<!-- ============================================================== -->
+	<div class="breatcome_area d-flex align-items-center" style="height:300px; background:url(<?php echo base_url()?>theme_assets/images/slider/slider-10.jpg);">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breatcome_title">
+						<div class="breatcome_title_inner pb-2">
+							<h2>Contact Us </h2>
+						</div>
+						<div class="breatcome_content">
+							<ul>
+								<li><a href="<?php echo base_url();?>">Home</a>  <i class="fa fa-angle-right"></i> <span>Contact Us</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ============================================================== -->
+	<!-- End adi_future Breatcome Area -->
+	<!-- ============================================================== -->
+	
+	<div class="contact_address_area pt-80 pb-70">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section_title text_center mb-55">
+						<div class="section_sub_title uppercase mb-3">
+							<h6>CONTACT US</h6>
+						</div>
+						<div class="section_main_title">
+							<h1>We Are Here For You</h1>
+						</div>
+						<div class="em_bar">
+							<div class="em_bar_bg"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="single_contact_address text_center mb-30">
+						<div class="contact_address_icon pb-3">
+							<i class="fa fa-map-o"></i>
+						</div>
+						<div class="contact_address_title pb-2">
+							<h4>Address</h4>
+						</div>
+						<div class="contact_address_text">
+							<p> 95 G/F Main, 25 FT Road, BLK-E-3RD      Molar Band Extn, Badarpur (South      Delhi),</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="single_contact_address text_center mb-30">
+						<div class="contact_address_icon pb-3">
+							<i class="fa fa-phone"></i>
+						</div>
+						<div class="contact_address_title pb-2">
+							<h4>Call Us</h4><br>
+						</div>
+						<div class="contact_address_text">
+							<a href="tel:9955215097">
+								<p>+91 9955215097</p>
+							</a>
+						</div><br>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="single_contact_address text_center mb-30">
+						<div class="contact_address_icon pb-3">
+							<i class="fa fa-envelope"></i>
+						</div>
+						<div class="contact_address_title pb-2">
+							<h4>Mail Us</h4>
+						</div><br>
+						<div class="contact_address_text">
+							<a href="mail:info@adifuture.com">
+								<p>info@adifuture.com</p>
+
+							</a>
+						</div><br>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	
+	<!--==================================================-->
+	<!----- Start adi_future Contact Area ----->
+	<!--==================================================-->
+	<div class="main_contact_area pt-80 bg_color2 pb-90">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section_title text_center mb-55">
+						<div class="section_sub_title uppercase mb-3">
+							<h6>CONTACT US</h6>
+						</div>
+						<div class="section_main_title">
+							<h1> Contact Us Now</h1>
+						
+						</div>
+						<div class="em_bar">
+							<div class="em_bar_bg"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="contact_from">
+						<form action="<?php echo base_url()?>Site/mail_us" method="post">
+						
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form_box mb-30">
+										<input type="text" name="name"  placeholder="Name" required>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form_box mb-30">
+										<input type="email" name="email" placeholder="Email Address" required>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form_box mb-30">
+										<input type="text" name="mobile" placeholder="Phone Number" required>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form_box mb-30">
+										<input type="text" name="address" placeholder="Address" required>
+									</div>
+								</div>
+								
+								<div class="col-lg-12">
+									<div class="form_box mb-30">
+										<textarea name="message" id="message" cols="30" rows="10" placeholder="Write a Message" required></textarea>
+									</div>
+									<div class="quote_btn text_center">
+										<button class="btn" type="submit" name="submit">Send Message</button>
+									</div>
+								</div>
+							</div>
+						</form>
+						<div id="status"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--==================================================-->
+	<!----- End adi_future Contact Area ----->
+	<!--==================================================-->
+	
+	<!--==================================================-->
+	<!----- End adi_future Map Area ----->
+	<!--==================================================-->
+	<div class="google_map_area">
+		<div class="row-fluid">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="google_map_area">
+					<!-- map  -->
+				</div>
+			</div>				
+		</div>
+	</div>
+	<!--==================================================-->
+	<!----- End adi_future Map Area ----->
+	<!--==================================================-->
