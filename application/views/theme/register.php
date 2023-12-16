@@ -8,10 +8,10 @@
 
 
 <?php if (config_item('disable_registration') !== "Yes") { ?>
-    <div class="container" style="background-color: rgb(177,177,177,0.3);">
+    <div class="container" style="background-color: white;">
 
         <?php echo form_open() ?>
-        <h1 align="center" style=" padding-top:20px;">Register Now !</h1>
+        <h3 align="" style=" padding:10px 10px;">Member Registration</h3>
 
         <div id="load" style="display:none !important;" align="center">
             <img src="<?php echo site_url('uploads/load.gif') ?>">
@@ -20,93 +20,69 @@
 
 
 
-        <div class="row" id="form" style="border: 2px  black dashed; padding:5px 5px; margin: 10px auto; ">
+        <div class="row" id="form" style=" padding:20px 5px; margin: 10px auto; background-color:white; box-shadow:1px 2px 2px 1px gray inset, 1px 2px 2px 1px gray  ">
 
-            <div class="col-md-4"></div>
+            <div class="col-md-1"></div>
 
             <!-- start here -->
-            <div class="col-md-4" >
+            <div class="col-md-10" >
                 <div class="row">
 
                     <?php echo validation_errors('<div class="alert alert-danger">', '</div>') ?>
                     <?php echo $this->session->flashdata('site_flash') ?>
 
-                    <div class="col-md-12">
-                        <h4 class="text-danger text-center">Personal Information</h4>
-                    </div>
+                   
 
                     <div class="col-md-12">
                         <div class="form-group ">
-                            <label for="name" class="control-label">Name<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="name" name="name" value="<?php echo set_value('name') ?>" placeholder="">
+                          
+                            <input type="text" class="form-control" id="name" name="name" value="<?php echo set_value('name') ?>" placeholder="Enter Name*">
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="phone" class="control-label">Phone No<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" value="<?php echo set_value('phone') ?>" id="phone" name="phone" placeholder="">
+                           
+                            <input type="text" class="form-control" value="<?php echo set_value('phone') ?>" id="phone" name="phone" placeholder="Enter Phone Number*">
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="email" class="control-label">Email</label>
-                            <input type="email" class="form-control" value="<?php echo set_value('email') ?>" id="email" name="email" placeholder="">
+                          
+                            <input type="email" class="form-control" value="<?php echo set_value('email') ?>" id="email" name="email" placeholder="Enter Email">
                         </div>
                     </div>
 
-                    <div class="col-md-12">
-                        <h4 class="text-danger">Address</h4>
-                    </div>
+                  
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="address_1" class="control-label">Address Line 1<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" value="<?php echo set_value('address_1') ?>" id="address_1" name="address_1">
+                        
+                            <input type="text" class="form-control" value="<?php echo set_value('address_1') ?>" id="address_1" name="address_1" placeholder="Enter Address1*">
                         </div>
                     </div>
 
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="address_2" class="control-label">Address Line 2</label>
-                            <input type="text" class="form-control" value="<?php echo set_value('address_2') ?>" id="address_2" name="address_2">
+                          
+                            <input type="text" class="form-control" value="<?php echo set_value('address_2') ?>" id="address_2" name="address_2" placeholder="Enter Address2">
                         </div>
                     </div>
                     <!-- ######################password######################### -->
 
-                    <div class="col-md-12">
-                        <h4 class="text-danger">Password</h4>
-                    </div>
+                   
 
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="password" class="control-label">Password<span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" value="<?php echo set_value('password') ?>" id="password" name="password">
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="password_2" class="control-label">Retype Password<span class="text-danger">*</span></label>
-                            <input type="password"  class="form-control" value="<?php echo set_value('password_2') ?>" id="password_2" name="password_2">
-                        </div>
-                    </div>
+                  
 
 
                     <div class="col-md-12">
-                        <h4 class="text-danger">Joining Information</h4>
-                    </div>
-
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="sponsor" class="control-label">Sponsor ID<span class="text-danger">*</span></label>
+                        <div class="form-group">                          
                             <input type="text" class="form-control" onchange="get_user_name('#sponsor', '#spn_res')" value="<?php if ($this->uri->segment(3) !== "epin") {
                                                                                                             $uri4 = $this->uri->segment(4);
                                                                                                         };
-                                                                                                        echo set_value('sponsor', $uri4) ?>" id="sponsor" name="sponsor" placeholder="">
+                                                                                                        echo set_value('sponsor', $uri4) ?>" id="sponsor" name="sponsor" placeholder="sponsor Id*">
                             <span id="spn_res" style="color: red; font-weight: bold"></span>
                         </div>
                     </div>
@@ -125,7 +101,8 @@
                         } ?>
                     </div>
 
-                    <div class="col-md-12">
+
+                    <div class="col-md-12" id="pos"  style="display: none;">
                         <?php if (config_item('leg') == "1") {
                             echo form_hidden('leg', 'A');
                         } else {
@@ -178,7 +155,7 @@
                                 <label for="epin" class="control-label">e-PIN</label>
                                 <input type="text" class="form-control" value="<?php if (trim($this->uri->segment(3)) == "epin") {
                                                                 echo set_value('epin', $this->uri->segment(4));
-                                                            } ?>" id="epin" name="epin">
+                                                            } ?>" id="epin" name="epin" placeholder="e-PIN*">
                             </div>
                         <?php } ?>
                     </div>
@@ -208,9 +185,10 @@
                         ?>
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <button class="btn btn-primary btn-lg" type="submit" onclick="show()">Register</button>
+                            <!-- <input type="submit" class="btn btn-primary btn-lg" value="Register" onclick="show()"> -->
+                            <button class="btn btn-success btn-lg" type="submit" style="background-color: #056305;" onclick="show()">Register</button>
                         </div>
                     </div>
 
@@ -224,7 +202,7 @@
             </div>
             <!-- end here -->
 
-            <div class="col-md-4"></div>
+            <div class="col-md-1"></div>
 
 
         </div>
@@ -254,10 +232,37 @@
         $('#load').show('slow');
     }
 
-    function get_user_name(id, result) {
+    // function get_user_name(id, result) {
+    //     var id = $(id).val();
+    //     $.get("<?php echo site_url('site/get_user_name/') ?>" + id, function(data) {
+    //         // $(result).html(data);
+    //         console.log(data)
+    //     });
+    // }
+
+    function get_user_name(id,result)
+    {
+       
         var id = $(id).val();
-        $.get("<?php echo site_url('site/get_user_name/') ?>" + id, function(data) {
-            $(result).html(data);
-        });
-    }
+        $.ajax({
+            url:"<?php echo site_url('site/get_user_name') ?>",
+            type:"post",
+            data:{"id":id},
+            dataType:"json",
+            success:function(data)
+            {
+                if(data.rank=="master_agent" || data.rank=="Agent")
+                {
+                   
+                      $(result).html(data.name+'<i class="text-dark">('+data.rank+')</i>');
+                      $("#pos").hide('slow');
+                }
+                else{
+                    $(result).html(data.name+'<i class="text-dark">('+data.rank+')</i>');
+                    $("#pos").show('slow');
+                }
+            }
+        })
+
+    } 
 </script>

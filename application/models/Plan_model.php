@@ -138,7 +138,7 @@ class Plan_model extends CI_Model
         if ($this->session->admin_id) {
             $my_tree = "user_tree";
         }
-        $data = $this->db_model->select_multi("id,name,sponsor,A,B,C,D,E,status,total_a,total_b,topup,total_c,total_d,total_e,mypv,total_a_pv,total_b_pv,my_img,total_a_investment,total_b_investment", "member", array("id" => $id));
+        $data = $this->db_model->select_multi("id,name,sponsor,A,B,C,D,E,status,total_a,total_b,topup,total_c,total_d,total_e,mypv,total_a_pv,total_b_pv,my_img,total_a_investment,total_b_investment,rank", "member", array("id" => $id));
         if ($data->topup == "0.00" || $data->status != "Active") {
             $color = "red";
         } else {
@@ -156,7 +156,7 @@ class Plan_model extends CI_Model
                 $total_a_pv = "My Investment Left: " . $data->total_a_investment;
                 $total_b_pv = "My Investment Right: " . $data->total_b_investment;
             }
-            $tota_node = "Sponsor: " . $data->sponsor."<br> Total Left: " . $data->total_a . "<br/>" . "Total Right: " . $data->total_b . "<br/> ";//. $total_a_pv . "<br/>" . $total_b_pv;
+            $tota_node = "Sponsor: " . $data->sponsor . "<br> Total Left: " . $data->total_a . "<br/>" . "Total Right: " . $data->total_b . "<br/> "; //. $total_a_pv . "<br/>" . $total_b_pv;
         } else {
             if (config_item("leg") == "3") {
                 $tota_node = "Total A: " . $data->total_a . "<br/>" . "Total B: " . $data->total_b . "<br/>Total C: " . $data->total_c . "<br/>";
@@ -164,14 +164,25 @@ class Plan_model extends CI_Model
                 if (config_item("leg") == "4") {
                     $tota_node = "Total A: " . $data->total_a . "<br/>" . "Total B: " . $data->total_b . "<br/>Total C: " . $data->total_c . "<br/>Total D: " . $data->total_d . "<br/>";
                 } else {
+
+
+
                     if (config_item("leg") == "5") {
-                        $tota_node = "Total A: " . $data->total_a . "<br/>" . "Total B: " . $data->total_b . "<br/>Total C: " . $data->total_c . "<br/>Total D: " . $data->total_d . "<br/>Total E: " . $data->total_e . "<br/>";
+
+                        if ($data->rank == "Agent" || $data->rank == 'master_agent') {
+                            $tota_node = "Total Downline: " . ($data->total_a + $data->total_b + $data->total_c + $data->total_d + $data->total_e) . "";
+                        } else {
+
+
+
+                            $tota_node = "Total A: " . $data->total_a . "<br/>" . "Total B: " . $data->total_b . "<br/>Total C: " . $data->total_c . "<br/>Total D: " . $data->total_d . "<br/>Total E: " . $data->total_e . "<br/>";
+                        }
                     }
                 }
             }
         }
         if ($data->id) {
-            $echo = "<a href=\"" . site_url("tree/" . $my_tree . "/" . $id) . "\" title=\"" . $data->name. " (". config_item("ID_EXT") . $data->id .") \" style=\"text-decoration: none; color: " . $color . "; margin: 5px\" data-toggle=\"popover\" data-trigger=\"hover\" data-html=\"true\" data-placement=\"top\" data-content=\"\n" . $tota_node . /* "<br/>\nMy Business: " . $data->mypv  */ "\n\n\"><img class=\"img-circle\" style=\"height: 40px\" src=\"" . $myimg . "\"><br/>" . $data->name . "<br/></a>";
+            $echo = "<a href=\"" . site_url("tree/" . $my_tree . "/" . $id) . "\" title=\"" . $data->name . " (" . config_item("ID_EXT") . $data->id . '(' . $data->rank . ')' . ") \" style=\"text-decoration: none; color: " . $color . "; margin: 5px\" data-toggle=\"popover\" data-trigger=\"hover\" data-html=\"true\" data-placement=\"top\" data-content=\"\n" . $tota_node . /* "<br/>\nMy Business: " . $data->mypv  */ "\n\n\"><img class=\"img-circle\" style=\"height: 40px\" src=\"" . $myimg . "\"><br/>" . $data->name . "<br/></a>";
             return array("A" => $data->A, "B" => $data->B, "C" => $data->C, "D" => $data->D, "E" => $data->E, "data" => $echo, "id" => $data->id);
         }
         return array("data" => "<a target=\"blank\" title=\"Register New Member.\" href=\"" . site_url("tree/new_user/" . $position . "/" . $above_id) . "\"><img style=\"height: 50px\" src=\"" . base_url("uploads/site_img/new.png") . "\"></a>");
@@ -189,5 +200,3 @@ class Plan_model extends CI_Model
         }
     }
 }
-
-?>

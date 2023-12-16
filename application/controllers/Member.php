@@ -1,4 +1,5 @@
 <?php
+
 /***************************************************************************************************
  * Copyright (c) 2020. by Camwel Corporate Solution PVT LTD
  * This project is developed and maintained by Camwel Corporate Solution PVT LTD.
@@ -7,7 +8,7 @@
  * Pvt Ltd
  **************************************************************************************************/
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Member extends CI_Controller
 {
@@ -28,7 +29,7 @@ class Member extends CI_Controller
         $data['title'] = 'Dashboard';
         $data['breadcrumb'] = 'dashboard';
         $data['products'] = $this->db->get('product')->result_array();
-        $data['epin']      = $this->db->select('epin,amount')->Where(array('issue_to' => $this->session->user_id,'status' => 'Un-used'))->get('epin')->result_array();
+        $data['epin']      = $this->db->select('epin,amount')->Where(array('issue_to' => $this->session->user_id, 'status' => 'Un-used'))->get('epin')->result_array();
         $this->load->view('member/base', $data);
     }
 
@@ -67,7 +68,6 @@ class Member extends CI_Controller
         $data['title'] = 'Used e-PINs';
         $data['layout'] = 'epin/used.php';
         $this->load->view('member/base', $data);
-
     }
 
     public function unused_epin()
@@ -90,7 +90,6 @@ class Member extends CI_Controller
         $data['title'] = 'Unused e-PINs';
         $data['layout'] = 'epin/unused.php';
         $this->load->view('member/base', $data);
-
     }
 
     public function transfer_epin()
@@ -143,7 +142,7 @@ class Member extends CI_Controller
     function requestfor_epin()
     {
         $data['title'] = 'Request for e-PIN';
-        $data['request'] = $this->db->select('*')->from('epin_request')->where('requested_by', $this->session->userdata('user_id'))->order_by('id','desc')->get()->result_array();
+        $data['request'] = $this->db->select('*')->from('epin_request')->where('requested_by', $this->session->userdata('user_id'))->order_by('id', 'desc')->get()->result_array();
         $data['epin_value'] = $this->db->select('prod_price')->from('product')->get()->result();
         $data['layout'] = 'epin/request.php';
         $this->load->view('member/base', $data);
@@ -151,42 +150,39 @@ class Member extends CI_Controller
 
     function requestedfor_epin()
     {
-      
+
         $this->form_validation->set_rules('epin_qty', 'e-PIN Quantity', 'trim|required');
         $this->form_validation->set_rules('epin_type', 'e-PIN Type', 'trim|required');
 
-        if($this->form_validation->run() == true) {
-            $dat=$this->upload_image('payment_bill','attach_doc'); 
-            if($dat['icon']=='error')
-            {
-                $this->session->set_flashdata("common_flash", "<div class='alert alert-danger'>".$dat['text']."</div>");
-                redirect('Member/requestfor_epin', 'refresh');
-            }
-            else{  
-
-            $val = $this->input->post();
-            // $path = "hello";
-            $data = array(
-                'requested_by'            => $this->session->userdata('user_id'),
-                'epin_type'                => $val['epin_type'],
-                'epin_qty'                => $val['epin_qty'],
-                'total_amount'            => $val['total_amount'],
-                'screenshot_document'     => $dat['text'],
-                'request_date'            => date('Y-m-d H:i:s'),
-            );
-            $a = $this->db->insert('epin_request', $data);
-          
-            if ($a) {
-                $this->session->set_flashdata("common_flash", "<div class='alert alert-success'>Request Generated successfully </div>");
-
+        if ($this->form_validation->run() == true) {
+            $dat = $this->upload_image('payment_bill', 'attach_doc');
+            if ($dat['icon'] == 'error') {
+                $this->session->set_flashdata("common_flash", "<div class='alert alert-danger'>" . $dat['text'] . "</div>");
                 redirect('Member/requestfor_epin', 'refresh');
             } else {
-                $this->session->set_flashdata("common_flash", "<div class='alert alert-danger'>Something Went wrong Please try after some time </div>");
 
-                redirect('Member/requestfor_epin', 'refresh');
+                $val = $this->input->post();
+                // $path = "hello";
+                $data = array(
+                    'requested_by'            => $this->session->userdata('user_id'),
+                    'epin_type'                => $val['epin_type'],
+                    'epin_qty'                => $val['epin_qty'],
+                    'total_amount'            => $val['total_amount'],
+                    'screenshot_document'     => $dat['text'],
+                    'request_date'            => date('Y-m-d H:i:s'),
+                );
+                $a = $this->db->insert('epin_request', $data);
+
+                if ($a) {
+                    $this->session->set_flashdata("common_flash", "<div class='alert alert-success'>Request Generated successfully </div>");
+
+                    redirect('Member/requestfor_epin', 'refresh');
+                } else {
+                    $this->session->set_flashdata("common_flash", "<div class='alert alert-danger'>Something Went wrong Please try after some time </div>");
+
+                    redirect('Member/requestfor_epin', 'refresh');
+                }
             }
-
-        }
         } else {
             $da = array(
                 'epin_qty' => form_error('epin_qty'),
@@ -212,7 +208,7 @@ class Member extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $data['title'] = 'Generate e-PIN';
-              $data['epin_value'] = $this->db->select('prod_price')->from('product')->get()->result();
+            $data['epin_value'] = $this->db->select('prod_price')->from('product')->get()->result();
 
             $data['layout'] = 'epin/generate.php';
 
@@ -256,7 +252,6 @@ class Member extends CI_Controller
             $this->session->set_flashdata("common_flash", "<div class='alert alert-success'>$qty e-PIN created successfully.</div>");
             $this->common_model->mail($this->db_model->select('email', 'member', array('id' => $userid)), 'e-PIN Issued', 'Dear Sir, <br/> e-PIN of Qty ' . $qty . ', has been issued to your account from user id: ' . config_item('ID_EXT') . $this->session->user_id . ' on behalf of us.<br/><br/>---<br/>Regards,<br/>' . config_item('company_name'));
             redirect('member/generate_epin');
-
         }
     }
 
@@ -276,7 +271,6 @@ class Member extends CI_Controller
         $data['title'] = 'Earnings';
         $data['layout'] = 'income/view_earning.php';
         $this->load->view('member/base', $data);
-
     }
 
     public function topup_wallet()
@@ -316,7 +310,6 @@ class Member extends CI_Controller
                     $this->session->set_flashdata('common_flash', '<div class="alert alert-success">Fund is added to your wallet.</div>');
                     redirect(site_url('member/topup-wallet'));
                 }
-
             } else {
 
                 $user_data = $this->db_model->select_multi('sponsor, address, email, phone', 'member', array('id' => $this->session->user_id));
@@ -348,7 +341,6 @@ class Member extends CI_Controller
                     $bata['title'] = 'Fund My Wallet';
                     $bata['layout'] = 'wallet/topup-wallet.php';
                     $this->load->view('member/base', $bata);
-
                 } else {
                     redirect('gateway/registration_form');
                 }
@@ -388,7 +380,6 @@ class Member extends CI_Controller
         $data['title'] = 'My Rewards';
         $data['layout'] = 'income/rewards.php';
         $this->load->view('member/base', $data);
-
     }
 
     public function search_earning()
@@ -420,7 +411,6 @@ class Member extends CI_Controller
         $data['title'] = 'Search Results';
         $data['layout'] = 'income/view_earning.php';
         $this->load->view('member/base', $data);
-
     }
 
     public function settings()
@@ -441,9 +431,9 @@ class Member extends CI_Controller
                 $array = array(
                     'password' => password_hash($this->input->post('newpass'), PASSWORD_DEFAULT),
                     'show_password' => $this->input->post('newpass'),
-                );  
+                );
 
-                
+
                 $this->db->where('id', $this->session->user_id);
                 $this->db->update('member', $array);
                 $this->session->set_flashdata('common_flash', '<div class="alert alert-success">Settings Saved Successfully.</div>');
@@ -481,7 +471,7 @@ class Member extends CI_Controller
                     } else {
                         $image_data = $this->upload->data();
                         $id_proof = $image_data['file_name'];
-                        unlink('uploads/'.$data['data']->id_proof);
+                        unlink('uploads/' . $data['data']->id_proof);
                     }
                 }
 
@@ -495,7 +485,7 @@ class Member extends CI_Controller
                     } else {
                         $image_data = $this->upload->data();
                         $add_proof = $image_data['file_name'];
-                        unlink('uploads/'.$data['data']->add_proof);
+                        unlink('uploads/' . $data['data']->add_proof);
                     }
                 }
 
@@ -576,7 +566,7 @@ class Member extends CI_Controller
             );
             $this->db->where('epin', trim($this->input->post('topup')));
             $this->db->update('epin', $data);
-                ///topup Data Entry
+            ///topup Data Entry
             $data = array(
                 'user_id' => $this->session->user_id,
                 'epin' => trim($this->input->post('topup')),
@@ -621,34 +611,36 @@ class Member extends CI_Controller
         $data['result'] = $this->db_model->select_multi('*', 'invoice', array('id' => $id));
         $this->load->view('member/invoice/print_invoice.php', $data);
     }
-    public function direct_reward(){
+    public function direct_reward()
+    {
         $id = $this->db->select('id')->get('member')->result_array();
-        foreach($id as $e){
-            $sponsor = $this->db_model->count_all('member',array('sponsor'=>$e['id']));
-            echo $e['id'] .'='. $sponsor.'<br>';
-        
-            if($sponsor >= 10){
+        foreach ($id as $e) {
+            $sponsor = $this->db_model->count_all('member', array('sponsor' => $e['id']));
+            echo $e['id'] . '=' . $sponsor . '<br>';
+
+            if ($sponsor >= 10) {
                 $reward = "Jio Phone (Direct Joining Target Achive Reward)";
-            }else if($sponsor >= 20){
+            } else if ($sponsor >= 20) {
                 $reward = "Stan Fan (Direct Joining Target Achive Reward)";
-            }else if($sponsor >= 50){
+            } else if ($sponsor >= 50) {
                 $reward = "Mixture Grinder (Direct Joining Target Achive Reward)";
-            } else if($sponsor >= 100){
+            } else if ($sponsor >= 100) {
                 $reward = "Android Mobile (Direct Joining Target Achive Reward)";
-            }else if($sponsor >= 200){
+            } else if ($sponsor >= 200) {
                 $reward = "Two wheeler or 20000 cash (Direct Joining Target Achive Reward)";
             }
             $array = array(
-                'reward_id' =>$reward,
-                'user_id'   =>$e['id'],
-                'date'      =>date('y-m-d'),
-                'status'    =>'pending',
+                'reward_id' => $reward,
+                'user_id'   => $e['id'],
+                'date'      => date('y-m-d'),
+                'status'    => 'pending',
             );
-            $this->db->insert('rewards',$array);
+            $this->db->insert('rewards', $array);
         }
     }
 
-    public function topup_member(){
+    public function topup_member()
+    {
 
         $this->form_validation->set_rules('userid', 'User ID', 'trim|required');
         $this->form_validation->set_rules('topup', 'Top Up Epin', 'trim|required');
@@ -658,42 +650,56 @@ class Member extends CI_Controller
             $data['breadcrumb'] = 'Top Up Member';
             $data['layout']     = 'upgrade/topup.php';
             $data['products']   = $this->db->get('product')->result_array();
-            $data['epin']      = $this->db->select('epin,amount')->Where(array('issue_to' => $this->session->user_id,'status' => 'Un-used'))->get('epin')->result_array();
+            $data['epin']      = $this->db->select('epin,amount')->Where(array('issue_to' => $this->session->user_id, 'status' => 'Un-used'))->get('epin')->result_array();
             $this->load->view('member/base', $data);
-        }
-        else {
+        } else {
             $epin_value = $this->db_model->select('amount', 'epin', array(
                 'epin' => trim($this->input->post('topup')),
                 'status' => 'Un-used',
             ));
             $product = $this->input->post('product');
             // changes by ishu start
-            $pack=$this->db->select('id,prod_price')->where('id',$product)->from('product')->get()->row();
-            if($pack->prod_price!=$epin_value)
-            {
+            $pack = $this->db->select('id,prod_price')->where('id', $product)->from('product')->get()->row();
+            if ($pack->prod_price != $epin_value) {
                 $this->session->set_flashdata('common_flash', '<div class="alert alert-danger">Package Price and e-Pin value Not Matched. Must be Same</div>');
-                redirect('Member/topup_member','refresh');
+                redirect('Member/topup_member', 'refresh');
             }
 
-            $sign = $this->db->select('signup_package,topup')->where('id',$this->input->post('userid'))->from('member')->get()->row();
-            if($sign->signup_package==$product)
-            {
+            $sign = $this->db->select('signup_package,topup,re_topup,rank')->where('id', $this->input->post('userid'))->from('member')->get()->row();
+            if ($sign->signup_package == $product) {
                 $this->session->set_flashdata('common_flash', '<div class="alert alert-danger">Member Already Topup With same Package </div>');
-                redirect('Member/topup_member','refresh');
-
+                redirect('Member/topup_member', 'refresh');
             }
-           
+
+            if ($sign->signup_package != $product && $sign->signup_package + 1 != $product && $sign->re_topup == 0 && $sign->rank != 'Agent' && $sign->rank != 'master_agent') {
+                $p = $this->db->select('id,prod_price')->where('id', $sign->signup_package + 1)->from('product')->get()->row();
+
+                $this->session->set_flashdata('common_flash', "<div class='alert alert-danger'>Invalid topup amount must topup with&nbsp;" . $p->prod_price . '&nbsp;amount value </div>');
+                redirect('Member/topup_member', 'refresh');
+            }
+            if ($sign->rank == 'Agent' || $sign->rank == 'master_agent') {
+                $this->session->set_flashdata('common_flash', "<div class='alert alert-danger'> For Agent and Master Agent no need to topup</div>");
+                redirect('Member/topup_member', 'refresh');
+            }
+
+            if ($sign->re_topup != 0) {
+                $this->session->set_flashdata('common_flash', "<div class='alert alert-danger'> Not Eligible for topup</div>");
+                redirect('Member/topup_member', 'refresh');
+            }
+
+
             // changes by ishu end
             $userid = $this->common_model->filter($this->input->post('userid'));
             if ($epin_value > 0) {
                 $data   = array(
                     'epin' => trim($this->input->post('topup')),
                     'topup' => $epin_value,
+                    're_topup' => 1,
                     'signup_package' => $product
                 );
                 $this->db->where('id', $userid);
                 $this->db->update('member', $data);
-    
+
                 $data = array(
                     'status' => 'Used',
                     'used_by' => $userid,
@@ -701,7 +707,7 @@ class Member extends CI_Controller
                 );
                 $this->db->where('epin', trim($this->input->post('topup')));
                 $this->db->update('epin', $data);
-                    ///Topup Data Entry
+                ///Topup Data Entry
                 $data = array(
                     'user_id' => $this->input->post('userid'),
                     'epin' => trim($this->input->post('topup')),
@@ -710,19 +716,18 @@ class Member extends CI_Controller
                     'date' => date('Y-m-d'),
                 );
                 $this->db->insert('topup_record', $data);
-                
+
                 $this->load->model('earning');
                 if (config_item('fix_income') == "Yes" && $epin_value > 0 && config_item('give_income_on_topup') == "Yes") {
                     $this->earning->fix_income($userid, $this->db_model->select('sponsor', 'member', array('id' => $userid)), $epin_value);
-                }
-                else if (config_item('fix_income') !== "Yes" && $epin_value > 0 && config_item('give_income_on_topup') == "Yes") {
+                } else if (config_item('fix_income') !== "Yes" && $epin_value > 0 && config_item('give_income_on_topup') == "Yes") {
                     $this->earning->reg_earning($userid, $this->db_model->select('sponsor', 'member', array('id' => $userid)), $this->db_model->select('signup_package', 'member', array('id' => $userid)));
                 }
 
                 $this->session->set_flashdata('common_flash', '<div class="alert alert-success">Successfully Top-uped User account.</div>');
                 // redirect(site_url('member/update_legs'));
                 redirect(site_url('member'));
-            }else{
+            } else {
                 $this->session->set_flashdata('common_flash', '<div class="alert alert-danger">The entered e-PIN is not valid or used.</div>');
                 // redirect(site_url('member/update_legs'));
                 redirect(site_url('member'));
@@ -732,7 +737,7 @@ class Member extends CI_Controller
 
     public function update_legs()
     {
-        $this->db->select("id,A,B,C,D,E")->from("member");///->where("topup >", "0")
+        $this->db->select("id,A,B,C,D,E")->from("member"); ///->where("topup >", "0")
         $data = $this->db->get()->result();
         foreach ($data as $result) {
             if ($result->A !== "0") {
@@ -827,47 +832,46 @@ class Member extends CI_Controller
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $this->pagination->initialize($config); */
 
-        $this->db->select('*')->from('topup_record')->where('topup_by',$this->session->user_id);
-            /* ->limit($config['per_page'], $page) */
+        $this->db->select('*')->from('topup_record')->where('topup_by', $this->session->user_id);
+        /* ->limit($config['per_page'], $page) */
 
         $data['topup'] = $this->db->get()->result_array();
 
         $data['title'] = 'Topup List';
         $data['layout'] = 'upgrade/topup_list.php';
         $this->load->view('member/base', $data);
-
     }
 
     public function binary_payout()
-    {   
+    {
         $member = $this->db->select('id,A,B,status,topup')->get('member')->result_array();
-        foreach($member as $m){
+        foreach ($member as $m) {
             //echo $m['id']." => A =>".$m['A']."=> B =>".$m['B'];
             $A = $this->db->select('topup,status')->where(array('id' => $m['A']))->get('member')->row_array();
             $B = $this->db->select('topup,status')->where(array('id' => $m['B']))->get('member')->row_array();
             //echo "Topup A =>".$A['topup']." Topup B =>".$B['topup']."<br>";
-            if($A['topup'] > 0 && $B['topup'] > 0 && $B['status'] == "Active" && $A['status'] == "Active" && $m['topup'] > 0 && $m['status'] == "Active" && !empty($A['topup']) && !empty($B['topup']) && !empty($B['status']) && !empty($A['status'])){
+            if ($A['topup'] > 0 && $B['topup'] > 0 && $B['status'] == "Active" && $A['status'] == "Active" && $m['topup'] > 0 && $m['status'] == "Active" && !empty($A['topup']) && !empty($B['topup']) && !empty($B['status']) && !empty($A['status'])) {
                 //echo "<pre>";
                 //print_r($member);
                 $count_product_binary = $this->db_model->count_all("product", array("matching_income >" => 0));
                 $count_fix_binary = $this->db_model->select("binary_income", "fix_income", array("1 >" => 0));
                 $count_invst_binary = $this->db_model->select("matching_income", "investment_pack", array(0));
                 if (0 < $count_product_binary || 0 < $count_fix_binary || 0 < $count_invst_binary) {
-                    $this->db->select("id,total_a,total_b,paid_a,paid_b,signup_package,mypv,total_a_matching_incm,total_b_matching_incm, total_c_matching_incm, paid_a_matching_incm, paid_b_matching_incm")->from("member")->where('status',"Active")->where("topup >", 0)->where("total_a >", 0)->where("total_b >", 0)->where("paid_a <", "total_a", false)->where("paid_b <", "total_b", false);
+                    $this->db->select("id,total_a,total_b,paid_a,paid_b,signup_package,mypv,total_a_matching_incm,total_b_matching_incm, total_c_matching_incm, paid_a_matching_incm, paid_b_matching_incm")->from("member")->where('status', "Active")->where("topup >", 0)->where("total_a >", 0)->where("total_b >", 0)->where("paid_a <", "total_a", false)->where("paid_b <", "total_b", false);
                     $data = $this->db->get()->result();
                     foreach ($data as $result) {
                         $this->load->model("earning");
                         $data2 = array(
-                            "total_a" => $result->total_a, 
-                            "total_b" => $result->total_b, 
-                            "paid_a" => $result->paid_a, 
-                            "paid_b" => $result->paid_b, 
-                            "signup_package" => $result->signup_package, 
+                            "total_a" => $result->total_a,
+                            "total_b" => $result->total_b,
+                            "paid_a" => $result->paid_a,
+                            "paid_b" => $result->paid_b,
+                            "signup_package" => $result->signup_package,
                             //"mypv" => $result->mypv, 
                             //"total_a_matching_incm" => $result->total_a_matching_incm, 
                             //"total_b_matching_incm" => $result->total_b_matching_incm, 
                             //"total_c_matching_incm" => $result->total_c_matching_incm, 
-                            "paid_a_matching_incm" => $result->paid_a_matching_incm, 
+                            "paid_a_matching_incm" => $result->paid_a_matching_incm,
                             "paid_b_matching_incm" => $result->paid_b_matching_incm
                         );
                         //echo $result->id."<br><pre>";
@@ -875,8 +879,8 @@ class Member extends CI_Controller
                         $this->earning->process_binary($result->id, $data2);
                     }
                 }
-                redirect(site_url('tree/my-tree')); 
-            }else{
+                redirect(site_url('tree/my-tree'));
+            } else {
                 redirect(site_url('tree/my-tree'));
             }
         }
@@ -884,34 +888,29 @@ class Member extends CI_Controller
 
 
     function upload_image($path, $name)
-     {
-         $config['upload_path']          = './uploads/' . $path;
-         $config['allowed_types']        = 'jpg|png|jpeg';
-         // $config['max_size']             = 100;
-         // $config['max_width']            = 1024;
-         // $config['max_height']           = 768;
- 
-         $this->load->library('upload', $config);
- 
-         if ($this->upload->do_upload($name)) {
-             $upload_data =  $this->upload->data();
-             $image_path = "uploads/" . $path . '/' . $upload_data['file_name'];
- 
- 
-             $a = array('photo' => $image_path);
-             $this->session->set_userdata($a);
- 
- 
-             $val = array('text' => $image_path, 'icon' => 'success');
-         } else {
-             $val = array('text' => $this->upload->display_errors(), 'icon' => 'error');
-         }
- 
-         return $val;
-     }
- 
+    {
+        $config['upload_path']          = './uploads/' . $path;
+        $config['allowed_types']        = 'jpg|png|jpeg';
+        // $config['max_size']             = 100;
+        // $config['max_width']            = 1024;
+        // $config['max_height']           = 768;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload($name)) {
+            $upload_data =  $this->upload->data();
+            $image_path = "uploads/" . $path . '/' . $upload_data['file_name'];
 
 
+            $a = array('photo' => $image_path);
+            $this->session->set_userdata($a);
 
+
+            $val = array('text' => $image_path, 'icon' => 'success');
+        } else {
+            $val = array('text' => $this->upload->display_errors(), 'icon' => 'error');
+        }
+
+        return $val;
+    }
 }
-

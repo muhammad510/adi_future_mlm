@@ -41,6 +41,8 @@ $top_id = $this->uri->segment('3') ? $this->uri->segment('3') : config_item('top
 </div>
 <div class="row">
     <?php if (config_item('leg') == "1") { ?>
+
+
         <div class="hr_divider" style="text-align: center"><p>&nbsp;</p>
             <div class="table-responsive" style="overflow-x: auto; text-align: left">
                 <table align="center" class="table" style="max-width: 500px">
@@ -321,9 +323,55 @@ $top_id = $this->uri->segment('3') ? $this->uri->segment('3') : config_item('top
         </div>
     <?php } ?>
     <?php if (config_item('leg') == "5") { ?>
+
+        <?php
+        $mem =$this->db->select('rank')->where('id',$top_id)->from('member')->get()->row();
+            
+            if($top_id==1001 || $mem->rank=="Agent"){?>
+
+            <div class="hr_divider" style="text-align: center"><p>&nbsp;</p>
+            <div class="table-responsive" style="overflow-x: auto; text-align: left">
+                <table align="center" class="table" style="max-width: 500px">
+                    <tr>
+                        <td colspan="3" class="alert alert-warning"> <?php $U = $this->plan_model->create_tree($top_id);
+                            echo $U['data'] ?></td>
+                    </tr>
+                    <?php
+
+                    $this->db->select('id, name, total_a, mypv, topup, total_a_pv, my_img')->where('sponsor', $top_id);
+                    $data = $this->db->get('member')->result();
+
+                    foreach ($data as $e) {
+                        if ($e->topup == "0.00") {
+                            $color = 'red';
+                        } else {
+                            $color = 'green';
+                        }
+
+                        $myimg = $e->my_img ? base_url('uploads/' . $e->my_img) : base_url('uploads/site_img/' . $color . '.png');
+                        echo '
+<tr>
+                        <td></td>
+                        <td></td>
+                        <td style="border-left: 4px dashed #006aeb;"><span style="color: #006aeb"> -----------></span>
+                      <span style="text-align: center"><a href="' . site_url('tree/user_tree/' . $e->id) . '" style="text-decoration: none; color: ' . $color . '; margin: 5px" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="top" title="<div align=\'left\'><strong>' . config_item('ID_EXT') . $e->id . '</strong><hr/>Total Downline:' . ($e->total_a) . '<br/>Total BV: ' . ($e->total_a_pv) . '<br/> My Business: ' . $e->mypv . '</div>"><img class="img-circle" style="max-height: 70px" src="' . $myimg . '"><br/>' . $e->name . '<br/>(' . config_item('ID_EXT') . $e->id . ')</a></span> 
+</td>
+                    </tr>';
+                    }
+                    ?>
+
+                </table>
+            </div>
+        </div>
+
+
+        <?php }else{?>
+
+
         <div class="col-sm-12">
             <div class="table-responsive">
                 <table class="table table-borderless">
+
                     <tbody>
                     <tr>
                         <td colspan="20" align="center"><?php $U = $this->plan_model->create_tree($top_id);
@@ -354,8 +402,13 @@ $top_id = $this->uri->segment('3') ? $this->uri->segment('3') : config_item('top
                         </td>
                     </tr>
                     </tbody>
+
                 </table>
             </div>
         </div>
+        <?php }?>
+
+
+
     <?php } ?>
 </div>

@@ -50,12 +50,14 @@ class Users extends CI_Controller
     {
         $config['base_url']   = site_url('users/view_members');
         $config['per_page']   = 10;
-        $config['total_rows'] = $this->db_model->count_all('member');
+        // $config['total_rows'] = $this->db_model->count_all('member');
+        $config['total_rows'] =  $this->db->select('*')->from('member')->where('rank!=', 'Agent')->where('rank!=', 'Sub_agent')->where('rank!=', 'master_agent')->get()->num_rows();
+
         $page                 = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $this->pagination->initialize($config);
 
         $this->db->select('id, name, phone, sponsor, topup, join_time, total_a, total_b, total_c, total_d, total_e')
-            ->from('member')->where('rank!=', 'Agent')->where('rank!=', 'Sub_agent');
+            ->from('member')->where('rank!=', 'Agent')->where('rank!=', 'Sub_agent')->where('rank!=', 'master_agent');
 
         $this->db->limit($config['per_page'], $page)->ORDER_BY('secret', 'DESC');
 
@@ -101,16 +103,37 @@ class Users extends CI_Controller
                 redirect('Users/topup_member', 'refresh');
             }
 
-            $sign = $this->db->select('signup_package,topup')->where('id', $userid)->from('member')->get()->row();
+            $sign = $this->db->select('signup_package,topup,re_topup,rank')->where('id', $userid)->from('member')->get()->row();
             if ($sign->signup_package == $product) {
                 $this->session->set_flashdata('common_flash', '<div class="alert alert-danger">Member Already Topup With same Package </div>');
                 redirect('Users/topup_member', 'refresh');
+            }
+
+            if($sign->signup_package!=$product && $sign->signup_package+1!=$product && $sign->re_topup==0 && $sign->rank!='Agent' && $sign->rank!='master_agent'  )
+            {
+
+               
+
+
+                $p=$this->db->select('id,prod_price')->where('id',$sign->signup_package+1)->from('product')->get()->row();
+
+                $this->session->set_flashdata('common_flash', "<div class='alert alert-danger'>Invalid topup amount,ID-&nbsp;".$userid."&nbsp;must topup with".$p->prod_price.' &nbsp;amount value </div>');
+                redirect('Users/topup_member','refresh');
+
+            }
+
+            if($sign->rank=='Agent' || $sign->rank=='master_agent')
+            {
+                $this->session->set_flashdata('common_flash', "<div class='alert alert-danger'> For Agent and Master Agent no need to topup</div>");
+                redirect('Users/topup_member','refresh');
+
             }
 
             // changes by ishu end
 
             $data   = array(
                 'topup' => $epin_value,
+                're_topup' => 1,
                 'signup_package' => $product
             );
             $this->db->where('id', $userid);
@@ -504,10 +527,11 @@ class Users extends CI_Controller
 
     function test()
     {
+       
         $this->load->model('earning');
         // reg_earning($userid, $position, $packageid, $need_topup = true, $qty = 1)
-        // $this->earning->reg_earning(4354720, 8321697, 1, $need_topup = true, $qty = 1);
-        $this->earning->check_level();
+        $this->earning->reg_earning(5320367,6129826, 1, $need_topup = true, $qty = 1);
+        // $this->earning->check_level();
     }
 
 

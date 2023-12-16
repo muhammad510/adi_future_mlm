@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('Can we play bubu together ?');
 
 $config['company_name'] = "ADI FUTURE";
-$config['company_address'] = "Darbhanga";
+$config['company_address'] = "95 G/F Main, 25 FT Road, BLK-E-3RD      Molar Band Extn, Badarpur (South      Delhi), New Delhi, South Delhi- 110044,      Delhi";
 $config['ID_EXT'] = 'ADIF'; # ID Extension eg: DM1001
 $config['currency'] = "₹                    "; # Sitewide currency
 $config['iso_currency'] = "INR                                                 "; # ISO Code of currency
@@ -13,7 +13,7 @@ $config['autopool_registration'] = "No";
 $config['show_join_product'] = "Yes";
 $config['enable_epin'] = "Yes";
 $config['enable_pg'] = "No"; # Payment Gateway
-$config['free_registration'] = "Yes";
+$config['free_registration'] = "No";
 $config['sms_on_join'] = "No";
 $config['top_id'] = "1001";
 $config['prevent_join_product_entry'] = "Yes";

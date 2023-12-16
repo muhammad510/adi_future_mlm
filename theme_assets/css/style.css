@@ -206,7 +206,7 @@ img.main_sticky {
 }
 /*sticky*/
 .sticky .menu > ul > li a {
-    color: #fff;
+    color: black;
 }
 /* ––––––––––––––––––––––––––––––––––––––––––––––––––
 Mobile style's
@@ -302,7 +302,7 @@ html{
     width: 100%;
     -webkit-box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0.1);
-    background: #00247e !important;
+    background:  #add5f9 !important;
     transition: .5s;
     z-index: 999;
     -webkit-animation: 300ms running fadeInDown;

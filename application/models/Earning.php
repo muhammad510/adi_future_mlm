@@ -228,13 +228,14 @@ class Earning extends CI_Model
 
     public function reg_earning($userid, $position, $packageid, $need_topup = true, $qty = 1)
     {
-       
+      
 
 
         $get_topup = $this->db_model->select('topup', 'member', array('id' => $userid));
         
 
         if ($get_topup > "0" or $need_topup === false) :
+         
 
       
 
@@ -260,7 +261,7 @@ class Earning extends CI_Model
                 $ex = explode(',', $data->level_income);
                 $i  = 0;
                 foreach ($ex as $j=>$e) {
-                    echo "forloop";
+                  
                     $e = trim($e);
                     if ($i == 0) {
                         $pay_upline = $position;
@@ -271,28 +272,28 @@ class Earning extends CI_Model
 
                     if ($pay_upline > 0 && $e > 0) {
                         $me=$this->db->select('rank,signup_package')->from('member')->where('id',$pay_upline)->get()->row_array();
-                        if($me['rank']=='Agent' || $me['rank']=='sub_agent' )
+                        if($me['rank']=='Agent')
                         {
-                            echo "<br>nikhil".$me['rank']."<br>";
+                           
                           break;
                         }
 
                         if($j<2)
                         {
-                            echo "<br>hi".$j;
+                         
 
                             $this->pay_earning($pay_upline, $userid, 'Level Income', $e);
                         }
                         else{
-                            echo "<br>ishu".$j."<br>";
+                          
                             if($me['signup_package']>=$j || $me['signup_package']==6 )
                             {
-                                echo "<br>hello" .$j;
+                               
                                 $this->pay_earning($pay_upline, $userid, 'Level Income', $e);
 
                             }
                             else{
-                                echo "<br>skiped".$j;
+                              
                                 continue;
 
 
@@ -300,7 +301,7 @@ class Earning extends CI_Model
                         }
 
                     }
-                    echo "<br>jumped$j<br>";
+                  
 
                     
                     $i++;
@@ -312,6 +313,7 @@ class Earning extends CI_Model
             }
 
         endif;
+     
 
         return true;
     }
@@ -324,10 +326,10 @@ class Earning extends CI_Model
 
             $this->db->select('position,id,rank')->from('member')->where('id', $position);               
             $result = $this->db->get()->row();
-            print_r($result);
+            // print_r($result);
           
 
-            if (empty($result) || $result->rank=='Agent' || $result->rank=="sub_agent") {
+            if (empty($result) || $result->rank=='Agent') {
                 return false;
             } else {
                 $i = ($i - 1);

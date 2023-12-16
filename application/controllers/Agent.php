@@ -51,7 +51,9 @@ class Agent extends CI_Controller
     {
         $config['base_url']   = site_url('Agent/view_agents');
         $config['per_page']   = 10;
-        $config['total_rows'] = $this->db_model->count_all('member');
+        // $config['total_rows'] = $this->db_model->count_all('member');
+        $config['total_rows'] =  $this->db->select('*')->from('member')->where('rank', 'Agent')->get()->num_rows();
+
         $page                 = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $this->pagination->initialize($config); 
 
@@ -78,7 +80,8 @@ class Agent extends CI_Controller
     {
         $config['base_url']   = site_url('Agent/view_agents');
         $config['per_page']   = 10;
-        $config['total_rows'] = $this->db_model->count_all('member');
+        // $config['total_rows'] = $this->db_model->count_all('member');
+        $config['total_rows'] =  $this->db->select('*')->from('member')->where('rank', 'sub_agent')->get()->num_rows();
         // $page                 = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $this->pagination->initialize($config); 
 

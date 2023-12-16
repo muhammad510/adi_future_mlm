@@ -1,13 +1,4 @@
 
-<!-- Loder Start-->
-<div class="loader-wrapper" style="background-color: 	rgb(255, 219, 88) ">
-		<div class=" text-center" style="margin-top: 10%;">
-		  <img src="<?php echo base_url()?>theme_assets/images/adi_image/logo_2%20-%20Copy.png" alt=""  style="max-width: 100%;">
-	  </div>
-	  <!-- <div class="loder-section left-section"></div>
-	  <div class="loder-section right-section"></div> -->
-	</div>
-	<!-- Loder End -->
 <div class="main_contact_area pt-80 bg_color2 pb-90">
 	<div class="container" style="background-color:rgb(177,177,177,0.3); width:400px!important; height:auto; margin:auto; padding:44px;border-radius:8px;">
 		<div class="row" style="width:400px!important; height:auto; margin:auto;">

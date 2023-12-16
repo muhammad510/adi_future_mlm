@@ -53,6 +53,15 @@ class Site extends CI_Controller
         $layout['layout'] = "business_plan.php";
         $this->load->view('theme/default/base', $layout);
     }
+    public function documents()
+    {
+        $layout['title'] = "Documents";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
+
+        $layout['layout'] = "documents.php";
+        $this->load->view('theme/default/base', $layout);
+    }
     public function event()
     {
         $layout['title'] = "Events";
@@ -68,6 +77,14 @@ class Site extends CI_Controller
         $layout['description'] = "Home, Adi future private ltd";
         $layout['keyword'] = "Best mlm company, earn online";
         $layout['layout'] = "agent.php";
+        $this->load->view('theme/default/base', $layout);
+    }
+    public function our_team()
+    {
+        $layout['title'] = "Our Team";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
+        $layout['layout'] = "our_team.php";
         $this->load->view('theme/default/base', $layout);
     }
 
@@ -166,7 +183,7 @@ class Site extends CI_Controller
             $layout["response"] = "<h3>Dear <span   style='color:#e70780;'>$name</span>,</h3><blockquote><p>We have got your query. We will contact you soon.<br/>For Quick Enquiry <span style='color:#e70780;'>Call Us</span> at <span ><i class='fas fa-phone-alt px-2 '></i><span> +91 9955215097</span></span></p>
 <p>Thank You!</p></blockquote>";
         } else {
-            echo $name . $mobile . $whatsapp . $email . $need . $message;
+            // echo $name . $mobile . $whatsapp . $email . $need . $message;
             $layout["response"] = "<h3>Dear <span  style='color:#e70780;'>$name</span>,</h3><blockquote><p>Something is wrong. It seems like internet is not working well.<br/>For Quick Enquiry <span style='color:#e70780;'>Call Us<span> at <span ><i class='fas fa-phone-alt px-2 '></i><span>+91 9955215097</span></span></p>
 <p>Please, try again!</p><p>Thank You!</p></blockquote>";
         }
@@ -202,8 +219,8 @@ class Site extends CI_Controller
         $this->form_validation->set_rules('name', 'Name', 'trim|required');
         $this->form_validation->set_rules('sponsor', 'Sponsor ID', 'trim|required');
         $this->form_validation->set_rules('address_1', 'Address Line 1', 'trim|required');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
-        $this->form_validation->set_rules('password_2', 'Retype Password', 'trim|required|matches[password]');
+        // $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
+        // $this->form_validation->set_rules('password_2', 'Retype Password', 'trim|required|matches[password]');
         $this->form_validation->set_rules('phone', 'Phone No', 'trim|required');
 
         if ($this->form_validation->run() !== FALSE && !empty($this->db_model->select('name', 'member', array('id' => $this->input->post('sponsor'))))) {
@@ -214,14 +231,15 @@ class Site extends CI_Controller
             $phone = $this->input->post('phone');
             $leg = $this->input->post('leg') ? $this->input->post('leg') : 'A';
             $position = $this->input->post('position') ? $this->common_model->filter($this->input->post('position')) : $sponsor;
-            //  $product = $this->input->post('product');
-            $product = 0;
+             $product = $this->input->post('product');
+            // $product = 1;
             $epin = $this->input->post('epin');
             $pg = $this->input->post('pg');
             $address_1 = $this->input->post('address_1');
             $address_2 = $this->input->post('address_2');
             $username = time();
-            $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+            $password = config_item('ID_EXT').rand(10000,100000);
+            $password_enc = password_hash($password, PASSWORD_DEFAULT);
             $divert_pg = FALSE;
 
             ##############################################################
@@ -248,6 +266,12 @@ class Site extends CI_Controller
                     redirect(site_url('site/register'));
                 }
             endif;
+            if($epin_value!=$product_detail->prod_price)
+            {
+                $this->session->set_flashdata('site_flash', "<div class='alert alert-danger'>Please enter Correct Epin( epin value must be ". $product_detail->prod_price . ") </div>");
+                    redirect(site_url('site/register'));
+
+            }
 
             #####################################################################
             #
@@ -357,13 +381,15 @@ class Site extends CI_Controller
 
             if ($sponsor == 1001 || $sps['rank'] == 'Agent') {
 
-                $rank = ($sps['id'] == 1001) ? 'Agent' : "sub_agent";
+                $rank = ($sps['id'] == 1001) ? 'Agent' : "Member";
                 if($rank=="Agent")
                 {
                     $prefix='ADIFA'; 
+                    $topup=1;
                 }
                 else{
-                    $prefix='ADIFS'; 
+                    $prefix='ADIFM'; 
+                    $topup=0;
 
                 }
 
@@ -374,8 +400,8 @@ class Site extends CI_Controller
                     'phone' => $phone,
                     'prefix'=>$prefix,
                     'username' => $username,
-                    'password' => $password,
-                    'show_password' => $this->input->post('password'),
+                    'password' => $password_enc,
+                    'show_password' => $password,
                     'sponsor' => $sponsor,
                     'position' => $this->input->post('sponsor'),
                     'signup_package' => $product,
@@ -385,7 +411,7 @@ class Site extends CI_Controller
                     'join_time' => date('Y-m-d'),
                     'placement_leg' => $leg,
                     'registration_ip' => $this->input->ip_address(),
-                    'topup' => 1,
+                    'topup' =>   $epin_value,
                     'my_business' => ($mybusiness) ? $mybusiness : 0,
                     'mypv' => $product_detail->pv ? $product_detail->pv : 0,
                     'status' => 'active',
@@ -404,6 +430,105 @@ class Site extends CI_Controller
                 // $this->load->view('theme/default/base', $layout);
 
                 // redirect('Site/register', 'refresh');
+
+                if ($user_id) :
+
+                    $data = array(
+                        'userid' => $user_id,
+                        'balance' => "0",
+                    );
+                    $this->db->insert('wallet', $data);
+                    $data = array(
+                        'userid' => $user_id,
+                        'balance' => "0.00",
+                    );
+                    $this->db->insert('other_wallet', $data);
+    
+                    $data = array(
+                        'userid' => $user_id,
+                    );
+                    $this->db->insert('member_profile', $data);
+    
+                    $data = array(
+                        'userid' => $user_id,
+                    );
+                    $this->db->insert('level', $data);
+                    $this->update_level($user_id);
+    
+                else :
+                    $this->session->set_flashdata('site_flash', '<div class="alert alert-danger">Some error occured while registering. please contact admin or try again.</div>');
+                    redirect(site_url('site/register'));
+                endif;
+    
+                // $data = array(
+                //     $leg => $user_id,
+                // );
+                // $this->db->where('id', $position);
+                // $this->db->update('member', $data);
+    
+                //FIX
+                //FIX
+                $dataz = array(
+                    'total_' . strtolower($leg) => 1,
+                );
+    
+                $this->db->where('id', $position);
+                $this->db->update('member', $dataz);
+                //FIX
+                //FIX
+    
+                $zdata = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $position));
+                $zsponsor = $zdata->sponsor;
+    
+                $this->db->where('id', $zsponsor);
+                $this->db->set('total_' . strtolower($leg), 'total_' . strtolower($leg) . '+1', FALSE);
+                $this->db->update('member');
+    
+                //FIX
+                //FIX
+    
+                while ($zsponsor !== NULL) {
+                    $zdata2 = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $zsponsor));
+                    $zsponsor2 = $zdata2->sponsor;
+    
+                    $this->db->where('id', $zsponsor2);
+                    $this->db->set('total_' . strtolower($leg), 'total_' . strtolower($leg) . '+1', FALSE);
+                    $this->db->update('member');
+                    $zsponsor = $zsponsor2;
+                }
+    
+                //FIX
+                //FIX
+    
+    
+                if (trim($epin) !== '' && $epin_type == "Multi Use") :
+                    $amount = $epin_value - $prod_price;
+                    if ($amount <= 0) :
+                        $data = array(
+                            'status' => 'Used',
+                            'used_by' => $user_id,
+                            'used_time' => date('Y-m-d'),
+                        );
+                    else :
+                        $data = array(
+                            'amount' => $amount,
+                            'used_by' => $user_id,
+                            'used_time' => date('Y-m-d'),
+                        );
+                    endif;
+                    $this->db->where('epin', $epin);
+                    $this->db->update('epin', $data);
+                else :
+                    $data = array(
+                        'status' => 'Used',
+                        'used_by' => $user_id,
+                        'used_time' => date('Y-m-d'),
+                    );
+                    $this->db->where('epin', $epin);
+                    $this->db->update('epin', $data);
+                endif;
+    
+    
             }
 
           
@@ -418,8 +543,8 @@ class Site extends CI_Controller
                     'email' => $email,
                     'phone' => $phone,
                     'username' => $username,
-                    'password' => $password,
-                    'show_password' => $this->input->post('password'),
+                    'password' => $password_enc,
+                    'show_password' => $password,
                     'sponsor' => $sponsor,
                     'position' => $position,
                     'signup_package' => $product,
@@ -428,7 +553,7 @@ class Site extends CI_Controller
                     'join_time' => date('Y-m-d'),
                     'placement_leg' => $leg,
                     'registration_ip' => $this->input->ip_address(),
-                    'topup' => $prod_price,
+                    'topup' =>  $epin_value,
                     'my_business' => ($mybusiness) ? $mybusiness : 0,
                     'mypv' => $product_detail->pv ? $product_detail->pv : 0,
                     'status' => 'Suspend',
@@ -442,107 +567,109 @@ class Site extends CI_Controller
                     'epin' => $epin,
                 ));
 
-               
-            }
+                if ($user_id) :
 
-            if ($user_id) :
-
+                    $data = array(
+                        'userid' => $user_id,
+                        'balance' => "0",
+                    );
+                    $this->db->insert('wallet', $data);
+                    $data = array(
+                        'userid' => $user_id,
+                        'balance' => "0.00",
+                    );
+                    $this->db->insert('other_wallet', $data);
+    
+                    $data = array(
+                        'userid' => $user_id,
+                    );
+                    $this->db->insert('member_profile', $data);
+    
+                    $data = array(
+                        'userid' => $user_id,
+                    );
+                    $this->db->insert('level', $data);
+                    $this->update_level($user_id);
+    
+                else :
+                    $this->session->set_flashdata('site_flash', '<div class="alert alert-danger">Some error occured while registering. please contact admin or try again.</div>');
+                    redirect(site_url('site/register'));
+                endif;
+    
                 $data = array(
-                    'userid' => $user_id,
-                    'balance' => "0",
+                    $leg => $user_id,
                 );
-                $this->db->insert('wallet', $data);
-                $data = array(
-                    'userid' => $user_id,
-                    'balance' => "0.00",
+                $this->db->where('id', $position);
+                $this->db->update('member', $data);
+    
+                //FIX
+                //FIX
+                $dataz = array(
+                    'total_' . strtolower($leg) => 1,
                 );
-                $this->db->insert('other_wallet', $data);
-
-                $data = array(
-                    'userid' => $user_id,
-                );
-                $this->db->insert('member_profile', $data);
-
-                $data = array(
-                    'userid' => $user_id,
-                );
-                $this->db->insert('level', $data);
-                $this->update_level($user_id);
-
-            else :
-                $this->session->set_flashdata('site_flash', '<div class="alert alert-danger">Some error occured while registering. please contact admin or try again.</div>');
-                redirect(site_url('site/register'));
-            endif;
-
-            $data = array(
-                $leg => $user_id,
-            );
-            $this->db->where('id', $position);
-            $this->db->update('member', $data);
-
-            //FIX
-            //FIX
-            $dataz = array(
-                'total_' . strtolower($leg) => 1,
-            );
-
-            $this->db->where('id', $position);
-            $this->db->update('member', $dataz);
-            //FIX
-            //FIX
-
-            $zdata = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $position));
-            $zsponsor = $zdata->sponsor;
-
-            $this->db->where('id', $zsponsor);
-            $this->db->set('total_' . strtolower($leg), 'total_' . strtolower($leg) . '+1', FALSE);
-            $this->db->update('member');
-
-            //FIX
-            //FIX
-
-            while ($zsponsor !== NULL) {
-                $zdata2 = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $zsponsor));
-                $zsponsor2 = $zdata2->sponsor;
-
-                $this->db->where('id', $zsponsor2);
+    
+                $this->db->where('id', $position);
+                $this->db->update('member', $dataz);
+                //FIX
+                //FIX
+    
+                $zdata = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $position));
+                $zsponsor = $zdata->sponsor;
+    
+                $this->db->where('id', $zsponsor);
                 $this->db->set('total_' . strtolower($leg), 'total_' . strtolower($leg) . '+1', FALSE);
                 $this->db->update('member');
-                $zsponsor = $zsponsor2;
-            }
-
-            //FIX
-            //FIX
-
-
-            if (trim($epin) !== '' && $epin_type == "Multi Use") :
-                $amount = $epin_value - $prod_price;
-                if ($amount <= 0) :
+    
+                //FIX
+                //FIX
+    
+                while ($zsponsor !== NULL) {
+                    $zdata2 = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $zsponsor));
+                    $zsponsor2 = $zdata2->sponsor;
+    
+                    $this->db->where('id', $zsponsor2);
+                    $this->db->set('total_' . strtolower($leg), 'total_' . strtolower($leg) . '+1', FALSE);
+                    $this->db->update('member');
+                    $zsponsor = $zsponsor2;
+                }
+    
+                //FIX
+                //FIX
+    
+    
+                if (trim($epin) !== '' && $epin_type == "Multi Use") :
+                    $amount = $epin_value - $prod_price;
+                    if ($amount <= 0) :
+                        $data = array(
+                            'status' => 'Used',
+                            'used_by' => $user_id,
+                            'used_time' => date('Y-m-d'),
+                        );
+                    else :
+                        $data = array(
+                            'amount' => $amount,
+                            'used_by' => $user_id,
+                            'used_time' => date('Y-m-d'),
+                        );
+                    endif;
+                    $this->db->where('epin', $epin);
+                    $this->db->update('epin', $data);
+                else :
                     $data = array(
                         'status' => 'Used',
                         'used_by' => $user_id,
                         'used_time' => date('Y-m-d'),
                     );
-                else :
-                    $data = array(
-                        'amount' => $amount,
-                        'used_by' => $user_id,
-                        'used_time' => date('Y-m-d'),
-                    );
+                    $this->db->where('epin', $epin);
+                    $this->db->update('epin', $data);
                 endif;
-                $this->db->where('epin', $epin);
-                $this->db->update('epin', $data);
-            else :
-                $data = array(
-                    'status' => 'Used',
-                    'used_by' => $user_id,
-                    'used_time' => date('Y-m-d'),
-                );
-                $this->db->where('epin', $epin);
-                $this->db->update('epin', $data);
-            endif;
+    
+    
 
+               
+            }
 
+        
 
 
             
@@ -576,7 +703,7 @@ class Site extends CI_Controller
             # important Data with session.
             #
             ##########################################################################
-            $md=$this->db->select('rank,prefix')->where('id',$user_id)->from('member')->get()->row();
+            $md=$this->db->select('rank,prefix,show_password')->where('id',$user_id)->from('member')->get()->row();
 
             $this->session->set_userdata('_user_id_', $user_id);
             $this->session->set_userdata('_user_id_', $user_id);
@@ -593,6 +720,7 @@ class Site extends CI_Controller
             $this->session->set_userdata('_price_', $prod_price);
             $this->session->set_userdata('_rank_', $md->rank);
             $this->session->set_userdata('_prefix_', $md->prefix);
+            $this->session->set_userdata('_password_', $md->show_password);
             if ($divert_pg == TRUE) :
                 redirect(site_url('gateway/registration_form'));
             else :
@@ -636,6 +764,8 @@ class Site extends CI_Controller
     public function complete_registration()
     {
         if ($this->session->_user_id_ > 0) {
+            $layout['title'] = "Registration Successful";
+
             $layout['layout'] = "success.php";
             $this->load->view('theme/default/base', $layout);
 
@@ -968,6 +1098,10 @@ class Site extends CI_Controller
 
     public function get_user_name()
     {
-        echo $this->db_model->select('name', 'member', array('id' => $this->uri->segment(3)));
+        $id=$this->input->post('id');
+        // echo $id;
+        // echo $this->db_model->select('name', 'member', array('id' => $this->uri->segment(3)));
+        $data=$this->db->select('name,rank')->where('id',$id)->get('member')->row_array();
+        echo json_encode($data);
     }
 }

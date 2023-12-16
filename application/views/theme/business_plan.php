@@ -1,13 +1,4 @@
 
-<!-- Loder Start-->
-<div class="loader-wrapper" style="background-color: 	rgb(255, 219, 88) ">
-		<div class=" text-center" style="margin-top: 10%;">
-		  <img src="<?php echo base_url()?>theme_assets/images/adi_image/logo_2%20-%20Copy.png" alt=""  style="max-width: 100%;">
-	  </div>
-	  <!-- <div class="loder-section left-section"></div>
-	  <div class="loder-section right-section"></div> -->
-	</div>
-	<!-- Loder End -->
 	
 	<!-- ============================================================== -->
 	<!-- Start adi_future Breatcome Area -->

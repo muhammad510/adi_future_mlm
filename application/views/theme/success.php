@@ -17,10 +17,11 @@
             cordially invite you  as <b> &nbsp;<?php if($this->session->_rank_=='Agent'){echo 'Agent';}elseif($this->session->_rank_=='sub_agent'){echo "sub Agent";}else{echo "Member";}?>&nbsp;</b>to our home, where we make friends to earn and learn together. Below is your detail of
             Registration.</p>
             <div class="mb-5">
-                <strong>Sponsor ID :</strong> <?php echo $this->session->_prefix_ . $this->session->_sponsor_ ?><br/>
+                <strong>Sponsor ID :</strong> <?php echo  $this->session->_sponsor_ ?><br/>
                 <strong>User ID :</strong> <?php echo $this->session->_prefix_ . $this->session->_user_id_ ?><br/>
-                <strong>Password :</strong> (<em>You have entered already.</em>)
+                <strong>Password :</strong> <em><?php echo $this->session->_password_ ?></em>
             </div>
+            <p class="text-danger text-center"><sup>***</sup>Please Remember your userId and Password </p>
             <br>
             <a href="<?php echo site_url('site/register') ?>" class="btn btn-primary btn-lg" id="submit-footer">Register Another</a>
         </div>
@@ -49,4 +50,5 @@
         </section>
         !--404 section end-->
 
+      
     </div>

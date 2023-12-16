@@ -1,12 +1,4 @@
-<!-- Loder Start-->
-<div class="loader-wrapper" style="background-color: 	rgb(255, 219, 88) ">
-		<div class=" text-center" style="margin-top: 10%;">
-		  <img src="<?php echo base_url()?>theme_assets/images/adi_image/logo_2%20-%20Copy.png" alt=""  style="max-width: 100%;">
-	  </div>
-	  <!-- <div class="loder-section left-section"></div>
-	  <div class="loder-section right-section"></div> -->
-	</div>
-	<!-- Loder End -->
+
 	
 	<!-- ============================================================== -->
 	<!-- Start adi_future Breatcome Area -->
@@ -172,11 +164,11 @@
 	<!--==================================================-->
 	<!----- End adi_future Map Area ----->
 	<!--==================================================-->
-	<div class="google_map_area">
+	<div class="google_map_area container">
 		<div class="row-fluid">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="google_map_area">
-					<!-- map  -->
+				<iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d876.6423510663305!2d77.31011099584019!3d28.492511614360666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sin!4v1702557204714!5m2!1sen!2sin" width="100%" height="500px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</div>
 			</div>				
 		</div>

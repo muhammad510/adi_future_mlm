@@ -64,7 +64,7 @@
 
 <hr />
 <div class="col-md-2"></div><div class="col-md-10">
-<p>It is with great pleasure that I welcome you to Camwel Solution LLP! We are very excited to have you on board with us!</p>
+<p>It is with great pleasure that I welcome you to ADI FUTURE! We are very excited to have you on board with us!</p>
 
 
 

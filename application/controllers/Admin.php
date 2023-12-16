@@ -122,7 +122,7 @@ class Admin extends CI_Controller
             $amount = $this->common_model->filter($this->input->post('amount'), 'float');
             $userid = $this->common_model->filter($this->input->post('userid'));
             $qty    = $this->common_model->filter($this->input->post('number'), 'number');
-
+          
             $data = array();
             for ($i = 0; $i < $qty; $i++) {
                 $rand = mt_rand(10000000, 99999999);
@@ -135,11 +135,15 @@ class Admin extends CI_Controller
                     'amount'        => $amount,
                     'issue_to'      => $userid,
                     'generate_time' => date('Y-m-d'),
-                    'type'          => $this->input->post('type'),
+                    'type'          => ($this->input->post('type'))?$this->input->post('type'):'Single Use',
                 );
                 array_push($data, $array);
             }
+
             $this->db->insert_batch('epin', $data);
+            
+          
+          
             $this->session->set_flashdata("common_flash", "<div class='alert alert-success'>$qty e-PIN created successfully.</div>");
             $this->common_model->mail($this->db_model->select('email', 'member', array('id' => $userid)), 'e-PIN Issued', 'Dear Sir, <br/> e-PIN of Qty ' . $qty . ', has been issued to your account from us.<br/><br/>---<br/>Regards,<br/>' . config_item('company_name'));
             redirect('admin/unused_epin');

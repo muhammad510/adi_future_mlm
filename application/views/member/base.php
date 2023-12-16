@@ -52,7 +52,10 @@
                         <a style="padding-left:120px !important;" href="<?php echo base_url('member') ?>">Welcome, <?php echo $this->session->name ?>(<?php echo $this->session->prefix . $this->session->user_id ?>)</a>
                     </li>
                     <li>
-                        <?php $member_rank = $this->db->select('signup_package,re_topup,rank')->where('id', $this->session->user_id)->get('member')->row();  ?>
+                        <?php $member_rank = $this->db->select('signup_package,re_topup,rank')->where('id', $this->session->user_id)->get('member')->row(); 
+                       
+                        
+                        ?>
 
                         <?php if ($member_rank->signup_package != 0 && $member_rank->re_topup == 0) : ?>
                             <a class="text-danger " style="  background-color:yellow !important; text-align:center !important;">Re-topup For Next Level</a>
@@ -115,7 +118,7 @@
                     </a>
                 </li>
 
-                <?php if ($member_rank->rank == "Agent") : ?>
+                <?php if ($member_rank->rank == "Agent" || $this->session->user_id==1001 ) : ?>
                     <!-- ################### agent section start ###############################-->
 
                     <li>
@@ -157,7 +160,10 @@
                             </ul>
                         </li>
                     <?php } ?>
-                    <?php if (config_item('enable_help_plan') !== "Yes") { ?>
+
+
+
+                    <!-- <?php if (config_item('enable_help_plan') !== "Yes") { ?>
                         <li>
                             <a href=""><i class="fa fa-money"></i><span>My Earnings</span><i class="fa fa-angle-right pull-right"></i></a>
                             <ul class="nav nav-sub">
@@ -182,7 +188,10 @@
                                 </li>
                             </ul>
                         </li>
-                    <?php } ?>
+                    <?php } ?> -->
+
+
+
                     <li>
                         <a href=""><i class="fa fa-sitemap"></i><span>Tree & Downline</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="nav nav-sub">
@@ -285,174 +294,8 @@
                     </li>
 
                     <!-- ########################################agent panel End ######################################-->
-                    <!-- ######################################## Sub agent panel start ######################################-->
-                <?php elseif ($member_rank->rank == "sub_agent") : ?>
-                    <li>
-                        <a href="<?php echo site_url('member') ?>"><i class="fa fa-home"></i><span>Dashboard</span></a>
-                    </li>
-                    <li>
-                        <a href="<?php echo site_url('member/welcome-letter') ?>"><i class="fa fa-file-text-o"></i><span> Welcome Letter</span></a>
-                    </li>
-                    <li>
-                        <a href="<?php echo site_url('member/business') ?>"><i class="fa fa-file-text-o"></i><span> Business Plan</span></a>
-                    </li>
-                    <?php if (config_item('enable_help_plan') !== "Yes") { ?>
-                        <!-- <li>
-                        <a href="<?php echo site_url('member/my-invoices') ?>"><i class="fa fa-print"></i><span> My Invoices</span></a>
-                    </li> -->
-                    <?php } ?>
-                    <?php if (config_item('enable_epin') == "Yes") { ?>
-                        <li>
-                            <a href="#"><i class="fa fa-xing-square"></i><span>My e-PINs</span><i class="fa fa-angle-right pull-right"></i></a>
-                            <ul class="nav nav-sub">
-                                <li><a href="<?php echo site_url('member/unused-epin') ?>"><span>Un-Used e-PINs</span></a></li>
-                                <li><a href="<?php echo site_url('member/used-epin') ?>"><span>Used e-PINs</span></a></li>
-                                <li><a href="<?php echo site_url('member/transfer-epin') ?>"><span>Transfer e-PIN</span></a>
-                                </li>
-                                <li><a href="<?php echo site_url('member/generate-epin') ?>"><span>Generate e-PIN</span></a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo site_url('member/requestfor-epin') ?>"><i class="fa fa-key"></i><span>Request for e-PIN</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                    <?php } ?>
-                    <?php if (config_item('enable_topup') == "Yes") { ?>
-                        <li>
-                            <a href="#"><i class="fa fa-xing-square"></i><span>Upgrade</span><i class="fa fa-angle-right pull-right"></i></a>
-                            <ul class="nav nav-sub">
-                                <li><a href="<?php echo site_url('member/topup_member') ?>"><span>Topup Member</span></a></li>
-                                <li><a href="<?php echo site_url('member/topup_list') ?>"><span>Topup List</span></a></li>
-                            </ul>
-                        </li>
-                    <?php } ?>
-                    <?php if (config_item('enable_help_plan') !== "Yes") { ?>
-                        <li>
-                            <a href=""><i class="fa fa-money"></i><span>My Earnings</span><i class="fa fa-angle-right pull-right"></i></a>
-                            <ul class="nav nav-sub">
-                                <li><a href="<?php echo site_url('member/view-earning') ?>"><span>My Earnings</span></a></li>
-                                <li><a href="<?php echo site_url('member/search-earning') ?>"><span>Search Earnings</span></a>
-                                </li>
-                                <?php if (config_item('enable_reward') == "Yes") { ?>
-                                    <li><a href="<?php echo site_url('member/my-rewards') ?>"><span>My Rewards</span></a></li>
-                                <?php } ?>
-                                <li><a href="<?php echo site_url('wallet/transfer-balance') ?>"><span>Transfer Fund</span></a>
-                                </li>
-                                <?php if (config_item('user_withdraw') == "Yes") { ?>
-                                    <li>
-                                        <a href="<?php echo site_url('wallet/withdraw-payouts') ?>"><span>Withdraw Payouts</span></a>
-                                    </li>
-                                <?php } ?>
-                                <li>
-                                    <a href="<?php echo site_url('wallet/withdrawal-list') ?>"><span>Payout Report</span></a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo site_url('wallet/balance-transfer-list') ?>"><span>Balance Transfer Report</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                    <?php } ?>
-                    <li>
-                        <a href=""><i class="fa fa-sitemap"></i><span>Tree & Downline</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="nav nav-sub">
-                            <li><a href="<?php echo site_url('tree/genealogy') ?>"><span>My Genealogy</span></a></li>
-                            <li><a href="<?php echo site_url('tree/my-tree') ?>"><span>My Downline Tree</span></a></li>
-                            <li><a href="<?php echo site_url('tree/alldownline') ?>"><span>All Downline List</span></a>
-                            <li><a href="<?php echo site_url('tree/directlist') ?>"><span>Direct Referrer List</span></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="<?php echo site_url('site/register/A/' . $this->session->user_id) ?>"><span>Add Member</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <?php if (config_item('enable_help_plan') == "Yes") { ?>
-                        <li>
-                            <a href=""><i class="fa fa-gift"></i><span>My Donations</span><i class="fa fa-angle-right pull-right"></i></a>
-                            <ul class="nav nav-sub">
-                                <li><a href="<?php echo site_url('donation/sent-donation') ?>"><span>Sent History</span></a>
-                                </li>
-                                <li><a href="<?php echo site_url('donation/received-donation') ?>"><span>Received History</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                    <?php } ?>
-                    <?php if (config_item('enable_repurchase') == "Yes") { ?>
-                        <li>
-                            <a href=""><i class="fa fa-shopping-cart"></i><span>My Purchases</span><i class="fa fa-angle-right pull-right"></i></a>
-                            <ul class="nav nav-sub">
-                                <li><a href="<?php echo site_url('cart/new-purchase') ?>"><span>New Purchase</span></a></li>
-                                <li><a href="<?php echo site_url('cart/old-purchase') ?>"><span>Old Purchases</span></a></li>
-                                <li><a href="<?php echo site_url('cart/pre-checkout') ?>"><span>My Cart</span></a></li>
-                            </ul>
-                        </li>
-                    <?php } ?>
-                    <?php if (config_item('enable_recharge') == "Yes") { ?>
-                        <li>
-                            <a href=""><i class="fa fa-mobile-phone"></i><span>Recharge Zone</span><i class="fa fa-angle-right pull-right"></i></a>
-                            <ul class="nav nav-sub">
-                                <li><a href="<?php echo site_url('recharge/new-recharge') ?>"><span>New Recharge</span></a></li>
-                                <li><a href="<?php echo site_url('recharge/old-recharges') ?>"><span>Old Recharges</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                    <?php } ?>
-
-                    <?php if (config_item('enable_coupon') == "Yes") { ?>
-                        <li>
-                            <a href=""><i class="fa fa-code"></i><span>My Coupons</span><i class="fa fa-angle-right pull-right"></i></a>
-                            <ul class="nav nav-sub">
-                                <li><a href="<?php echo site_url('coupon/unused') ?>"><span>Un Used Coupons</span></a></li>
-                                <li><a href="<?php echo site_url('coupon/used') ?>"><span>Used Coupons</span></a></li>
-                            </ul>
-                        </li>
-                    <?php } ?>
-                    <?php if (config_item('enable_ad_incm') == "Yes") { ?>
-                        <li>
-                            <a href=""><i class="fa fa-bullhorn"></i><span>Advertisements</span><i class="fa fa-angle-right pull-right"></i></a>
-                            <ul class="nav nav-sub">
-                                <li><a href="<?php echo site_url('ads/myads') ?>"><span>My Ads</span></a></li>
-                            </ul>
-                        </li>
-                    <?php } ?>
-                    <?php if (config_item('enable_investment') == "Yes") { ?>
-                        <li>
-                            <a href=""><i class="fa fa-bitcoin"></i><span>My Investments</span><i class="fa fa-angle-right pull-right"></i></a>
-                            <ul class="nav nav-sub">
-                                <li><a href="<?php echo site_url('investments/new_invest') ?>"><span>New Investments</span></a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo site_url('investments/recent_investment') ?>"><span>Recent Investments</span></a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo site_url('investments/expired_investment') ?>"><span>Expired Investments</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                    <?php } ?>
-                    <?php if (config_item('enable_survey') == "Yes") { ?>
-
-                        <li><a href="<?php echo site_url('survey/mysurveys') ?>"><i class="fa fa-list"></i>
-                                <span>My Surveys</span></a>
-                        </li>
-
-                    <?php } ?>
-                    <li>
-                        <a href=""><i class="fa fa-question"></i><span>My Support</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="nav nav-sub">
-                            <li><a href="<?php echo site_url('ticket/new-ticket') ?>"><span>New Support Request</span></a></li>
-                            <li><a href="<?php echo site_url('ticket/old-Supports') ?>"><span>List Tickets</span></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href=""><i class=" fa fa-cog" aria-hidden="true"></i><span>My Profile & Setting</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="nav nav-sub">
-                            <li><a href="<?php echo site_url('member/proile') ?>"><span>My Profile</span></a></li>
-                            <li><a href="<?php echo site_url('member/settings') ?>"><span>Setting & Password</span></a></li>
-                        </ul>
-                    </li>
-                    <li><a href="<?php echo site_url('member/logout') ?>"><i class="fa fa-sign-out"></i> Log Out</a></li>
-                    </li>
-                    <!-- ########################################sub agent panel End ######################################-->
+               
+               
 
                     <!-- ################################## Member panel Start ###########################-->
                 <?php else : ?>
@@ -857,7 +700,7 @@
                                         </header>
 
  <!-- ##################################### AGENT START ############################### -->
-                                        <?php if ($member_rank->rank == "Agent") : ?>
+                                        <?php if ($member_rank->rank == "Agent" || $member_rank->rank == "master_agent") : ?>
 
 
                                             <div class="panel-body">
@@ -900,7 +743,7 @@
                                                     <!--</div>-->
 
 
-                                                    <div class="col-xs-6">
+                                                    <!-- <div class="col-xs-6">
                                                         <a href="#" class="btn btn-success btn-block">
                                                             <span class="value"><?php $data = $this->db_model->sum('amount', 'earning', array('userid' => $this->session->user_id));
                                                                                 if ($data <= "0") {
@@ -910,10 +753,10 @@
                                                                                 } ?></span>
                                                             <span class="info">Total Earned</span>
                                                         </a>
-                                                    </div>
+                                                    </div> -->
 
 
-                                                    <div class="col-xs-6">
+                                                    <!-- <div class="col-xs-6">
                                                         <a href="#" class="btn btn-success btn-block">
                                                             <span class="value"><?php $data = $this->db_model->sum('amount', 'earning', array('userid' => $this->session->user_id));
                                                                                 $tax = (($data * $tax_percent) / 100);
@@ -925,7 +768,7 @@
                                                                                 } ?></span>
                                                             <span class="info">Total After Tax Deduction</span>
                                                         </a>
-                                                    </div>
+                                                    </div> -->
 
 
                                                     <div class="col-xs-6">
@@ -1060,191 +903,7 @@
                                 </div>
 
                                 <!-- #############  AGENT END ############# -->
-                                <!-- ############# SUB AGENT START ############# -->
-                            <?php elseif ($member_rank->rank == "sub_agent") : ?>
-                                <div class="panel-body">
-                                    <div class="row w-states">
-
-                                        <div class="col-xs-6">
-                                            <a href="#" class="btn btn-primary btn-block">
-                                                <span class="value">
-                                                    <?php echo $detail->total_a + $detail->total_b + $detail->total_c + $detail->total_d + $detail->total_e ?>
-                                                </span>
-                                                <span class="info">Total Downline</span>
-                                            </a>
-                                        </div>
-
-
-
-                                     
-
-
-
-                                      
-
-
-                                       
-
-                                        <div class="col-xs-6">
-                                            <a href="#" class="btn btn-success btn-block">
-                                                <span class="value"><?php $data = $this->db_model->sum('amount', 'earning', array('userid' => $this->session->user_id));
-                                                                    if ($data <= "0") {
-                                                                        echo config_item('currency') . '0';
-                                                                    } else {
-                                                                        echo config_item('currency') . $data;
-                                                                    } ?></span>
-                                                <span class="info">Total Earned</span>
-                                            </a>
-                                        </div>
-
-
-                                        <div class="col-xs-6">
-                                            <a href="#" class="btn btn-success btn-block">
-                                                <span class="value"><?php $data = $this->db_model->sum('amount', 'earning', array('userid' => $this->session->user_id));
-                                                                    $tax = (($data * $tax_percent) / 100);
-                                                                    $amt = $data - $tax;
-                                                                    if ($data <= "0") {
-                                                                        echo config_item('currency') . '0';
-                                                                    } else {
-                                                                        echo config_item('currency') . $amt;
-                                                                    } ?></span>
-                                                <span class="info">Total After Tax Deduction</span>
-                                            </a>
-                                        </div>
-
-
-                                        <div class="col-xs-6">
-                                            <a href="#" class="btn btn-danger btn-block">
-                                                <span class="value"><?php echo config_item('currency') . $this->db_model->select('balance', 'wallet', array('userid' => $this->session->user_id)); ?></span>
-                                                <span class="info">Wallet Balance</span>
-                                            </a>
-                                        </div>
-
-
-                                        <div class="col-xs-6">
-                                            <a href="#" class="btn btn-default btn-block margin0">
-                                                <span class="value"><?php $data = $this->db_model->sum('amount', 'withdraw_request', array(
-                                                                        'userid' => $this->session->user_id,
-                                                                        'status' => 'Paid',
-                                                                    ));
-                                                                    if ($data == "") {
-                                                                        echo config_item('currency') . '0';
-                                                                    } else {
-                                                                        echo config_item('currency') . $data;
-                                                                    }
-                                                                    ?></span>
-                                                <span class="info">Paid Payout</span>
-                                            </a>
-                                        </div>
-
-
-                                        <div class="col-xs-6">
-                                            <a href="#" class="btn btn-default btn-block margin0">
-                                                <span class="value"><?php $data = $this->db_model->sum('amount', 'withdraw_request', array(
-                                                                        'userid' => $this->session->user_id,
-                                                                        'status' => 'Un-Paid',
-                                                                    ));
-                                                                    if ($data == "") {
-                                                                        echo config_item('currency') . '0';
-                                                                    } else {
-                                                                        echo config_item('currency') . $data;
-                                                                    }
-                                                                    ?></span>
-                                                <span class="info">Pending Payout</span>
-                                            </a>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <!-- <p align="center">
-                                <a href="<?php echo site_url('member/topup-wallet') ?>"
-                                   class="btn btn-lg btn-primary"><span class="fa fa-usd"></span> Top
-                                    Up Wallet &rarr;</a>
-                            </p> -->
-                    </div>
-                </div>
-                <!--task states end-->
-
-                <!--charts start-->
-                <div class="col-md-6 col-sm-6">
-                    <div class="panel">
-                        <div class="panel-body" style="height: 430px">
-                            <?php
-                                            if (config_item('enable_topup') == "Yes" && $this->db_model->select('topup', 'member', array('id' => $this->session->user_id)) <= '0') {
-
-                            ?>
-
-                                <div class="alert alert-warning">Top Up your Account.</div>
-                                <hr />
-                                <?php echo form_open('member/topup') ?>
-                                <div class="col-sm-6">
-                                    <label for="product" class="control-label">Package</label>
-                                    <select class="form-control" id="product" name="product" required>
-                                        <?php foreach ($products as $val) {
-                                                    echo '<option value="' . $val['id'] . '">' . $val['prod_name'] . '. Price :' . config_item('currency') . number_format($val['prod_price'] + ($val['prod_price'] * $val['gst'] / 100), 2) . ' </option>';
-                                                } ?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label>Enter TopUp e-PIN</label>
-                                    <select class="form-control myselect" id="topup" name="topup">
-                                        <option value="">Select</option>
-                                        <?php
-                                                foreach ($epin as $val) {
-                                                    echo '<option value="' . $val['epin'] . '">' . $val['epin'] . " | ₹" . number_format($val['amount'], 2) . ' </option>';
-                                                } ?>
-                                    </select>
-                                    <br>
-                                </div>
-                                &emsp;<button type="submit" class="btn btn-success">Submit </button>
-                                <?php echo form_close() ?>
-                            <?php
-                                            } else {
-                            ?>
-                                <strong>Latest Earnings</strong>
-                                <hr />
-                                <div class="table-responsive">
-                                    <table class="table table-hovered">
-                                        <thead>
-                                            <tr style="font-weight: 700">
-                                                <td>Income Name</td>
-                                                <td>TDS + Admin(<?php echo $tax_percent; ?>%)</td>
-                                                <td>Amount</td>
-                                                <td>Date</td>
-                                            </tr>
-                                        </thead>
-                                        <?php
-                                                $this->db->select('type, amount, date')
-                                                    ->where('userid', $this->session->user_id)->order_by('id', 'DESC')
-                                                    ->limit(12);
-                                                $inc = $this->db->get('earning')->result();
-
-                                        ?>
-                                        <tbody>
-                                            <?php foreach ($inc as $e) : $tax = (($e->amount * 15) / 100); ?>
-                                                <tr>
-                                                    <td><?php echo $e->type ?></td>
-                                                    <td><?php echo  config_item('currency') . $tax ?></td>
-                                                    <td>₹ <?php echo  $e->amount - $tax ?></td>
-                                                    <td><?php echo $e->date ?></td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                                <h4 align="center" class="notranslate alert alert-primary">My Referral
-                                    Link
-                                    : <a target="_blank" href="<?php echo site_url() . 'site/register/A/' . $this->session->user_id ?>"><?php echo site_url() . 'site/register/A/' . $this->session->user_id ?></a>
-                                </h4>
-
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ################## SUB AGENT END ################ -->
+                             
                 <!-- ################## MEMBER START ################ -->
             <?php else : ?>
                 <div class="panel-body">
@@ -1283,7 +942,7 @@
                         </div>
 
 
-                        <div class="col-xs-6">
+                        <!-- <div class="col-xs-6">
                             <a href="#" class="btn btn-success btn-block">
                                 <span class="value"><?php $data = $this->db_model->sum('amount', 'earning', array('userid' => $this->session->user_id));
                                                     $tax = (($data * $tax_percent) / 100);
@@ -1295,7 +954,7 @@
                                                     } ?></span>
                                 <span class="info">Total After Tax Deduction</span>
                             </a>
-                        </div>
+                        </div> -->
 
 
                         <div class="col-xs-6">
@@ -1323,7 +982,7 @@
                         </div>
 
 
-                        <div class="col-xs-6">
+                        <div class="col-xs-12">
                             <a href="#" class="btn btn-default btn-block margin0">
                                 <span class="value"><?php $data = $this->db_model->sum('amount', 'withdraw_request', array(
                                                         'userid' => $this->session->user_id,
@@ -1394,7 +1053,7 @@
                                 <thead>
                                     <tr style="font-weight: 700">
                                         <td>Income Name</td>
-                                        <td>TDS + Admin(<?php echo $tax_percent; ?>%)</td>
+                                        <!-- <td>TDS + Admin(<?php echo $tax_percent; ?>%)</td> -->
                                         <td>Amount</td>
                                         <td>Date</td>
                                     </tr>
@@ -1407,11 +1066,11 @@
 
                                 ?>
                                 <tbody>
-                                    <?php foreach ($inc as $e) : $tax = (($e->amount * 15) / 100); ?>
+                                    <?php foreach ($inc as $e) : $tax = (($e->amount )); ?>
                                         <tr>
                                             <td><?php echo $e->type ?></td>
                                             <td><?php echo  config_item('currency') . $tax ?></td>
-                                            <td>₹ <?php echo  $e->amount - $tax ?></td>
+                                          
                                             <td><?php echo $e->date ?></td>
                                         </tr>
                                     <?php endforeach; ?>
