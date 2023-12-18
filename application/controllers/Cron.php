@@ -225,6 +225,7 @@ class Cron extends CI_Controller
     }
     public function reward()
     {
+       
         $this->load->model("earning");
         $this->earning->reward_process();
     }
@@ -244,18 +245,18 @@ class Cron extends CI_Controller
         $abc=array();
         foreach($member as $m){
             //echo $m['id']." => A =>".$m['A']."=> B =>".$m['B'];
-            $A = $this->db->select('topup,status')->where('id',$m['A'])->get('member')->row_array();
-            $B = $this->db->select('topup,status')->where('id',$m['B'])->get('member')->row_array();
+            // $A = $this->db->select('topup,status')->where('id',$m['A'])->get('member')->row_array();
+            // $B = $this->db->select('topup,status')->where('id',$m['B'])->get('member')->row_array();
             
             //echo "Topup A =>".$A['topup']." Topup B =>".$B['topup']."<br>";
-            if($A['topup'] != "0.00" && $B['topup'] != "0.00" && $B['status'] == "Active" && $A['status'] == "Active" && $m['topup'] != "0.00" && $m['status'] == "Active" && !empty($A) && !empty($B)){
+            if( $m['topup'] != "0.00" && $m['status'] == "Active"){
                 //echo "User Pay ID".$m['id']."<br>";
                 //$this->db->select("id, userid, amount")->where(array("status" => "Pending", "userid" => $m['id']));
                 //$data = $this->db->get("earning")->result();
               $this->db->select('userid,SUM(amount) as amount')->where(array("status" => "Pending", "userid" => $m['id']));
               $data = $this->db->get("earning")->result();
                 foreach ($data as $e) {
-                  if($e->amount <= 20000.00){
+                  if($e->amount <= 200000000000.00){
                       $tax = (($e->amount * 15 )/100);
                       $amt = $e->amount - $tax;
                       $cur_balance = $this->db_model->select("balance", "wallet", array("userid" => $e->userid));

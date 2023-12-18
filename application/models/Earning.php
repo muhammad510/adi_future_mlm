@@ -272,7 +272,7 @@ class Earning extends CI_Model
 
                     if ($pay_upline > 0 && $e > 0) {
                         $me=$this->db->select('rank,signup_package')->from('member')->where('id',$pay_upline)->get()->row_array();
-                        if($me['rank']=='Agent')
+                        if($me['rank']=='Agent' || $me['rank']=='master_agent') 
                         {
                            
                           break;
@@ -543,7 +543,9 @@ class Earning extends CI_Model
  */
     public function reward_process()
     {
+       
         $reward = $this->db->get('reward_setting')->result();
+      
         foreach ($reward as $res) {
             $duration = date('Y-m-d', '-' . $res->reward_duration);
             if ($duration == date('Y-m-d')) {
@@ -555,15 +557,19 @@ class Earning extends CI_Model
                 'total_c >=' => $res->C,
                 'total_d >=' => $res->D,
                 'total_e >=' => $res->E,
-                'join_time >= ' . $duration,
+                'join_time >= '=> $duration,
                 'topup >' => '0'
             ));
             $data = $this->db->get()->result();
+         
             foreach ($data as $result) {
+              
                 $count = $this->db_model->count_all('rewards', array(
                     'userid'    => $result->id,
                     'reward_id' => $res->id,
                 ));
+              
+              
                 if ($count <= 0) {
                     $array = array(
                         'reward_id' => $res->id,
@@ -592,7 +598,7 @@ class Earning extends CI_Model
                     'total_c >=' => $res->C,
                     'total_d >=' => $res->D,
                     'total_e >=' => $res->E,
-                    'join_time >= ' . $duration,
+                    'join_time >= ' => $duration,
                     'topup >'    => '0',
                 ));
             else :
