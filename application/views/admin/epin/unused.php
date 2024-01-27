@@ -8,6 +8,8 @@
  * Developed for: Codepeople India
  **************************************************************************************************/
 ?>
+<div class="table-responsive">
+    
 <table  id="example" class="table table-striped">
     <thead>
         <tr>
@@ -37,6 +39,9 @@
         <?php } ?>
     </tbody>
 </table>
+
+</div>
+
 <!-----<div class="pull-right">
     <?php echo $this->pagination->create_links(); ?>
 </div>---->

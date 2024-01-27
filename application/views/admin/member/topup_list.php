@@ -8,7 +8,9 @@
  * Developed for: Camwel Corporate Solution PVT LTD
  **************************************************************************************************/
 ?>
-<table  class="table table-striped">
+<div class="row">
+    <div class="col-sm-12 " style="overflow-x: auto;">
+    <table  class="table table-striped">
     <thead>
         <tr>
             <th>SN</th>
@@ -34,6 +36,11 @@
         <?php } ?>
     </tbody>
 </table>
+
+    </div>
+</div>
+
+
 <div class="pull-right">
     <?php echo $this->pagination->create_links(); ?>
 </div>

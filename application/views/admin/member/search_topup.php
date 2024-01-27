@@ -17,12 +17,11 @@
     <div class="col-sm-6">
         <label>Topup Amount</label>
         <select name="amt" id="amt"class="form-control">
-            <option value="4000"> ₹ 4,000.00</option>
-            <option value="8000"> ₹ 8,000.00</option>
-            <option value="12000">₹ 12,000.00</option>
-            <option value="16000">₹ 16,000.00</option>
-            <option value="25000">₹ 25,000.00</option>
-            <option value="60000">₹ 60,000.00</option>
+            <option value="">Select</option>
+            <?php foreach($amount as $am):?>
+            <option value="<?php echo number_format($am['prod_price'],2); ?>"> ₹ <?php echo number_format($am['prod_price'],2) ;?></option>
+            <?php endforeach;?>
+            
         </select>
     </div>
     <div class="col-sm-6">

@@ -65,7 +65,7 @@ if ($this->login->check_session() == FALSE) {
         }
     </script>
 
-   
+
 
 </head>
 
@@ -306,7 +306,7 @@ if ($this->login->check_session() == FALSE) {
                                     </ul>
                                 </li>
 
-                                
+
                                 <li class="nav-item">
                                     <a href="#" class="nav-link nav-toggle">
                                         <i class="fa fa-users"></i>
@@ -315,13 +315,16 @@ if ($this->login->check_session() == FALSE) {
                                     </a>
                                     <ul class="sub-menu">
                                         <li class="nav-item">
+                                            <a href="<?php echo site_url('Agent/add-agent') ?>" class="nav-link ">
+                                                <span class="title">Add Agents</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
                                             <a href="<?php echo site_url('Agent/view-agents') ?>" class="nav-link ">
                                                 <span class="title">View/Manage Agents</span>
                                             </a>
                                         </li>
-
-                                       
-                                       
                                     </ul>
                                 </li>
 
@@ -467,7 +470,7 @@ if ($this->login->check_session() == FALSE) {
                                                     <span class="title">Search Payout</span>
                                                 </a>
                                             </li>
-                                            
+
                                             <li class="nav-item">
                                                 <a href="<?php echo site_url('income/tax-report') ?>" class="nav-link ">
                                                     <span class="title">Tax Report</span>
@@ -985,7 +988,7 @@ if ($this->login->check_session() == FALSE) {
                                                                                                                             $data = 0;
                                                                                                                         }
                                                                                                                         echo $data ?></p>
-                                           
+
                                             <p>Today's Earning</p>
                                         </div>
                                     </div>
@@ -998,7 +1001,7 @@ if ($this->login->check_session() == FALSE) {
 
                                     <div class="card-body no-padding height-9">
                                         <div class="row">
-                                            <div id="donutchart" style="width: auto; height: 500px;"></div>
+                                            <div id="donutchart" style="max-width: 100%; max-height: 400px;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1109,11 +1112,23 @@ if ($this->login->check_session() == FALSE) {
         $(document).ready(function() {
             var table = $('#example').DataTable({
                 lengthChange: false,
-                buttons: [
-                    {extend:'copy',footer:true}, 
-                    {extend:'excel',footer:true},
-                    {extend:'pdf',footer:true},
-                    {extend:'print',footer:true}] ///'colvis' for column visiblity
+                buttons: [{
+                        extend: 'copy',
+                        footer: true
+                    },
+                    {
+                        extend: 'excel',
+                        footer: true
+                    },
+                    {
+                        extend: 'pdf',
+                        footer: true
+                    },
+                    {
+                        extend: 'print',
+                        footer: true
+                    }
+                ] ///'colvis' for column visiblity
             });
 
             table.buttons().container()

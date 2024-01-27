@@ -31,41 +31,45 @@
     <a href="javascript:;" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-lg pull-right"><i class="fa fa-chrome"></i>
         Add Purchase</a>
 </div>
-<table id="example" class="table table-striped">
-    <thead>
-        <tr>
-            <th>SN</th>
-            <th>Supplier Name</th>
-            <th>Bill No</th>
-            <th>Total Amt</th>
-            <th>Paid Amt</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        $sn = 1;
-        foreach ($bills as $e) { ?>
+<div class="table-responsive">
+
+    <table id="example" class="table table-striped">
+        <thead>
             <tr>
-                <td><?php echo $sn++; ?></td>
-                <td><?php echo $e->supplier; ?></td>
-                <td><?php echo $e->bill_no; ?></td>
-                <td><?php echo config_item('currency') . $e->bill_amt; ?></td>
-                <td><?php echo config_item('currency') . $e->paid_amt; ?></td>
-                <td><?php echo $e->date; ?></td>
-                <td>
-                    <a href="<?php echo site_url('accounting/purchase_view/' . $e->id); ?>" class="btn btn-info btn-xs">View</a>
-                    <?php if ($e->bill_amt - $e->paid_amt > 0) { ?>
-                        <a href="javascript:;" data-toggle="modal" onclick="document.getElementById('id').value='<?php echo $e->id ?>'" data-target="#addFund" class="btn btn-success btn-xs">Pay
-                            Balance</a>
-                    <?php } ?>
-                    <a onclick="return confirm('Are you sure you want to delete this Bill ?')" href="<?php echo site_url('accounting/remove_purchase/' . $e->id); ?>" class="btn btn-danger btn-xs">Delete</a>
-                </td>
+                <th>SN</th>
+                <th>Supplier Name</th>
+                <th>Bill No</th>
+                <th>Total Amt</th>
+                <th>Paid Amt</th>
+                <th>Date</th>
+                <th>Actions</th>
             </tr>
-        <?php } ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php
+            $sn = 1;
+            foreach ($bills as $e) { ?>
+                <tr>
+                    <td><?php echo $sn++; ?></td>
+                    <td><?php echo $e->supplier; ?></td>
+                    <td><?php echo $e->bill_no; ?></td>
+                    <td><?php echo config_item('currency') . $e->bill_amt; ?></td>
+                    <td><?php echo config_item('currency') . $e->paid_amt; ?></td>
+                    <td><?php echo $e->date; ?></td>
+                    <td>
+                        <a href="<?php echo site_url('accounting/purchase_view/' . $e->id); ?>" class="btn btn-info btn-xs">View</a>
+                        <?php if ($e->bill_amt - $e->paid_amt > 0) { ?>
+                            <a href="javascript:;" data-toggle="modal" onclick="document.getElementById('id').value='<?php echo $e->id ?>'" data-target="#addFund" class="btn btn-success btn-xs">Pay
+                                Balance</a>
+                        <?php } ?>
+                        <a onclick="return confirm('Are you sure you want to delete this Bill ?')" href="<?php echo site_url('accounting/remove_purchase/' . $e->id); ?>" class="btn btn-danger btn-xs">Delete</a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
+
 <div class="pull-right">
     <?php echo $this->pagination->create_links(); ?>
 </div>

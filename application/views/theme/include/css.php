@@ -28,6 +28,8 @@
 	<link rel="stylesheet" href="<?php echo base_url()?>theme_assets/css/responsive.css" type="text/css" media="all" />
 	<!-- widget CSS -->
 	<link rel="stylesheet" href="<?php echo base_url()?>theme_assets/css/widget.css" type="text/css" media="all" />
+	<!-- lightbox -->
+	<link rel="stylesheet" href="<?php echo base_url()?>axxets/lightbox/css/lightbox.css" type="text/css" media="all" />
 	<!-- modernizr js -->	
 	<script src="<?php echo base_url()?>theme_assets/js/vendor/modernizr-3.5.0.min.js"></script>
 

@@ -22,17 +22,20 @@ $top_id = $this->uri->segment('3') ? $this->uri->segment('3') : config_item('top
     </div>
     <hr />
 </div> -->
-<table id="example" class="table table-striped">
-    <thead>
-        <tr>
-            <th>S.N.</th>
-            <th>Name</th>
-            <th>Join Date</th>
-            <th>Total Downline</th>
-            <th>Sponsor</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php $this->plan_model->ref_list($top_id) ?>
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table id="example" class="table table-striped">
+        <thead>
+            <tr>
+                <th>S.N.</th>
+                <th>Name</th>
+                <th>Join Date</th>
+                <th>Total Downline</th>
+                <th>Sponsor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $this->plan_model->ref_list($top_id) ?>
+        </tbody>
+    </table>
+
+</div>

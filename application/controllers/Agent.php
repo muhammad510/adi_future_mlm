@@ -1,4 +1,5 @@
 <?php
+
 /***************************************************************************************************
  * Copyright (c) 2020. by Camwel Corporate Solution PVT LTD
  * This project is developed and maintained by Camwel Corporate Solution PVT LTD.
@@ -7,7 +8,7 @@
  * Pvt Ltd
  **************************************************************************************************/
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Agent extends CI_Controller
 {
@@ -23,18 +24,19 @@ class Agent extends CI_Controller
         $this->load->library('pagination');
     }
 
-    public function login_member($id){
+    public function login_member($id)
+    {
 
         $data     = $this->db_model->select_multi("id, name, password, email, last_login_ip, last_login, status", 'member', array('id' => $id));
         $session = md5($user . time());
         $this->session->set_userdata(array(
-                                         'user_id'    => $data->id,
-                                         'email'      => $data->email,
-                                         'name'       => $data->name,
-                                         'ip'         => $data->last_login_ip,
-                                         'last_login' => $data->last_login,
-                                         'session'    => $session,
-                                     ));
+            'user_id'    => $data->id,
+            'email'      => $data->email,
+            'name'       => $data->name,
+            'ip'         => $data->last_login_ip,
+            'last_login' => $data->last_login,
+            'session'    => $session,
+        ));
         $data2 = array(
             'last_login_ip' => $this->input->ip_address(),
             'last_login'    => time(),
@@ -42,9 +44,6 @@ class Agent extends CI_Controller
         );
         $this->db_model->update($data2, 'member', array('id' => $data->id));
         redirect(site_url('member'));
-
-
-
     }
 
     public function view_agents()
@@ -55,11 +54,11 @@ class Agent extends CI_Controller
         $config['total_rows'] =  $this->db->select('*')->from('member')->where('rank', 'Agent')->get()->num_rows();
 
         $page                 = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $this->pagination->initialize($config); 
+        $this->pagination->initialize($config);
 
         $this->db->select('id, name, phone, sponsor, topup, join_time, total_a, total_b, total_c, total_d, total_e,rank')
-                 ->from('member')->where('rank','Agent');
-        $this->db->limit($config['per_page'], $page)->ORDER_BY('secret','DESC');
+            ->from('member')->where('rank', 'Agent');
+        $this->db->limit($config['per_page'], $page)->ORDER_BY('secret', 'DESC');
 
         $data['members'] = $this->db->get()->result_array();
 
@@ -76,35 +75,9 @@ class Agent extends CI_Controller
     }
 
 
-    public function view_subagent($position)
-    {
-        $config['base_url']   = site_url('Agent/view_agents');
-        $config['per_page']   = 10;
-        // $config['total_rows'] = $this->db_model->count_all('member');
-        $config['total_rows'] =  $this->db->select('*')->from('member')->where('rank', 'sub_agent')->get()->num_rows();
-        // $page                 = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $this->pagination->initialize($config); 
 
-        $this->db->select('id, name, phone, sponsor,position, topup,rank, join_time, total_a, total_b, total_c, total_d, total_e,rank')
-                 ->from('member')->where('position',$position)->where('rank','sub_agent');
 
-        $this->db->ORDER_BY('secret','DESC'); 
 
-        $data['members'] = $this->db->get()->result_array();
-
-        // echo $this->db->last_query();
-        // die;
-        //  echo "<pre>";
-        // print_r( $data['members']);
-        // die;
-
-        $data['title']      = 'List of Sub Agent';
-        $data['breadcrumb'] = 'List of Sub Agent';
-        $data['layout']     = 'agents/list_subagent.php';
-        $this->load->view('admin/base', $data);
-    }
-
-   
 
     public function user_detail($id)
     {
@@ -115,11 +88,10 @@ class Agent extends CI_Controller
         $data['breadcrumb'] = 'Member Detail';
         $data['layout']     = 'member/view_detail.php';
         $this->load->view('admin/base', $data);
-
-
     }
 
-    public function topup_member(){
+    public function topup_member()
+    {
 
         $this->form_validation->set_rules('userid', 'User ID', 'trim|required');
         $this->form_validation->set_rules('amt', 'Top Up Amount', 'trim|required');
@@ -129,28 +101,24 @@ class Agent extends CI_Controller
             $data['layout']     = 'member/topup.php';
             $data['products']   = $this->db->get('product')->result_array();
             $this->load->view('admin/base', $data);
-        }
-        else {
+        } else {
             $epin_value = $this->input->post('amt');
             $product = $this->input->post('product');
             $userid = $this->common_model->filter($this->input->post('userid'));
 
             // changes by ishu start
-            $pack=$this->db->select('id,prod_price')->where('id',$product)->from('product')->get()->row();
-            if($pack->prod_price!=$epin_value)
-            {
+            $pack = $this->db->select('id,prod_price')->where('id', $product)->from('product')->get()->row();
+            if ($pack->prod_price != $epin_value) {
                 $this->session->set_flashdata('common_flash', '<div class="alert alert-danger">Package Price and e-Pin value Not Matched. Must be Same</div>');
-                redirect('Users/topup_member','refresh');
+                redirect('Users/topup_member', 'refresh');
             }
 
-            $sign = $this->db->select('signup_package,topup')->where('id',$userid)->from('member')->get()->row();
-            if($sign->signup_package==$product)
-            {
+            $sign = $this->db->select('signup_package,topup')->where('id', $userid)->from('member')->get()->row();
+            if ($sign->signup_package == $product) {
                 $this->session->set_flashdata('common_flash', '<div class="alert alert-danger">Member Already Topup With same Package </div>');
-                redirect('Users/topup_member','refresh');
-
+                redirect('Users/topup_member', 'refresh');
             }
-           
+
             // changes by ishu end
 
             $data   = array(
@@ -171,8 +139,7 @@ class Agent extends CI_Controller
             $this->load->model('earning');
             if (config_item('fix_income') == "Yes" && $epin_value > 0 && config_item('give_income_on_topup') == "Yes") {
                 $this->earning->fix_income($userid, $this->db_model->select('sponsor', 'member', array('id' => $userid)), $epin_value);
-            }
-            else if (config_item('fix_income') !== "Yes" && $epin_value > 0 && config_item('give_income_on_topup') == "Yes") {
+            } else if (config_item('fix_income') !== "Yes" && $epin_value > 0 && config_item('give_income_on_topup') == "Yes") {
                 $this->earning->reg_earning($userid, $this->db_model->select('position', 'member', array('id' => $userid)), $this->db_model->select('signup_package', 'member', array('id' => $userid)));
             }
 
@@ -182,20 +149,20 @@ class Agent extends CI_Controller
         }
     }
 
-    
+
 
     public function blocked_members()
     {
         $config['base_url']   = site_url('users/view_members');
 
-        $config['total_rows'] = $this->db_model->count_all('member',array('status' => 'Block'));
+        $config['total_rows'] = $this->db_model->count_all('member', array('status' => 'Block'));
         $page                 = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $this->pagination->initialize($config); 
+        $this->pagination->initialize($config);
 
         $this->db->select('id, name, phone, sponsor, topup, join_time, total_a, total_b, total_c, total_d, total_e')
-                 ->from('member')->where(array('status' => 'Block'));
+            ->from('member')->where(array('status' => 'Block'));
 
-        $this->db->limit($config['per_page'], $page); 
+        $this->db->limit($config['per_page'], $page);
 
         $data['members'] = $this->db->get()->result_array();
 
@@ -203,7 +170,6 @@ class Agent extends CI_Controller
         $data['breadcrumb'] = 'Blocked Members';
         $data['layout']     = 'member/list_member.php';
         $this->load->view('admin/base', $data);
-
     }
 
     public function latest_members()
@@ -215,7 +181,7 @@ class Agent extends CI_Controller
         $this->pagination->initialize($config); */
 
         $this->db->select('id, name, phone, sponsor, join_time, total_a, total_b, total_c, total_d, total_e')
-                 ->from('member')->order_by('join_time', 'DESC');
+            ->from('member')->order_by('join_time', 'DESC');
 
         /* $this->db->limit($config['per_page'], $page); */
 
@@ -225,7 +191,6 @@ class Agent extends CI_Controller
         $data['breadcrumb'] = 'Latest Members';
         $data['layout']     = 'member/list_member.php';
         $this->load->view('admin/base', $data);
-
     }
 
     public function edit_user($id)
@@ -252,7 +217,7 @@ class Agent extends CI_Controller
             );
             if (trim($password) !== "") {
                 $array = $array + array('password' => password_hash($password, PASSWORD_DEFAULT));
-                $array = $array + array('show_password' =>$password);
+                $array = $array + array('show_password' => $password);
             }
             $this->db->where('id', $this->input->post('id'));
             $this->db->update('member', $array);
@@ -276,8 +241,7 @@ class Agent extends CI_Controller
 
             $this->session->set_flashdata("common_flash", "<div class='alert alert-success'>User has been updated.</div>");
             redirect(site_url('users/view_members'));
-        }
-        else {
+        } else {
             $data['data']    = $this->db_model->select_multi('id, name, email, phone, address, join_time, status', 'member', array('id' => $id));
             $data['profile'] = $this->db_model->select_multi('*', 'member_profile', array('userid' => $id));
 
@@ -298,7 +262,7 @@ class Agent extends CI_Controller
         $enddate   = $this->input->post('enddate');
 
         $this->db->select('id, name, phone, sponsor, join_time, total_a, total_b, total_c, total_d, total_e, topup')
-                 ->from('member')->order_by('name', 'ASC');
+            ->from('member')->order_by('name', 'ASC');
         if (trim($phone) !== "") {
             $this->db->where('phone', $phone);
         }
@@ -324,7 +288,6 @@ class Agent extends CI_Controller
         $data['breadcrumb'] = 'Search Results';
         $data['layout']     = 'member/list_member.php';
         $this->load->view('admin/base', $data);
-
     }
 
     public function search_user()
@@ -342,8 +305,7 @@ class Agent extends CI_Controller
 
             $this->session->set_flashdata("common_flash", "<div class='alert alert-danger'>User Cannot be deleted as there are other users below this user.</div>");
             redirect(site_url('users/view_members'));
-        }
-        else {
+        } else {
             $position = $this->db_model->select_multi('position, placement_leg, my_img', 'member', array('id' => $id));
             $data     = array(
                 $position->placement_leg => 0,
@@ -363,12 +325,11 @@ class Agent extends CI_Controller
             $this->session->set_flashdata("common_flash", "<div class='alert alert-success'>User has been deleted from database.</div>");
             redirect(site_url('users/view_members'));
         }
-
     }
 
     public function update_legs()
     {
-        $this->db->select("id,A,B,C,D,E")->from("member");///->where("topup >", "0")
+        $this->db->select("id,A,B,C,D,E")->from("member"); ///->where("topup >", "0")
         $data = $this->db->get()->result();
         foreach ($data as $result) {
             if ($result->A !== "0") {
@@ -461,31 +422,32 @@ class Agent extends CI_Controller
         $config['per_page'] = 10;
         $config['total_rows'] = $this->db_model->count_all('topup_record');
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $this->pagination->initialize($config); 
+        $this->pagination->initialize($config);
 
-        $this->db->select('id,user_id,epin,topup_amount,topup_by,topup_by')->from('topup_record')->limit($config['per_page'], $page); 
+        $this->db->select('id,user_id,epin,topup_amount,topup_by,topup_by')->from('topup_record')->limit($config['per_page'], $page);
 
         $data['topup'] = $this->db->get()->result_array();
 
         $data['title'] = 'Topup List';
         $data['layout'] = 'member/topup_list.php';
         $this->load->view('admin/base', $data);
-
     }
-    
-    public function search_topup(){
+
+    public function search_topup()
+    {
         $data['title'] = 'Search Topup';
         $data['layout'] = 'member/search_topup.php';
         $this->load->view('admin/base', $data);
     }
-    public function search_topup_list(){
+    public function search_topup_list()
+    {
         $userid    = $this->common_model->filter($this->input->post('userid'));
         $amt       = $this->input->post('amt');
         $startdate = $this->input->post('startdate');
         $enddate   = $this->input->post('enddate');
 
         $this->db->select('*')
-                 ->from('topup_record');
+            ->from('topup_record');
         if (trim($userid) !== "") {
             $this->db->where('topup_by', $userid);
         }
@@ -504,40 +466,39 @@ class Agent extends CI_Controller
         $data['title'] = 'Topup List';
         $data['layout'] = 'member/topup_list.php';
         $this->load->view('admin/base', $data);
-
     }
 
 
     public function binary_payout()
-    {   
+    {
         $member = $this->db->select('id,A,B,status,topup')->get('member')->result_array();
-        foreach($member as $m){
+        foreach ($member as $m) {
             //echo $m['id']." => A =>".$m['A']."=> B =>".$m['B'];
             $A = $this->db->select('topup,status')->where(array('id' => $m['A']))->get('member')->row_array();
             $B = $this->db->select('topup,status')->where(array('id' => $m['B']))->get('member')->row_array();
             //echo "Topup A =>".$A['topup']." Topup B =>".$B['topup']."<br>";
-            if($A['topup'] > 0 && $B['topup'] > 0 && $B['status'] == "Active" && $A['status'] == "Active" && $m['topup'] > 0 && $m['status'] == "Active" && !empty($A['topup']) && !empty($B['topup']) && !empty($B['status']) && !empty($A['status'])){
+            if ($A['topup'] > 0 && $B['topup'] > 0 && $B['status'] == "Active" && $A['status'] == "Active" && $m['topup'] > 0 && $m['status'] == "Active" && !empty($A['topup']) && !empty($B['topup']) && !empty($B['status']) && !empty($A['status'])) {
                 //echo "<pre>";
                 //print_r($member);
                 $count_product_binary = $this->db_model->count_all("product", array("matching_income >" => 0));
                 $count_fix_binary = $this->db_model->select("binary_income", "fix_income", array("1 >" => 0));
                 $count_invst_binary = $this->db_model->select("matching_income", "investment_pack", array(0));
                 if (0 < $count_product_binary || 0 < $count_fix_binary || 0 < $count_invst_binary) {
-                    $this->db->select("id,total_a,total_b,paid_a,paid_b,signup_package,mypv,total_a_matching_incm,total_b_matching_incm, total_c_matching_incm, paid_a_matching_incm, paid_b_matching_incm")->from("member")->where('status',"Active")->where("topup >", 0)->where("total_a >", 0)->where("total_b >", 0)->where("paid_a <", "total_a", false)->where("paid_b <", "total_b", false);
+                    $this->db->select("id,total_a,total_b,paid_a,paid_b,signup_package,mypv,total_a_matching_incm,total_b_matching_incm, total_c_matching_incm, paid_a_matching_incm, paid_b_matching_incm")->from("member")->where('status', "Active")->where("topup >", 0)->where("total_a >", 0)->where("total_b >", 0)->where("paid_a <", "total_a", false)->where("paid_b <", "total_b", false);
                     $data = $this->db->get()->result();
                     foreach ($data as $result) {
                         $this->load->model("earning");
                         $data2 = array(
-                            "total_a" => $result->total_a, 
-                            "total_b" => $result->total_b, 
-                            "paid_a" => $result->paid_a, 
-                            "paid_b" => $result->paid_b, 
-                            "signup_package" => $result->signup_package, 
+                            "total_a" => $result->total_a,
+                            "total_b" => $result->total_b,
+                            "paid_a" => $result->paid_a,
+                            "paid_b" => $result->paid_b,
+                            "signup_package" => $result->signup_package,
                             //"mypv" => $result->mypv, 
                             //"total_a_matching_incm" => $result->total_a_matching_incm, 
                             //"total_b_matching_incm" => $result->total_b_matching_incm, 
                             //"total_c_matching_incm" => $result->total_c_matching_incm, 
-                            "paid_a_matching_incm" => $result->paid_a_matching_incm, 
+                            "paid_a_matching_incm" => $result->paid_a_matching_incm,
                             "paid_b_matching_incm" => $result->paid_b_matching_incm
                         );
                         //echo $result->id."<br><pre>";
@@ -545,10 +506,187 @@ class Agent extends CI_Controller
                         $this->earning->process_binary($result->id, $data2);
                     }
                 }
-                redirect(site_url('users/topup-member')); 
-            }else{
+                redirect(site_url('users/topup-member'));
+            } else {
                 redirect(site_url('users/topup-member'));
             }
         }
     }
+
+
+
+    // ====================================agent adding section start here=================================
+
+    function add_agent()
+    {
+        $this->form_validation->set_rules('name', 'Name', 'trim|required');
+
+        $this->form_validation->set_rules('address_1', 'Address Line 1', 'trim|required');
+        // $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
+        // $this->form_validation->set_rules('password_2', 'Retype Password', 'trim|required|matches[password]');
+        $this->form_validation->set_rules('phone', 'Phone No', 'trim|required|is_unique[member.phone]');
+        $this->form_validation->set_rules('email', 'Email Address', 'trim|required|is_unique[member.email]');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Add Agent';
+            $data['breadcrumb'] = 'Add Agent';
+            $data['layout'] = 'agents/add_agent.php';
+            $this->load->view('admin/base', $data);
+        } else {
+
+
+            $name = $this->input->post('name');
+            $sponsor = $this->common_model->filter(1001);
+            $email = $this->input->post('email');
+            $phone = $this->input->post('phone');
+            $leg = $this->input->post('leg') ? $this->input->post('leg') : 'A';
+            $position = $this->input->post('position') ? $this->common_model->filter($this->input->post('position')) : $sponsor;
+            $product = 0;
+            // $product = 1;
+            $epin = $this->input->post('epin');
+            $pg = $this->input->post('pg');
+            $address_1 = $this->input->post('address_1');
+            $address_2 = $this->input->post('address_2');
+            $username = time();
+            $password = config_item('ID_EXT') . rand(10000, 100000);
+            $password_enc = password_hash($password, PASSWORD_DEFAULT);
+            $divert_pg = FALSE;
+
+
+            $id = rand(1000000, 9999999);
+            if ($this->db_model->count_all('member', array('id' => $id)) > 0) {
+                $id = $id + 1;
+                if ($this->db_model->count_all('member', array('id' => $id)) > 0) {
+                    $id = $id + 2;
+                    if ($this->db_model->count_all('member', array('id' => $id)) > 0) {
+                        $id = $id + 3;
+                    }
+                }
+            }
+
+
+
+            $data = array(
+                'id' => $id,
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'prefix' => "ADFIA",
+                'username' => $username,
+                'password' => $password_enc,
+                'show_password' => $password,
+                'sponsor' => 1001,
+                'position' => 1001,
+                'signup_package' => $product,
+                'rank'  => 'Agent',
+                'epin' => $epin,
+                'address' => $address_1 . "<br/>" . $address_2,
+                'join_time' => date('Y-m-d'),
+                'placement_leg' => $leg,
+                'registration_ip' => $this->input->ip_address(),
+                'topup' =>   1,
+                'my_business' => ($mybusiness) ? $mybusiness : 0,
+                'mypv' => $product_detail->pv ? $product_detail->pv : 0,
+                'status' => 'active',
+            );
+            $this->db->insert('member', $data);
+
+            $user_id = $this->db_model->select('id', 'member', array(
+                'phone' => $phone,
+                'username' => $username,
+                'registration_ip' => $this->input->ip_address,
+                'epin' => $epin,
+            ));
+
+
+            if ($user_id) :
+
+                $data = array(
+                    'userid' => $user_id,
+                    'balance' => "0",
+                );
+                $this->db->insert('wallet', $data);
+                $data = array(
+                    'userid' => $user_id,
+                    'balance' => "0.00",
+                );
+                $this->db->insert('other_wallet', $data);
+
+                $data = array(
+                    'userid' => $user_id,
+                );
+                $this->db->insert('member_profile', $data);
+
+                $data = array(
+                    'userid' => $user_id,
+                );
+                $this->db->insert('level', $data);
+                $this->update_level($user_id);
+
+            else :
+                $this->session->set_flashdata('site_flash', '<div class="alert alert-danger">Some error occured while registering. please contact admin or try again.</div>');
+                redirect(site_url('site/register'));
+            endif;
+
+
+            //FIX
+            //FIX
+            $dataz = array(
+                'total_' . strtolower($leg) => 1,
+            );
+
+            $this->db->where('id', $position);
+            $this->db->update('member', $dataz);
+            //FIX
+            //FIX
+
+            $zdata = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $position));
+            $zsponsor = $zdata->sponsor;
+
+            $this->db->where('id', $zsponsor);
+            $this->db->set('total_' . strtolower($leg), 'total_' . strtolower($leg) . '+1', FALSE);
+            $this->db->update('member');
+
+            //FIX
+            //FIX
+
+            while ($zsponsor !== NULL) {
+                $zdata2 = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $zsponsor));
+                $zsponsor2 = $zdata2->sponsor;
+
+                $this->db->where('id', $zsponsor2);
+                $this->db->set('total_' . strtolower($leg), 'total_' . strtolower($leg) . '+1', FALSE);
+                $this->db->update('member');
+                $zsponsor = $zsponsor2;
+            }
+
+            //FIX
+            //FIX
+
+
+            $dat['agent'] = $this->db->where('id', $user_id)->select('*')->from('member')->get()->row();
+            // $dat['title'] = 'Registration Successful';
+            $dat['breadcrumb'] = 'Registration Successful';
+            $dat['layout'] = 'agents/success.php';
+            $this->load->view('admin/base', $dat);
+        }
+    }
+
+
+
+    private function update_level($user_id, $i = 20, $e = 1)
+    {
+        if ($i > 0) {
+            $lvl_position_id = $this->db_model->select('position', 'member', array('id' => $user_id));
+            if (strlen($lvl_position_id) > 2) {
+                $get_level = $this->db_model->select('level' . $e, 'level', array('userid' => $lvl_position_id));
+                $this->db->set('level' . $e, $get_level + 1);
+                $this->db->where('userid', $lvl_position_id);
+                $this->db->update('level');
+                $this->update_level($lvl_position_id, $i - 1, $e + 1);
+            }
+        }
+    }
+
+
+    // ====================================agent adding section End here===================================
 }

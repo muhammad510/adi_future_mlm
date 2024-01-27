@@ -40,37 +40,42 @@ $data = $this->db->get('tax_report')->result();
     </form>
 </div>
 <hr />
-<table id="example" class="table table-striped">
-    <thead>
-        <tr>
-            <th>S.N.</th>
-            <th>User ID</th>
-            <th>Payout Amount</th>
-            <th>Tax</th>
-            <th>Net Paid</th>
-            <th>Tax (%)</th>
-            <th>Date</th>
-            <th>#</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        $sn = 1;
-        foreach ($data as $e) { $amt =$this->db->select('without_tax_amt')->where('id',$e->payout_id)->get(' withdraw_request')->row_array();
-        ?>
-            <tr>
-                <td><?php echo $sn++; ?></td>
-                <td><?php echo $e->userid ?></td>
-                <td><?php echo config_item('currency') .  $amt['without_tax_amt'] ?></td>
-                <td><?php echo config_item('currency') . $e->tax_amount ?></td>
-                <td><?php echo config_item('currency') . $e->amount ?></td>
-                <td><?php echo $e->tax_percnt ?></td>
-                <td><?php echo $e->date ?></td>
-                <td>
 
-                    <a href="<?php echo site_url('income/tax-remove/' . $e->id) ?>" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure want to delete this record ?')">Delete</a>
-                </td>
+<div class="table-responsive">
+    
+    <table id="example" class="table table-striped">
+        <thead>
+            <tr>
+                <th>S.N.</th>
+                <th>User ID</th>
+                <th>Payout Amount</th>
+                <th>Tax</th>
+                <th>Net Paid</th>
+                <th>Tax (%)</th>
+                <th>Date</th>
+                <th>#</th>
             </tr>
-        <?php } ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php
+            $sn = 1;
+            foreach ($data as $e) { $amt =$this->db->select('without_tax_amt')->where('id',$e->payout_id)->get(' withdraw_request')->row_array();
+            ?>
+                <tr>
+                    <td><?php echo $sn++; ?></td>
+                    <td><?php echo $e->userid ?></td>
+                    <td><?php echo config_item('currency') .  $amt['without_tax_amt'] ?></td>
+                    <td><?php echo config_item('currency') . $e->tax_amount ?></td>
+                    <td><?php echo config_item('currency') . $e->amount ?></td>
+                    <td><?php echo $e->tax_percnt ?></td>
+                    <td><?php echo $e->date ?></td>
+                    <td>
+    
+                        <a href="<?php echo site_url('income/tax-remove/' . $e->id) ?>" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure want to delete this record ?')">Delete</a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+
+</div>

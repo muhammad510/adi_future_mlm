@@ -1,10 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('Can we play bubu together ?');
+// =================social site Link start=================
+$config['facebook']="https://www.facebook.com/";
+$config['instagram']="https://www.instagram.com/";
+$config['twitter']="https://twitter.com";
+$config['linkedin']="https://in.linkedin.com/";
+$config['pinterest']="https://in.pinterest.com/";
+$config['youtube']="https://www.youtube.com/";
+// =================social site Link end=================
 
+// ============== contact information start===============
 $config['company_name'] = "ADI FUTURE";
-$config['company_address'] = "95 G/F Main, 25 FT Road, BLK-E-3RD      Molar Band Extn, Badarpur (South      Delhi), New Delhi, South Delhi- 110044,      Delhi";
-$config['ID_EXT'] = 'ADIF'; # ID Extension eg: DM1001
-$config['currency'] = "₹                    "; # Sitewide currency
+$config['company_address'] = "95 G/F Main, 25 FT Road, BLK-E-3RD      Molar Band Extn, Badarpur (South Delhi), New Delhi, South Delhi- 110044,      Delhi";
+$config['mobile'] ="7544954455";
+$config['info_email'] ="info@adifuture.com";
+$config['support_email'] ="support@adifuture.com";
+// ============== contact information end===============
+
+
+$config['ID_EXT'] = 'ADI'; # ID Extension eg: DM1001
+$config['currency'] = "₹"; # Sitewide currency
 $config['iso_currency'] = "INR                                                 "; # ISO Code of currency
 $config['leg'] = "5"; # 1, 2, 3, 4, 5(eg: for binary plan leg is 2)
 $config['show_leg_choose'] = "Yes"; ## Whether to show placement ID box at registration

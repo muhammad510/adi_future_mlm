@@ -29,7 +29,6 @@ class Site extends CI_Controller
         $layout['title'] = "Home";
         $layout['description'] = "Home, Adi future private ltd";
         $layout['keyword'] = "Best mlm company, earn online";
-
         $layout['news'] = $this->db->select('*')->get('news')->row_array();
         $layout['rewards'] = $this->db->select('r.*,m.name')->join('member as m', 'm.id =r.userid')->get('rewards as r')->result_array();
         $this->load->view('theme/default/base', $layout);
@@ -68,6 +67,14 @@ class Site extends CI_Controller
         $layout['description'] = "Home, Adi future private ltd";
         $layout['keyword'] = "Best mlm company, earn online";
         $layout['layout'] = "event.php";
+        $this->load->view('theme/default/base', $layout);
+    }
+    function e_1()
+    {
+        $layout['title'] = "Events";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
+        $layout['layout'] = "e_1.php";
         $this->load->view('theme/default/base', $layout);
     }
 
@@ -116,6 +123,15 @@ class Site extends CI_Controller
         $this->load->view('theme/default/base', $layout);
     }
 
+    public function privacy_security()
+    {
+        $layout['title'] = "Privacy And security";
+        $layout['description'] = "privacy and security, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
+        $layout['layout'] = "privacy_security.php";
+        $this->load->view('theme/default/base', $layout);
+    }
+
     function mail_us()
     {
 
@@ -130,10 +146,10 @@ class Site extends CI_Controller
         $product_category = $val['product_category'];
 
 
-        $to = " info@adifuture.com";
+        $to = config_item('support_email');
         $subject = "Enquiry From ADI FUTURE ";
         $headers =  'MIME-Version: 1.0' . "\r\n";
-        $headers .= 'From: info@adifuture.com' . "\r\n";
+        $headers .= 'From:' . config_item('support_email') . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 
@@ -174,18 +190,16 @@ class Site extends CI_Controller
 
         $user = $email;
         $user_subject = "Thank You $name";
-        $user_headers = 'From: info@adifuture.com' . "\r\n";
+        $user_headers = 'From:' . config_item('support_email') . "\r\n";
         $user_message = "Dear $name.\nWelcome to ADI FUTURE \n We have got your query.We will reach you soon.\nThank You!";
 
 
         if (mail($to, $subject, $full_message, $headers)) {
             mail($user, $user_subject, $user_message, $user_headers);
-            $layout["response"] = "<h3>Dear <span   style='color:#e70780;'>$name</span>,</h3><blockquote><p>We have got your query. We will contact you soon.<br/>For Quick Enquiry <span style='color:#e70780;'>Call Us</span> at <span ><i class='fas fa-phone-alt px-2 '></i><span> +91 9955215097</span></span></p>
-<p>Thank You!</p></blockquote>";
+            $layout["response"] = "<h3>Dear <span   style='color:#e70780;'>$name</span>,</h3><blockquote><p>We have got your query. We will contact you soon.<br/>For Quick Enquiry <span style='color:#e70780;'>Call Us</span> at <span ><i class='fas fa-phone-alt px-2 '></i><span>+91-" . config_item('mobile') . "</span></span></p><p>Thank You!</p></blockquote>";
         } else {
             // echo $name . $mobile . $whatsapp . $email . $need . $message;
-            $layout["response"] = "<h3>Dear <span  style='color:#e70780;'>$name</span>,</h3><blockquote><p>Something is wrong. It seems like internet is not working well.<br/>For Quick Enquiry <span style='color:#e70780;'>Call Us<span> at <span ><i class='fas fa-phone-alt px-2 '></i><span>+91 9955215097</span></span></p>
-<p>Please, try again!</p><p>Thank You!</p></blockquote>";
+            $layout["response"] = "<h3>Dear <span  style='color:#e70780;'>$name</span>,</h3><blockquote><p>Something is wrong. It seems like internet is not working well.<br/>For Quick Enquiry <span style='color:#e70780;'>Call Us<span> at <span ><i class='fas fa-phone-alt px-2 '></i><span>+91-" . config_item('mobile') . "</span></span></p> <p>Please, try again!</p><p>Thank You!</p></blockquote>";
         }
 
 
@@ -195,6 +209,75 @@ class Site extends CI_Controller
         $layout['keyword'] = "Best mlm company, earn online";
         $layout['layout'] = "thanku.php";
         $this->load->view('theme/default/base', $layout);
+    }
+
+
+    function forget_password()
+    {
+
+        $layout['title'] = "Thank You";
+        $layout['description'] = "Home, Adi future private ltd";
+        $layout['keyword'] = "Best mlm company, earn online";
+        $layout['layout'] = "forget_password.php";
+        $this->load->view('theme/default/base', $layout);
+    }
+
+    function recovery_pass()
+    {
+        // $this->load->helper('email');
+        $dat = $this->input->post();
+        $member = $this->db->select('id,name,show_password,email,phone')->from('member')->where('phone', $dat['mobile'])->where('email', $dat['email'])->get()->row();
+        if (empty($member)) {
+
+            $data = array('text' => 'Data not exist', "icon" => "error");
+        } else {
+            $full_message = "<html>
+            <head><title>Password Recovery</title></head>
+            <body>
+            <table>
+                <tr>
+                <td>Name</td>
+                <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                <td> $member->name</td>
+                </tr>
+                <tr>
+                <td>User Id</td>
+                <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                <td> " . config_item('ID_EXT') . "$member->id</td>'
+                </tr>
+                <tr>
+                <td>Email Id</td>
+                <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                <td> $member->email</td>
+                </tr>
+                <tr>
+                <td>Password</td>
+                <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                <td> $member->show_password</td>
+                </tr>
+                <tr>
+                <td>Mobile No</td>
+                <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                <td> $member->phone</td>
+                </tr>
+                <tr>
+                
+             
+                
+            </table>
+            </body>
+            </html>";
+            $to = $member->email;
+            $subject = "From ADI FUTURE Password recovery";
+            $headers =  'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'From:' . config_item('support_email') . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+            mail($to, $subject, $full_message, $headers);
+
+            $data = array('text' => 'Successfully, Your Credential information sent to register Email!<br> Please Check Email ', "icon" => "success");
+        }
+        echo json_encode($data);
     }
 
     public function register()
@@ -218,10 +301,11 @@ class Site extends CI_Controller
 
         $this->form_validation->set_rules('name', 'Name', 'trim|required');
         $this->form_validation->set_rules('sponsor', 'Sponsor ID', 'trim|required');
-        $this->form_validation->set_rules('address_1', 'Address Line 1', 'trim|required');
+        // $this->form_validation->set_rules('address_1', 'Address Line 1', 'trim|required');
         // $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
         // $this->form_validation->set_rules('password_2', 'Retype Password', 'trim|required|matches[password]');
-        $this->form_validation->set_rules('phone', 'Phone No', 'trim|required');
+        $this->form_validation->set_rules('phone', 'Phone No', 'trim|required|is_unique[member.phone]');
+        $this->form_validation->set_rules('email', 'Email Address', 'trim|required|is_unique[member.email]');
 
         if ($this->form_validation->run() !== FALSE && !empty($this->db_model->select('name', 'member', array('id' => $this->input->post('sponsor'))))) {
 
@@ -231,14 +315,14 @@ class Site extends CI_Controller
             $phone = $this->input->post('phone');
             $leg = $this->input->post('leg') ? $this->input->post('leg') : 'A';
             $position = $this->input->post('position') ? $this->common_model->filter($this->input->post('position')) : $sponsor;
-             $product = $this->input->post('product');
+            $product = $this->input->post('product');
             // $product = 1;
             $epin = $this->input->post('epin');
             $pg = $this->input->post('pg');
             $address_1 = $this->input->post('address_1');
             $address_2 = $this->input->post('address_2');
             $username = time();
-            $password = config_item('ID_EXT').rand(10000,100000);
+            $password = config_item('ID_EXT') . rand(10000, 100000);
             $password_enc = password_hash($password, PASSWORD_DEFAULT);
             $divert_pg = FALSE;
 
@@ -266,11 +350,9 @@ class Site extends CI_Controller
                     redirect(site_url('site/register'));
                 }
             endif;
-            if($epin_value!=$product_detail->prod_price)
-            {
-                $this->session->set_flashdata('site_flash', "<div class='alert alert-danger'>Please enter Correct Epin( epin value must be ". $product_detail->prod_price . ") </div>");
-                    redirect(site_url('site/register'));
-
+            if ($epin_value != $product_detail->prod_price) {
+                $this->session->set_flashdata('site_flash', "<div class='alert alert-danger'>Please enter Correct Epin( epin value must be " . $product_detail->prod_price . ") </div>");
+                redirect(site_url('site/register'));
             }
 
             #####################################################################
@@ -381,16 +463,20 @@ class Site extends CI_Controller
 
             if ($sponsor == 1001 || $sps['rank'] == 'Agent') {
 
-                $rank = ($sps['id'] == 1001) ? 'Agent' : "Member";
-                if($rank=="Agent")
-                {
-                    $prefix='ADIFA'; 
-                    $topup=1;
-                }
-                else{
-                    $prefix='ADIFM'; 
-                    $topup=0;
+                if ($sponsor == 1001) {
+                    $this->session->set_flashdata('site_flash', '<div class="alert alert-danger">Sponsor Id not Valid please try Again!</div>');
 
+
+                    redirect('site/register', 'refresh');
+                }
+
+                $rank = ($sps['id'] == 1001) ? 'Agent' : "Member";
+                if ($rank == "Agent") {
+                    $prefix = 'ADIFA';
+                    $topup = 1;
+                } else {
+                    $prefix = 'ADIFA';
+                    $topup = 0;
                 }
 
                 $data = array(
@@ -398,7 +484,7 @@ class Site extends CI_Controller
                     'name' => $name,
                     'email' => $email,
                     'phone' => $phone,
-                    'prefix'=>$prefix,
+                    'prefix' => config_item('ID_EXT'),
                     'username' => $username,
                     'password' => $password_enc,
                     'show_password' => $password,
@@ -443,64 +529,64 @@ class Site extends CI_Controller
                         'balance' => "0.00",
                     );
                     $this->db->insert('other_wallet', $data);
-    
+
                     $data = array(
                         'userid' => $user_id,
                     );
                     $this->db->insert('member_profile', $data);
-    
+
                     $data = array(
                         'userid' => $user_id,
                     );
                     $this->db->insert('level', $data);
                     $this->update_level($user_id);
-    
+
                 else :
                     $this->session->set_flashdata('site_flash', '<div class="alert alert-danger">Some error occured while registering. please contact admin or try again.</div>');
                     redirect(site_url('site/register'));
                 endif;
-    
+
                 // $data = array(
                 //     $leg => $user_id,
                 // );
                 // $this->db->where('id', $position);
                 // $this->db->update('member', $data);
-    
+
                 //FIX
                 //FIX
                 $dataz = array(
                     'total_' . strtolower($leg) => 1,
                 );
-    
+
                 $this->db->where('id', $position);
                 $this->db->update('member', $dataz);
                 //FIX
                 //FIX
-    
+
                 $zdata = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $position));
                 $zsponsor = $zdata->sponsor;
-    
+
                 $this->db->where('id', $zsponsor);
                 $this->db->set('total_' . strtolower($leg), 'total_' . strtolower($leg) . '+1', FALSE);
                 $this->db->update('member');
-    
+
                 //FIX
                 //FIX
-    
+
                 while ($zsponsor !== NULL) {
                     $zdata2 = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $zsponsor));
                     $zsponsor2 = $zdata2->sponsor;
-    
+
                     $this->db->where('id', $zsponsor2);
                     $this->db->set('total_' . strtolower($leg), 'total_' . strtolower($leg) . '+1', FALSE);
                     $this->db->update('member');
                     $zsponsor = $zsponsor2;
                 }
-    
+
                 //FIX
                 //FIX
-    
-    
+
+
                 if (trim($epin) !== '' && $epin_type == "Multi Use") :
                     $amount = $epin_value - $prod_price;
                     if ($amount <= 0) :
@@ -521,25 +607,33 @@ class Site extends CI_Controller
                 else :
                     $data = array(
                         'status' => 'Used',
-                        'used_by' => $user_id,
+                        'used_by' => user_id,
                         'used_time' => date('Y-m-d'),
                     );
                     $this->db->where('epin', $epin);
                     $this->db->update('epin', $data);
                 endif;
-    
-    
+
+                $e = array(
+                    'user_id' => $user_id,
+                    'epin' => $epin,
+                    'topup_amount' => $epin_value,
+                    'topup_by' => $user_id,
+                    'date' => date('Y-m-d'),
+
+                );
+                $this->db->insert('topup_record', $e);
             }
 
-          
+
 
             //############################ agent registration end########################
 
-            else{
+            else {
                 $data = array(
                     'id' => $id,
                     'name' => $name,
-                    'prefix'=>"ADIFM",
+                    'prefix' => config_item('ID_EXT'),
                     'email' => $email,
                     'phone' => $phone,
                     'username' => $username,
@@ -579,64 +673,64 @@ class Site extends CI_Controller
                         'balance' => "0.00",
                     );
                     $this->db->insert('other_wallet', $data);
-    
+
                     $data = array(
                         'userid' => $user_id,
                     );
                     $this->db->insert('member_profile', $data);
-    
+
                     $data = array(
                         'userid' => $user_id,
                     );
                     $this->db->insert('level', $data);
                     $this->update_level($user_id);
-    
+
                 else :
                     $this->session->set_flashdata('site_flash', '<div class="alert alert-danger">Some error occured while registering. please contact admin or try again.</div>');
                     redirect(site_url('site/register'));
                 endif;
-    
+
                 $data = array(
                     $leg => $user_id,
                 );
                 $this->db->where('id', $position);
                 $this->db->update('member', $data);
-    
+
                 //FIX
                 //FIX
                 $dataz = array(
                     'total_' . strtolower($leg) => 1,
                 );
-    
+
                 $this->db->where('id', $position);
                 $this->db->update('member', $dataz);
                 //FIX
                 //FIX
-    
+
                 $zdata = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $position));
                 $zsponsor = $zdata->sponsor;
-    
+
                 $this->db->where('id', $zsponsor);
                 $this->db->set('total_' . strtolower($leg), 'total_' . strtolower($leg) . '+1', FALSE);
                 $this->db->update('member');
-    
+
                 //FIX
                 //FIX
-    
+
                 while ($zsponsor !== NULL) {
                     $zdata2 = $this->db_model->select_multi("id,name,sponsor", "member", array("id" => $zsponsor));
                     $zsponsor2 = $zdata2->sponsor;
-    
+
                     $this->db->where('id', $zsponsor2);
                     $this->db->set('total_' . strtolower($leg), 'total_' . strtolower($leg) . '+1', FALSE);
                     $this->db->update('member');
                     $zsponsor = $zsponsor2;
                 }
-    
+
                 //FIX
                 //FIX
-    
-    
+
+
                 if (trim($epin) !== '' && $epin_type == "Multi Use") :
                     $amount = $epin_value - $prod_price;
                     if ($amount <= 0) :
@@ -663,17 +757,23 @@ class Site extends CI_Controller
                     $this->db->where('epin', $epin);
                     $this->db->update('epin', $data);
                 endif;
-    
-    
 
-               
+
+                $e = array(
+                    'user_id' => $user_id,
+                    'epin' => $epin,
+                    'topup_amount' => $epin_value,
+                    'topup_by' => $user_id,
+                    'date' => date('Y-m-d'),
+                );
+                $this->db->insert('topup_record', $e);
             }
 
-        
 
 
-            
-         
+
+
+
 
             ##########################################################################
             #
@@ -686,10 +786,67 @@ class Site extends CI_Controller
                     -- www." . $_SERVER['HTTP_HOST'];
                 $this->sms($phone, urlencode($sms));
             endif;
+
+
             $sub = "Welcome to " . config_item('company_name');
-            $msg = "Hellow " . $name . "<br/> Welcome to " . config_item('company_name') . "Just now you have successfully registered with us. Hope your journey with us will remain exciting and rewarding. <hr/>  <strong>User ID :</strong> " . config_item('ID_EXT') . $user_id . "<br/>
+            $msg = "Hello " . $name . "<br/> Welcome to " . config_item('company_name') . "Just now you have successfully registered with us. Hope your journey with us will remain exciting and rewarding. <hr/>  <strong>User ID :</strong> " . config_item('ID_EXT') . $user_id . "<br/>
         <strong>Password :</strong> " . $this->input->post('password') . "
       <hr/><---<br/>Regards,<br/>www." . $_SERVER['HTTP_HOST'];
+
+      ######################################################################################
+       ##      ================ set by ishu start===================                   
+     #######################################################################################
+       
+            // ------------------ sending email to member  start-----------------
+            $to = $email;
+            $from=config_item('info_email');
+            $this->email($to, $sub, $from, $msg);
+            //  ----------------------sending email to member end ------------------
+            //--------------------------- sending confirmation mail to admin start------------------
+            $to = config_item('info_email');
+            $from="Adi Future";
+            $sub="Registration Information";
+            $msg = "<html>
+            <head><title>Registration detail</title></head>
+            <body>
+            <table>
+                <tr>
+                <td>Name</td>
+                <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                <td> $name</td>
+                </tr>
+                <tr>
+                <td>User Id</td>
+                <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                <td> " . config_item('ID_EXT') . "$user_id</td>'
+                </tr>
+                <tr>
+                <td>Email Id</td>
+                <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                <td> $email</td>
+                </tr>
+                <tr>
+                <td>Password</td>
+                <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                <td> $password</td>
+                </tr>
+                <tr>
+                <td>Mobile No</td>
+                <td>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
+                <td> $phone</td>
+                </tr>
+                <tr>   
+            </table>
+            </body>
+            </html>";
+
+            $this->email($to, $sub, $from, $msg);
+            // sending confirmation mail to admin end
+
+
+     ######################################################################################
+       ##      ================ set by ishu end===================                   
+     #######################################################################################
 
             $this->load->config('email');
             if (trim(config_item('smtp_host')) !== "") {
@@ -703,7 +860,7 @@ class Site extends CI_Controller
             # important Data with session.
             #
             ##########################################################################
-            $md=$this->db->select('rank,prefix,show_password')->where('id',$user_id)->from('member')->get()->row();
+            $md = $this->db->select('rank,prefix,show_password')->where('id', $user_id)->from('member')->get()->row();
 
             $this->session->set_userdata('_user_id_', $user_id);
             $this->session->set_userdata('_user_id_', $user_id);
@@ -747,6 +904,22 @@ class Site extends CI_Controller
             $layout['layout'] = "register.php";
             $this->load->view('theme/default/base', $layout);
         }
+    }
+
+    function email($to, $sub, $from, $msg)
+    {
+        //   ============write by israel start===============
+
+        $to = $to;
+        $subject = $sub;
+        $headers =  'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'From:' . $from . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+        mail($to, $subject, $msg, $headers);
+        // =================write by israel end===========
+        return true;
+
     }
 
     public function sms($number, $msg, $post = "")
@@ -818,7 +991,9 @@ class Site extends CI_Controller
                 $status = $this->earning->fix_income($this->session->userdata('_user_id_'), $this->session->userdata('_sponsor_'), $this->session->userdata('_price_'));
             } else {
 
-                $status = $this->earning->reg_earning($this->session->userdata('_user_id_'), $this->session->userdata('_sponsor_'), $this->session->userdata('_product_'), $need_topup = TRUE);
+                $mem =  $this->db->select('position')->where('id', $this->session->userdata('_user_id_'))->get('member')->row();
+
+                $status = $this->earning->reg_earning($this->session->userdata('_user_id_'), $mem->position, $this->session->userdata('_product_'), $need_topup = TRUE);
             }
             if ($status == TRUE) {
                 ######## UNSET SOME PREVIOUS VALUES  #########
@@ -934,7 +1109,7 @@ class Site extends CI_Controller
                 redirect(site_url('member'));
             } else {
                 $this->session->set_flashdata('site_flash', '<div class="alert alert-danger">Invalid Username or Password.</div>');
-                redirect(site_url('site/login'));
+                redirect('site/login');
             }
         }
     }
@@ -1098,10 +1273,10 @@ class Site extends CI_Controller
 
     public function get_user_name()
     {
-        $id=$this->input->post('id');
+        $id = $this->input->post('id');
         // echo $id;
         // echo $this->db_model->select('name', 'member', array('id' => $this->uri->segment(3)));
-        $data=$this->db->select('name,rank')->where('id',$id)->get('member')->row_array();
+        $data = $this->db->select('name,rank')->where('id', $id)->get('member')->row_array();
         echo json_encode($data);
     }
 }

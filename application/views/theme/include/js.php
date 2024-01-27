@@ -1,3 +1,6 @@
+
+
+
 <!-- jquery js -->	
 <script src="<?php echo base_url()?>theme_assets/js/vendor/jquery-3.2.1.min.js"></script>
 	<!-- bootstrap js -->	
@@ -32,4 +35,6 @@
 	<script src="<?php echo base_url()?>theme_assets/js/jquery.scrollUp.js"></script>
 	<!-- theme js -->	
 	<script src="<?php echo base_url()?>theme_assets/js/theme.js"></script>
+	<!-- lightbox -->
+	<script src="<?php echo base_url()?>axxets/lightbox/js/lightbox.js"></script>
 		<!-- jquery js -->	

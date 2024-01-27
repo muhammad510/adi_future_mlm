@@ -228,16 +228,16 @@ class Earning extends CI_Model
 
     public function reg_earning($userid, $position, $packageid, $need_topup = true, $qty = 1)
     {
-      
+
 
 
         $get_topup = $this->db_model->select('topup', 'member', array('id' => $userid));
-        
+
 
         if ($get_topup > "0" or $need_topup === false) :
-         
 
-      
+
+
 
 
             ###############################################################
@@ -260,60 +260,48 @@ class Earning extends CI_Model
             if (trim($data->level_income) !== "") {
                 $ex = explode(',', $data->level_income);
                 $i  = 0;
-                foreach ($ex as $j=>$e) {
-                  
+                foreach ($ex as $j => $e) {
+
                     $e = trim($e);
                     if ($i == 0) {
                         $pay_upline = $position;
                     } else {
                         $pay_upline = $this->find_level_sponsor($position, $i);
-
                     }
 
                     if ($pay_upline > 0 && $e > 0) {
-                        $me=$this->db->select('rank,signup_package')->from('member')->where('id',$pay_upline)->get()->row_array();
-                        if($me['rank']=='Agent' || $me['rank']=='master_agent') 
-                        {
-                           
-                          break;
+                        $me = $this->db->select('rank,signup_package')->from('member')->where('id', $pay_upline)->get()->row_array();
+                        if ($me['rank'] == 'Agent' || $me['rank'] == 'master_agent') {
+
+                            break;
                         }
 
-                        if($j<2)
-                        {
-                         
+                        if ($j < 2) {
+
 
                             $this->pay_earning($pay_upline, $userid, 'Level Income', $e);
-                        }
-                        else{
-                          
-                            if($me['signup_package']>=$j || $me['signup_package']==6 )
-                            {
-                               
+                        } else {
+
+                            if ($me['signup_package'] >= $j || $me['signup_package'] == 6) {
+
                                 $this->pay_earning($pay_upline, $userid, 'Level Income', $e);
+                            } else {
 
-                            }
-                            else{
-                              
                                 continue;
-
-
                             }
                         }
-
                     }
-                  
 
-                    
+
+
                     $i++;
                 }
 
                 $this->check_level();
-
-               
             }
 
         endif;
-     
+
 
         return true;
     }
@@ -324,78 +312,62 @@ class Earning extends CI_Model
     {
         if ($i > 0) {
 
-            $this->db->select('position,id,rank')->from('member')->where('id', $position);               
+            $this->db->select('position,id,rank')->from('member')->where('id', $position);
             $result = $this->db->get()->row();
             // print_r($result);
-          
 
-            if (empty($result) || $result->rank=='Agent') {
+
+            if (empty($result) || $result->rank == 'Agent') {
                 return false;
             } else {
                 $i = ($i - 1);
 
                 return $this->find_level_sponsor($result->position, $i);
             }
-        }
-       
-         else {
+        } else {
             return $position;
         }
     }
 
     function check_level()
     {
-        $up_mem=$this->db->select('l.userid,l.level1,l.level2,l.level3,l.level4,l.level5,l.level6,l.level7,l.level8,m.signup_package,m.re_topup')->where('l.level1>=',1)->from('level as l')->join('member as m','m.id=l.userid','left')->get()->result();
-       foreach($up_mem as $up)
-       {
+        $up_mem = $this->db->select('l.userid,l.level1,l.level2,l.level3,l.level4,l.level5,l.level6,l.level7,l.level8,m.signup_package,m.re_topup')->where('l.level1>=', 1)->from('level as l')->join('member as m', 'm.id=l.userid', 'left')->get()->result();
+        foreach ($up_mem as $up) {
 
-        if($up->level1==5 && $up->level2==25 && $up->signup_package==1 &&  $up->re_topup==1)
-        {
-          $va =array('re_topup'=>0);
-          $this->db->where('id',$up->userid)->update('member',$va);
-          echo $this->db->last_query();
-          
+            if ($up->level1 == 5 && $up->level2 == 25 && $up->signup_package == 1 &&  $up->re_topup == 1) {
+                $va = array('re_topup' => 0);
+                $this->db->where('id', $up->userid)->update('member', $va);
+                echo $this->db->last_query();
+            }
+
+            if ($up->level1 == 5 && $up->level2 == 25 && $up->level3 == 125 && $up->signup_package == 2 &&  $up->re_topup == 1) {
+                $va = array('re_topup' => 0);
+                $this->db->where('id', $up->userid)->update('member', $va);
+                echo $this->db->last_query();
+            }
+
+            if ($up->level1 == 5 && $up->level2 == 25 && $up->level3 == 125 && $up->level4 == 625 &&  $up->signup_package == 3 &&  $up->re_topup == 1) {
+                $va = array('re_topup' => 0);
+                $this->db->where('id', $up->userid)->update('member', $va);
+                echo $this->db->last_query();
+            }
+
+            if ($up->level1 == 5 && $up->level2 == 25 && $up->level3 == 125 && $up->level4 == 625 && $up->level5 == 3125 &&  $up->signup_package == 4 &&  $up->re_topup == 1) {
+                $va = array('re_topup' => 0);
+                $this->db->where('id', $up->userid)->update('member', $va);
+                echo $this->db->last_query();
+            }
+
+
+
+            if ($up->level1 == 5 && $up->level2 == 25 && $up->level3 == 125 && $up->level4 == 625 && $up->level5 == 3125 && $up->level6 == 15625 &&  $up->signup_package == 5 &&  $up->re_topup == 1) {
+                $va = array('re_topup' => 0);
+                $this->db->where('id', $up->userid)->update('member', $va);
+                echo $this->db->last_query();
+            }
         }
 
-        if($up->level1==5 && $up->level2==25 && $up->level3==125 && $up->signup_package==2 &&  $up->re_topup==1)
-        {
-          $va =array('re_topup'=>0);
-          $this->db->where('id',$up->userid)->update('member',$va);
-          echo $this->db->last_query();
-          
-        }
-
-        if($up->level1==5 && $up->level2==25 && $up->level3==125 && $up->level4==625 &&  $up->signup_package==3 &&  $up->re_topup==1)
-        {
-          $va =array('re_topup'=>0);
-          $this->db->where('id',$up->userid)->update('member',$va);
-          echo $this->db->last_query();
-          
-        }
-
-        if($up->level1==5 && $up->level2==25 && $up->level3==125 && $up->level4==625 && $up->level5==3125 &&  $up->signup_package==4 &&  $up->re_topup==1)
-        {
-          $va =array('re_topup'=>0);
-          $this->db->where('id',$up->userid)->update('member',$va);
-          echo $this->db->last_query();
-          
-        }
-
-       
-
-        if($up->level1==5 && $up->level2==25 && $up->level3==125 && $up->level4==625 && $up->level5==3125 && $up->level6==15625 &&  $up->signup_package==5 &&  $up->re_topup==1)
-        {
-          $va =array('re_topup'=>0);
-          $this->db->where('id',$up->userid)->update('member',$va);
-          echo $this->db->last_query();
-          
-        }
-
-
-       
-    }
-       
-      return true;
+        return true;
     }
 
 
@@ -543,40 +515,42 @@ class Earning extends CI_Model
  */
     public function reward_process()
     {
-       
+
         $reward = $this->db->get('reward_setting')->result();
-      
+
         foreach ($reward as $res) {
             $duration = date('Y-m-d', '-' . $res->reward_duration);
             if ($duration == date('Y-m-d')) {
                 $duration = date('Y-m-d', '-10 Years');
             }
-            $this->db->select('id')->from('member')->where(array(
+            $this->db->select('id,rank')->from('member')->where(array(
                 'total_a >=' => $res->A,
                 'total_b >=' => $res->B,
                 'total_c >=' => $res->C,
                 'total_d >=' => $res->D,
                 'total_e >=' => $res->E,
-                'join_time >= '=> $duration,
+                'join_time >= ' => $duration,
                 'topup >' => '0'
             ));
             $data = $this->db->get()->result();
-         
+
             foreach ($data as $result) {
-              
-                $count = $this->db_model->count_all('rewards', array(
-                    'userid'    => $result->id,
-                    'reward_id' => $res->id,
-                ));
-              
-              
-                if ($count <= 0) {
-                    $array = array(
-                        'reward_id' => $res->id,
+
+                if ($result->rank != 'master_agent' && $result->rank != 'agent') {
+                    $count = $this->db_model->count_all('rewards', array(
                         'userid'    => $result->id,
-                        'date'      => date('Y-m-d'),
-                    );
-                    $this->db->insert('rewards', $array);
+                        'reward_id' => $res->id,
+                    ));
+
+
+                    if ($count <= 0) {
+                        $array = array(
+                            'reward_id' => $res->id,
+                            'userid'    => $result->id,
+                            'date'      => date('Y-m-d'),
+                        );
+                        $this->db->insert('rewards', $array);
+                    }
                 }
             }
         }
@@ -592,7 +566,7 @@ class Earning extends CI_Model
                 $duration = date('Y-m-d', '-10 Years');
             }
             if ($res->based_on == "Member") :
-                $this->db->select('id')->from('member')->where(array(
+                $this->db->select('id,rank')->from('member')->where(array(
                     'total_a >=' => $res->A,
                     'total_b >=' => $res->B,
                     'total_c >=' => $res->C,
@@ -618,8 +592,12 @@ class Earning extends CI_Model
                 $array = array(
                     'rank' => $res->rank_name,
                 );
-                $this->db->where('id', $result->id);
-                $this->db->update('member', $array);
+                if ($result->rank != "Agent" && $result->rank != 'master_agent') {
+                    $this->db->where('id', $result->id);
+                    $this->db->update('member', $array);
+                } else {
+                    continue;
+                }
             }
         }
     }

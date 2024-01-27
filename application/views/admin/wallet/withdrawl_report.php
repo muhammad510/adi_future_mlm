@@ -53,6 +53,7 @@ $data = $this->db->get('withdraw_request')->result();
     </form>
 </div>
 <hr />
+<div class="table-responsive">
 <table id="example" class="table table-striped">
     <thead>
         <tr>
@@ -83,3 +84,6 @@ $data = $this->db->get('withdraw_request')->result();
         <?php } ?>
     </tbody>
 </table>
+
+</div>
+

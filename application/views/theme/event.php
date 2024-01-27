@@ -1,197 +1,126 @@
 
-	
-	<!-- ============================================================== -->
-	<!-- Start adi_future Breatcome Area -->
-	<!-- ============================================================== -->
-	<div class="breatcome_area d-flex align-items-center" style="height:300px;background:url(<?php echo base_url()?>theme_assets/images/slider/slider-10.jpg);">
+	<!--==================================================-->
+<!-- Start adi_future Slider Area -->
+<!--==================================================-->
+<div class="slider_list owl-carousel">
+	<div class="slider_area d-flex align-items-center slider1" style=" background-image: url(https://www.oyorooms.com/blog/wp-content/uploads/2018/02/event.jpg);" id="home">
 		<div class="container">
 			<div class="row">
+				<!--Start Single Portfolio -->
 				<div class="col-lg-12">
-					<div class="breatcome_title">
-						<div class="breatcome_title_inner pb-2">
-							<h2>Events</h2>
-						</div>
-						<div class="breatcome_content">
-							<ul>
-								<li><a href="<?php echo base_url();?>">Home</a> <i class="fa fa-angle-right"></i> <a href="javaScript:void(0);"> Gallery</a> <i class="fa fa-angle-right"></i> <span>Event</span></li>
-							</ul>
+					<div class="single_slider">
+						<div class="slider_content">
+							<div class="slider_text">
+								<div class="slider_text_inner">
+									<h5 style="padding-left:15px;">Welcome to ADI Future  Events</h5>
+									<h1>Stand Out From Crowd</h1>
+									<h3 style="color:white;margin-bottom:32px;margin-top:22px;padding-left:4px;">BUILD YOUR BRAND SUCCESS </h1><br>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- ============================================================== -->
-	<!-- End adi_future Breatcome Area -->
-	<!-- ============================================================== -->
-	
-	
 
 
-	<!--==================================================-->
-	<!----- Start adi_future Team Area ----->
-	<!--==================================================-->
-	<div class="team_area pt-80 pb-75"  >
+	<div class="slider_area d-flex align-items-center slider2" style="background-image: url(https://media.istockphoto.com/id/499517325/photo/a-man-speaking-at-a-business-conference.jpg?s=612x612&w=0&k=20&c=gWTTDs_Hl6AEGOunoQ2LsjrcTJkknf9G8BGqsywyEtE=);">
 		<div class="container">
-		<div class="row">
-				<div class="col-lg-12 grid-item">
-					<div class="row">
-						<!--portfolio owl curousel -->
-						<div class="case_study_list owl-carousel curosel-style">
-							<!--Start Single Portfolio -->
-							<div class="col-lg-12 pdn_0">
-								<div class="single_case_study">
-									<div class="single_case_study_inner">
-										<div class="single_case_study_thumb" style="padding:6px;">
-											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/2.jpg" alt="" /></a>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-							<!--Start Single Portfolio -->
-							<div class="col-lg-12 pdn_0">
-								<div class="single_case_study">
-									<div class="single_case_study_inner">
-										<div class="single_case_study_thumb" style="padding:6px;">
-											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/1.jpg" alt="" /></a>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-							<!--Start Single Portfolio -->
-							<div class="col-lg-12 pdn_0">
-								<div class="single_case_study">
-									<div class="single_case_study_inner">
-										<div class="single_case_study_thumb" style="padding:6px;">
-											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/8.jpg" alt="" /></a>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-							
-							<!--Start Single Portfolio -->
-							<div class="col-lg-12 pdn_0">
-								<div class="single_case_study">
-									<div class="single_case_study_inner">
-										<div class="single_case_study_thumb" style="padding:6px;">
-											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/3.jpg" alt="" /></a>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-							<!--Start Single Portfolio -->
-							<div class="col-lg-12 pdn_0">
-								<div class="single_case_study">
-									<div class="single_case_study_inner">
-										<div class="single_case_study_thumb" style="padding:6px;">
-											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/4.jpg" alt="" /></a>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-							<!--Start Single Portfolio -->
-							<div class="col-lg-12 pdn_0">
-								<div class="single_case_study">
-									<div class="single_case_study_inner"> 
-										<div class="single_case_study_thumb" style="padding:6px;">
-											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/5.jpg" alt="" /></a>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-							<!--Start Single Portfolio -->
-							<div class="col-lg-12 pdn_0">
-								<div class="single_case_study">
-									<div class="single_case_study_inner">
-										<div class="single_case_study_thumb" style="padding:6px;">
-											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/6.jpg" alt="" /></a>
-										</div>
-									</div>
-									<
-								</div>
-							</div>
-							<!--Start Single Portfolio -->
-							<div class="col-lg-12 pdn_0">
-								<div class="single_case_study">
-									<div class="single_case_study_inner">
-										<div class="single_case_study_thumb" style="padding:6px;">
-											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/7.jpg" alt="" /></a>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-							
-						</div>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--==================================================-->
-	<!----- End adi_future Team Area ----->
-	<!--==================================================-->
+			<div class="row">
+				<!--Start Single Portfolio -->
+				<div class="col-lg-12">
+					<div class="single_slider">
+						<div class="slider_content">
+							<div class="slider_text">
+								<div class="slider_text_inner">
+									<h1 style="color:white!important;">ADI FUTURE</h1>
+									<h1 style="color:#00247E!important;"> </h1>
 
-		<!--==================================================-->
-	<!----- Start adi_future Team Area ----->
-	<!--==================================================-->
-	<div class="team_area pt-80 pb-75" style="margin-top:-155px;">
-		<div class="container">
-		<div class="row">
-				<div class="col-lg-12 grid-item">
-					<div class="row">
-						<!--portfolio owl curousel -->
-						<div class="case_study_list owl-carousel curosel-style">
-							<!--Start Single Portfolio -->
-							<div class="col-lg-12 pdn_0">
-								<div class="single_case_study">
-									<div class="single_case_study_inner">
-										<div class="single_case_study_thumb" style="padding:6px;">
-											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/2.jpg" alt="" /></a>
-										</div>
-									</div>
-								
+									<h5 style="color:white!important; font-size:12px;">"Welcome to ADI Future, where possibilities <br>unfold. Join our MLM journey for innovation, <br>growth, and a prosperous future together."</h5>
+
 								</div>
 							</div>
-							<!--Start Single Portfolio -->
-							<div class="col-lg-12 pdn_0">
-								<div class="single_case_study">
-									<div class="single_case_study_inner">
-										<div class="single_case_study_thumb" style="padding:6px;">
-											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/1.jpg" alt="" /></a>
-										</div>
-									</div>
-									
-								</div>
-							</div>
-							<!--Start Single Portfolio -->
-							<div class="col-lg-12 pdn_0">
-								<div class="single_case_study">
-									<div class="single_case_study_inner">
-										<div class="single_case_study_thumb" style="padding:6px;">
-											<a href="javaScript:void(0);"><img src="<?php echo base_url()?>theme_assets/images/galery/8.jpg" alt="" /></a>
-										</div>
-									</div>
-									<div>
-								</div>
-							</div>
-							
-						
-							
 						</div>
 					</div>
-					
 				</div>
 			</div>
 		</div>
 	</div>
-	<!--==================================================-->
-	<!----- End adi_future Team Area ----->
-	<!--==================================================-->
+
+
+	
+	<div class="slider_area d-flex align-items-center slider3" style="background-image: url(https://www.gordonattard.com/wp-content/uploads/2017/09/20161112_091841-1024x768.jpg);">
+		<div class="container">
+			<div class="row">
+				<!--Start Single Portfolio -->
+				<div class="col-lg-12">
+					<div class="single_slider">
+						<div class="slider_content">
+							<div class="slider_text">
+								<div class="slider_text_inner">
+									<h1 style="color:white!important;">ADI FUTURE</h1>
+									<h1 style="color:#00247E!important;"> </h1>
+
+									<h5 style="color:white!important; font-size:12px;">"Welcome to ADI Future, where possibilities <br>unfold. Join our MLM journey for innovation, <br>growth, and a prosperous future together."</h5>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+<!--==================================================-->
+<!-- End adi_future Slider Area -->
+<!--==================================================-->
+
+<style>
+	a img {
+    width: 300px;
+    transition: transform 1s ease; /* Adding a smooth transition effect */
+}
+
+a img:hover {
+    /* width: 350px; */
+    transform: rotateX(90) translateX(100px); /* Adjust the value as needed */
+}
+
+
+</style>
+
+<!-- gallery with lightbox  sdtartd -->
+
+<div class="about_area pt-85 pb-70">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h3 class="text-center text-primary">Events Album</h3>
+				</div>
+				
+				<div class="col-4"></div>
+				<div class="col-4">
+					<a href="<?php echo base_url()?>site/e_1"><img src="https://media.istockphoto.com/id/597959356/photo/female-teacher-addressing-university-students-in-a-classroom.jpg?s=1024x1024&w=is&k=20&c=jOwsOLS5QVLNSUljAKpsMaMaJYLmf6bH_uqwXBUJSj0=" alt="">
+					<p class="text-center">Events:e_1</p>
+				</a>
+				</div>
+				<div class="col-4"></div>
+
+
+				
+				
+			</div>
+		</div>	
+	</div>
+
+<!-- gallery with lightbox  end -->
+
+
+	
+
+	

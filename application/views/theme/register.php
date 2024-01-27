@@ -25,64 +25,20 @@
             <div class="col-md-1"></div>
 
             <!-- start here -->
-            <div class="col-md-10" >
+            <div class="col-md-10">
                 <div class="row">
 
                     <?php echo validation_errors('<div class="alert alert-danger">', '</div>') ?>
                     <?php echo $this->session->flashdata('site_flash') ?>
 
-                   
 
-                    <div class="col-md-12">
-                        <div class="form-group ">
-                          
-                            <input type="text" class="form-control" id="name" name="name" value="<?php echo set_value('name') ?>" placeholder="Enter Name*">
-                        </div>
-                    </div>
 
-                    <div class="col-md-12">
+                      <div class="col-md-12">
                         <div class="form-group">
-                           
-                            <input type="text" class="form-control" value="<?php echo set_value('phone') ?>" id="phone" name="phone" placeholder="Enter Phone Number*">
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                          
-                            <input type="email" class="form-control" value="<?php echo set_value('email') ?>" id="email" name="email" placeholder="Enter Email">
-                        </div>
-                    </div>
-
-                  
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                        
-                            <input type="text" class="form-control" value="<?php echo set_value('address_1') ?>" id="address_1" name="address_1" placeholder="Enter Address1*">
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                          
-                            <input type="text" class="form-control" value="<?php echo set_value('address_2') ?>" id="address_2" name="address_2" placeholder="Enter Address2">
-                        </div>
-                    </div>
-                    <!-- ######################password######################### -->
-
-                   
-
-                  
-
-
-                    <div class="col-md-12">
-                        <div class="form-group">                          
-                            <input type="text" class="form-control" onchange="get_user_name('#sponsor', '#spn_res')" value="<?php if ($this->uri->segment(3) !== "epin") {
-                                                                                                            $uri4 = $this->uri->segment(4);
-                                                                                                        };
-                                                                                                        echo set_value('sponsor', $uri4) ?>" id="sponsor" name="sponsor" placeholder="sponsor Id*">
+                            <input type="text" class="form-control" onchange="get_user_name('#sponsor', '#spn_res')" value="<?php  if ($this->uri->segment(3) !== "epin") {
+                                                                                                                                $uri4 = $this->uri->segment(4);
+                                                                                                                            };
+                                                                                                                            echo set_value('sponsor', $uri4) ?>" id="sponsor" name="sponsor" placeholder="sponsor Id*">
                             <span id="spn_res" style="color: red; font-weight: bold"></span>
                         </div>
                     </div>
@@ -93,16 +49,16 @@
                             <div class="form-group">
                                 <label for="position" class="control-label">Placement ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="psn_res" style="color: red; font-weight: bold"></span></label>
                                 <input type="text" class="form-control" onchange="get_user_name('#position', '#psn_res')" id="position" value="<?php if ($this->uri->segment(3) !== "epin") {
-                                                                                                                                $uri4 = $this->uri->segment(4);
-                                                                                                                            };
-                                                                                                                            echo set_value('position', $uri4) ?>" name="position" id="position" placeholder="Where you want to place the ID">
+                                                                                                                                                    $uri4 = $this->uri->segment(4);
+                                                                                                                                                };
+                                                                                                                                                echo set_value('position', $uri4) ?>" name="position" id="position" placeholder="Where you want to place the ID">
                             </div>
                         <?php
                         } ?>
                     </div>
 
 
-                    <div class="col-md-12" id="pos"  style="display: none;">
+                    <div class="col-md-12" id="pos" style="display: none;">
                         <?php if (config_item('leg') == "1") {
                             echo form_hidden('leg', 'A');
                         } else {
@@ -110,8 +66,8 @@
                         ?>
                                 <div class="form-group">
                                     <label for="leg" class="control-label">Position<span class="text-danger">*</span></label>
-                                    <select id="leg" name="leg" class="form-control">
-                                        <option value="">Select One</option>
+                                    <select id="leg" name="leg" class="form-control" required>
+                                       
                                         <?php
                                         $lg = '';
                                         if (trim($this->uri->segment(3)) !== "" && trim($this->uri->segment(3)) !== "epin") {
@@ -128,6 +84,54 @@
                     </div>
 
 
+
+
+
+                    <div class="col-md-12">
+                        <div class="form-group ">
+
+                            <input type="text" class="form-control" id="name" name="name" value="<?php echo set_value('name') ?>" placeholder="Enter Name*">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" value="<?php echo set_value('phone') ?>" id="phone" name="phone" placeholder="Enter Phone Number*">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+
+                            <input type="email" class="form-control" value="<?php echo set_value('email') ?>" id="email" name="email" placeholder="Enter Email">
+                        </div>
+                    </div>
+
+
+
+                    <!-- <div class="col-md-12">
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" value="<?php echo set_value('address_1') ?>" id="address_1" name="address_1" placeholder="Enter Address1*">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" value="<?php echo set_value('address_2') ?>" id="address_2" name="address_2" placeholder="Enter Address2">
+                        </div>
+                    </div> -->
+                    <!-- ######################password######################### -->
+
+
+
+
+
+
+                  
 
                     <!-- <div class="col-md-12">
                         <?php //if (config_item('show_join_product') == "Yes") {
@@ -154,8 +158,8 @@
                             <div class="form-group" id="e_pin">
                                 <label for="epin" class="control-label">e-PIN</label>
                                 <input type="text" class="form-control" value="<?php if (trim($this->uri->segment(3)) == "epin") {
-                                                                echo set_value('epin', $this->uri->segment(4));
-                                                            } ?>" id="epin" name="epin" placeholder="e-PIN*">
+                                                                                    echo set_value('epin', $this->uri->segment(4));
+                                                                                } ?>" id="epin" name="epin" placeholder="e-PIN*">
                             </div>
                         <?php } ?>
                     </div>
@@ -217,6 +221,7 @@
 } ?>
 
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script type="text/javascript">
     function toogle_div(id1, id2) {
@@ -239,30 +244,62 @@
     //         console.log(data)
     //     });
     // }
+   
+    $(document).ready(function(){
+          $("#spn_res").show('slow');
+            get_user_name('#sponsor', '#spn_res')
 
-    function get_user_name(id,result)
-    {
+    });
+      
+    $('#sponsor').on({
+        keyup: function() {
+            $("#spn_res").show('slow');
+            get_user_name('#sponsor', '#spn_res')
+        },
+        keydown: function() {
+            $("#spn_res").show('slow');
+            get_user_name('#sponsor', '#spn_res')
+        },
+        change: function() {
+            $("#spn_res").show('slow');
+            get_user_name('#sponsor', '#spn_res')
+        },
        
+    });
+
+    function chan(f) {
+        $('#d').html(f);
+    }
+
+    function get_user_name(id, result) {
+
         var id = $(id).val();
         $.ajax({
-            url:"<?php echo site_url('site/get_user_name') ?>",
-            type:"post",
-            data:{"id":id},
-            dataType:"json",
-            success:function(data)
-            {
-                if(data.rank=="master_agent" || data.rank=="Agent")
-                {
-                   
-                      $(result).html(data.name+'<i class="text-dark">('+data.rank+')</i>');
-                      $("#pos").hide('slow');
-                }
-                else{
-                    $(result).html(data.name+'<i class="text-dark">('+data.rank+')</i>');
-                    $("#pos").show('slow');
+            url: "<?php echo site_url('site/get_user_name') ?>",
+            type: "post",
+            data: {
+                "id": id
+            },
+            dataType: "json",
+            success: function(data) {
+                console.log((data));
+
+                if (data != null) {
+                    if (data.rank == "master_agent" || data.rank == "Agent") {
+
+                        $(result).html(data.name + '<i class="text-dark">(' + data.rank + ')</i>');
+                        $("#pos").hide('slow');
+                    } else {
+                        $(result).html(data.name + '<i class="text-dark">(' + data.rank + ')</i>');
+                        $("#pos").show('slow');
+                    }
+                } else {
+                      $(result).html( '<i></i>');
+                        $("#pos").hide('slow');
+
                 }
             }
         })
 
-    } 
+    }
 </script>

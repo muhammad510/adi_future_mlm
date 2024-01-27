@@ -48,11 +48,8 @@
                     <td>
                        
                         <a href="<?php echo site_url('Agent/user_detail/' . $e['id']); ?>" class="btn btn-warning btn-xs">View</a>
-                        <a href="<?php echo site_url('Agent/view_subagent/' . $e['id']); ?>" class="btn btn-warning btn-xs">View subagent</a>
                         <a href="<?php echo site_url('users/edit_user/' . $e['id']); ?>" class="btn btn-info btn-xs">Edit</a>
-                        
-
-                        <a href="<?php echo site_url('users/login_member/' . $e['id']); ?>" target="_blank" class="btn btn-danger btn-xs">Login</a>
+                         <a href="<?php echo site_url('users/login_member/' . $e['id']); ?>" target="_blank" class="btn btn-danger btn-xs">Login</a>
                     </td>
                 </tr>
             <?php } ?>

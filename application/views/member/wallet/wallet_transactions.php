@@ -14,29 +14,32 @@ $this->db->select('id, transfer_from, transfer_to, amount, time')->from('transfe
 $data = $this->db->get()->result();
 ?>
 
-<table id="example" class="table table-striped">
-    <thead>
-        <tr>
-            <th>S.N.</th>
-            <th>Transferred From</th>
-            <th>Transferred To</th>
-            <th>Amount</th>
-            <th>Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        $sn = 1;
-        foreach ($data as $e) {
-
-        ?>
+<div class="table-responsive">
+    <table id="example" class="table table-striped">
+        <thead>
             <tr>
-                <td><?php echo $sn++; ?></td>
-                <td><?php echo $e->transfer_from ?></td>
-                <td><?php echo $e->transfer_to ?></td>
-                <td><?php echo config_item('currency') . $e->amount ?></td>
-                <td><?php echo $e->time ?></td>
+                <th>S.N.</th>
+                <th>Transferred From</th>
+                <th>Transferred To</th>
+                <th>Amount</th>
+                <th>Date</th>
             </tr>
-        <?php } ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php
+            $sn = 1;
+            foreach ($data as $e) {
+    
+            ?>
+                <tr>
+                    <td><?php echo $sn++; ?></td>
+                    <td><?php echo $e->transfer_from ?></td>
+                    <td><?php echo $e->transfer_to ?></td>
+                    <td><?php echo config_item('currency') . $e->amount ?></td>
+                    <td><?php echo $e->time ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+
+</div>

@@ -22,7 +22,7 @@ $array_src = array(
 );
 
 $array_rplc = array(    
-    $detail->prefix,
+    config_item('ID_EXT'),
     $this->session->user_id,
     $detail->name,
     $detail->phone,

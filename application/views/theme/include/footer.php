@@ -19,7 +19,7 @@
 	<div class="footer-middle pt-95" style="background-image:url(<?php echo base_url()?>theme_assets/images/call-bg.png)" > 
 		<div class="container"style=" margin-top:-66px;">
 			<div class="row">
-				<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="col-lg-4 col-md-6 col-sm-12">
 					<div class="widget widgets-company-info">
 						<div class="footer-bottom-logo pb-40">
 							<img src="<?php echo base_url()?>theme_assets/images/adi_image/logo_2.png" alt="logo"  style="height:40px; width:200px;" />
@@ -33,31 +33,33 @@
 								<a href="javaScript:void(0);"><p>Follow Us</p></a>
 							</div>
 							<div class="follow-company-icon" >
-								<a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
-								<a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
-								<a href="https://www.linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a>
-								<a href="https://www.skype.com" target="_blank"><i class="fa fa-skype"></i></a>
+								<a href="<?php echo config_item('facebook')?>" target="_blank"><i class="fa fa-facebook"></i></a>
+								<a href="<?php echo config_item('twitter')?>" target="_blank"><i class="fa fa-twitter"></i></a>
+								<a href="<?php echo config_item('linkedin')?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+								<a href="<?php echo config_item('youtube')?>" target="_blank"><i class="fa fa-youtube-play"></i></a>
+								<a href="<?php echo config_item('instagram')?>" target="_blank"><i class="fa fa-instagram"></i></a>
+								
 							</div>
+
+							
 						</div>
 					</div>					
 				</div>
+<!-- 				
 				<div class="col-lg-3 col-md-6 col-sm-12" style="padding-left:82px;">
 					<div class="widget widget-nav-menu">
-						<h4 class="widget-title pb-4">Frequently Asked Questions</h4>
+						<h4 class="widget-title pb-4"></h4>
 						<div class="menu-quick-link-container ml-4">
 							<ul id="menu-quick-link" class="menu">
-								<li><a href="javaScript:void(0);"> Privacy & Securty</a></li>
-								<li><a href="javaScript:void(0);"> Terms Of Service</a></li>
-								<li><a href="javaScript:void(0);"> Communications</a></li>
-								<li><a href="javaScript:void(0);"> Product Selling</a></li>
-								<li><a href="javaScript:void(0);"> Referral Terms</a></li>
+								<li><a href="<?php echo base_url()."Site/privacy_security";?>"> Privacy & Securty</a></li>
+								<li><a href="<?php echo base_url()."Site/tc";?>"> Terms Of Service</a></li>
 								<li><a href="javaScript:void(0);"> Disclaimers</a></li>
 							</ul>
 						</div>
 					</div>
-				</div>	
+				</div>	 -->
 	
-				<div class="col-lg-2 col-md-6 col-sm-12 mvs" style="padding-left:66px;">
+				<div class="col-lg-4 col-md-6 col-sm-12 mvs" style="padding-left:66px;">
 					<div id="em-recent-post-widget">
 						<div class="single-widget-item">
 							<h4 class="widget-title pb-3 " >Quick Link</h4>				
@@ -78,23 +80,35 @@
 				</div>
 
 
-		   <div class="col-md-1"></div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mvs_d" >
+		  
+				<div class="col-lg-4 col-md-6 col-sm-12 mvs_d" >
 					<div class="widget widgets-company-info">
 						<h3 class="widget-title pb-4">Our Address</h3>
 						<ul class="text-light " style="margin-top:30px;">
 						<li class="mvs_d" style="list-style:none;"> <i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;95 G/F Main, 25 FT Road, BLK-E-3RD &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Molar Band Extn, Badarpur  (South &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delhi), New Delhi, South Delhi- 110044, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delhi</li>
-						<li style="list-style:none;"><i class="fa fa-phone"></i>&nbsp;&nbsp;<a href="tel:9955215097" class="text-light">+91 9955215097</a></li>
-						<li style="list-style:none;"> <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:info@adifuture.com;" class="text-light">info@adifuture.com </a></li>
+						<li style="list-style:none;"><i class="fa fa-phone"></i>&nbsp;&nbsp;<a href="tel:<?php echo config_item('mobile')?>" class="text-light">+91 <?php echo config_item('mobile')?></a></li>
+						<li style="list-style:none;"> <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:<?php echo config_item('info_email')?>" class="text-light"><?php echo config_item('info_email')?> </a></li>
 						
 						</ul>						
-					</div>					
+					</div>	
+									
+				</div>
+				<div class="col-lg-12 col-md-6 col-sm-12 mvs_d">
+					<p style="float:right;" >
+						
+						<a href="<?php echo base_url()?>Site/tc" style="color:white !important;" > Term and Condition |</a>
+						<a href="<?php echo base_url()?>Site/privacy_security" style="color:white !important;" > Security and Privacy</a>
+					</p>
 				</div>
 
+				
 
 
 				
 			</div>
+
+
+
 			<div class="row footer-bottom mt-70 pt-3 pb-1" style="margin-top:-16px;">
 				<div class="col-lg-12 col-md-12">
 					<div class="footer-bottom-content">

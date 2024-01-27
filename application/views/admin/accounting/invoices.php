@@ -31,6 +31,9 @@
     <a href="javascript:;" data-toggle="modal" data-target="#myModal" class="btn btn-danger btn-lg pull-right"><i class="fa fa-print"></i>
         Create Invoice</a>
 </div>
+
+
+<div class="table-responsive">
 <table id="example" class="table table-striped">
     <thead>
         <tr>
@@ -66,6 +69,10 @@
         <?php } ?>
     </tbody>
 </table>
+
+</div>
+
+
 <div class="pull-right">
     <?php echo $this->pagination->create_links(); ?>
 </div>

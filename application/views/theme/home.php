@@ -28,7 +28,7 @@
 								<div class="slider_button pt-5 d-flex" style="margin-top:-70px;">
 									<div class="button">
 										<a href="<?php echo base_url() ?>Site/about">ABOUT US <i class="fa fa-long-arrow-right"></i></a>
-										<a class="active" href="<?php echo base_url() ?>Site/contact">JOIN US <i class="fa fa-long-arrow-right"></i></a>
+										<a class="active" href="<?php echo base_url() ?>Site/register">JOIN US <i class="fa fa-long-arrow-right"></i></a>
 									</div>
 								</div>
 
@@ -75,8 +75,6 @@
 <!--==================================================-->
 <!-- End adi_future Slider Area -->
 <!--==================================================-->
-
-
 
 
 
@@ -202,7 +200,17 @@
 <!-- End adi_future Flipbox Top Feature Area -->
 <!--==================================================-->
 
+<!-- news start -->
+<p  style="padding:10px 0px; background:gray;">
+	<marquee behavior="0" direction="left" onmouseenter="this.stop()" onmouseleave="this.start()">
+		<span style="color:red; font-size:16px;"><sup style="background-color: yellow; padding:4px;color:black;border-radius:50%;">News</sup>&nbsp;<?php echo ($news->description) ? $news->description : "Welcome to " . config_item('company_name'); ?></span>
+	</marquee>
 
+</p>
+
+
+
+<!-- news end -->
 
 
 <!--==================================================-->
@@ -291,8 +299,8 @@
 						<h6>TEAM MEMBER</h6>
 					</div>
 					<div class="section_main_title">
-						<h1>Our Awesome Creative</h1>
-						<h1>Team Member</h1>
+						<h1>Our Awesome Creative Team Member</h1>
+
 					</div>
 					<div class="em_bar">
 						<div class="em_bar_bg"></div>
@@ -304,7 +312,7 @@
 			<div class="col-lg-3">
 				<div class="section_button mt-50">
 					<div class="button two">
-						<a href="javaScript:void(0);">Join Our Team</a>
+						<a href="<?php echo base_url() ?>Site/register">Join Our Team</a>
 					</div>
 				</div>
 			</div>
@@ -316,6 +324,7 @@
 				<div class="row">
 					<!--portfolio owl curousel -->
 					<div class="case_study_list owl-carousel curosel-style">
+
 						<!--Start Single Portfolio -->
 						<div class="col-lg-12 pdn_0">
 							<div class="single_case_study">
@@ -332,6 +341,26 @@
 								</div>
 							</div>
 						</div>
+
+						<!--Start Single Portfolio -->
+						<div class="col-lg-12 pdn_0">
+							<div class="single_case_study">
+								<div class="single_case_study_inner">
+									<div class="" style="padding:6px;margin-top:20px;">
+
+										<p style="text-align:justify; color:primary;font-weight:lighter">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum id similique rerum, vero at ab suscipit quisquam harum! Provident, error?"</p>
+										<p><span style="font-weight:900;">Name:&nbsp;</span>Vikash Kumar Kakkar</p>
+										<p><span style="font-weight:900;">Designation:&nbsp;</span>Director</p>
+
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+
+
 						<!--Start Single Portfolio -->
 						<div class="col-lg-12 pdn_0">
 							<div class="single_case_study">
@@ -349,103 +378,29 @@
 								</div>
 							</div>
 						</div>
-						<!--Start Single Portfolio -->
-						<div class="col-lg-12 pdn_0">
-							<div class="single_case_study">
-								<div class="single_case_study_inner">
-									<div class="single_case_study_thumb" style="padding:6px;">
-										<a href="javaScript:void(0);"><img src="<?php echo base_url() ?>theme_assets/images/galery/8.jpg" alt="" /></a>
-									</div>
-								</div>
-								<div class="single_case_study_content">
-									<div class="single_case_study_content_inner">
-										<h2><a href="javaScript:void(0);">Sonu Kumar</a></h2>
-										<span>FOUNDER</span>
-									</div>
-								</div>
-							</div>
-						</div>
 
 						<!--Start Single Portfolio -->
 						<div class="col-lg-12 pdn_0">
 							<div class="single_case_study">
 								<div class="single_case_study_inner">
-									<div class="single_case_study_thumb" style="padding:6px;">
-										<a href="javaScript:void(0);"><img src="<?php echo base_url() ?>theme_assets/images/galery/3.jpg" alt="" /></a>
+									<div class="" style="padding:6px; margin-top:20px;">
+
+										<p style="text-align:justify; color:primary;font-weight:lighter">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum id similique rerum, vero at ab suscipit quisquam harum! Provident, error?"</p>
+										<p><span style="font-weight:900;">Name:&nbsp;</span>Pooja Kakkar</p>
+										<p><span style="font-weight:900;">Designation:&nbsp;</span>Manager</p>
+
+
 									</div>
 								</div>
-								<div class="single_case_study_content">
-									<div class="single_case_study_content_inner">
-										<h2><a href="javaScript:void(0);">Rajveer Kr </a></h2>
-										<span>MANAGER</span>
-									</div>
-								</div>
+
 							</div>
 						</div>
-						<!--Start Single Portfolio -->
-						<div class="col-lg-12 pdn_0">
-							<div class="single_case_study">
-								<div class="single_case_study_inner">
-									<div class="single_case_study_thumb" style="padding:6px;">
-										<a href="javaScript:void(0);"><img src="<?php echo base_url() ?>theme_assets/images/galery/4.jpg" alt="" /></a>
-									</div>
-								</div>
-								<div class="single_case_study_content">
-									<div class="single_case_study_content_inner">
-										<h2><a href="javaScript:void(0);">Anil Kumar </a></h2>
-										<span>FOUNDER</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--Start Single Portfolio -->
-						<div class="col-lg-12 pdn_0">
-							<div class="single_case_study">
-								<div class="single_case_study_inner">
-									<div class="single_case_study_thumb" style="padding:6px;">
-										<a href="javaScript:void(0);"><img src="<?php echo base_url() ?>theme_assets/images/galery/5.jpg" alt="" /></a>
-									</div>
-								</div>
-								<div class="single_case_study_content">
-									<div class="single_case_study_content_inner">
-										<h2><a href="javaScript:void(0);">Ashish kumar </a></h2>
-										<span>FOUNDER </span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--Start Single Portfolio -->
-						<div class="col-lg-12 pdn_0">
-							<div class="single_case_study">
-								<div class="single_case_study_inner">
-									<div class="single_case_study_thumb" style="padding:6px;">
-										<a href="javaScript:void(0);"><img src="<?php echo base_url() ?>theme_assets/images/galery/6.jpg" alt="" /></a>
-									</div>
-								</div>
-								<div class="single_case_study_content">
-									<div class="single_case_study_content_inner">
-										<h2><a href="javaScript:void(0);">Shiv Kumar </a></h2>
-										<span>FOUNDER</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--Start Single Portfolio -->
-						<div class="col-lg-12 pdn_0">
-							<div class="single_case_study">
-								<div class="single_case_study_inner">
-									<div class="single_case_study_thumb" style="padding:6px;">
-										<a href="javaScript:void(0);"><img src="<?php echo base_url() ?>theme_assets/images/galery/7.jpg" alt="" /></a>
-									</div>
-								</div>
-								<div class="single_case_study_content">
-									<div class="single_case_study_content_inner">
-										<h2><a href="javaScript:void(0);">Anish Kumar </a></h2>
-										<span>FOUNDER</span>
-									</div>
-								</div>
-							</div>
-						</div>
+
+
+
+
+
+
 
 					</div>
 				</div>
@@ -547,14 +502,14 @@
 			<div class="col-lg-9">
 				<div class="section_title white text_left mb-60 mt-3">
 					<div class="phone_number mb-3">
-						<h5>+91 9955215097</h5>
+						<h5>+91-<?php echo config_item('mobile') ?></h5>
 					</div>
 					<div class="section_main_title">
 						<h1>To make requests for the</h1>
 						<h1>further information</h1>
 					</div>
 					<div class="button three mt-40">
-						<a href="javaScript:void(0);">Join With Now<i class="fa fa-long-arrow-right"></i></a>
+						<a href="<?php echo base_url() ?>Site/register">Join With Us<i class="fa fa-long-arrow-right"></i></a>
 					</div>
 
 				</div>
@@ -703,7 +658,3 @@
 <!--==================================================-->
 <!----- End adi_future Testimonial Area ----->
 <!--==================================================-->
-
-
-
-

@@ -9,58 +9,61 @@
  **************************************************************************************************/
 ?>
 <hr />
-<table id="example" class="table table-striped">
-    <thead>
-        <tr style="font-weight: bold">
-            <th>S.N.</th>
-            <th>User ID</th>
-            <th>Reward Name</th>
-            <th>Achieve Date</th>
-            <th>Paid Date</th>
-            <th>Delivery Detail</th>
-            <th>#</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        $sn = 1;
-        foreach ($data as $e) {
+<div class="table-responsive">
 
-        ?>
-            <tr>
-                <td><?php echo $sn++; ?></td>
-                <td><?php echo config_item('ID_EXT') . $e->userid ?></td>
-                <td>
-                    <?php
-                    if ($e->reward_id == 1) {
-                        echo $this->db_model->select('reward_name', 'reward_setting', array('id' => $e->reward_id));
-                    } elseif ($e->reward_id == 2) {
-                        echo $this->db_model->select('reward_name', 'reward_setting', array('id' => $e->reward_id));
-                    } elseif ($e->reward_id == 3) {
-                        echo $this->db_model->select('reward_name', 'reward_setting', array('id' => $e->reward_id));
-                    } elseif ($e->reward_id == 4) {
-                        echo $this->db_model->select('reward_name', 'reward_setting', array('id' => $e->reward_id));
-                    } elseif ($e->reward_id == 5) {
-                        echo $this->db_model->select('reward_name', 'reward_setting', array('id' => $e->reward_id));
-                    } else {
-                        echo $e->reward_id;
-                    }
-                    ?>
-                </td>
-                <td><?php echo $e->date ?></td>
-                <td><?php echo ($e->paid_date == 0000 - 00 - 0) ? 'Not Paid Yet' : $e->paid_date;  ?></td>
-                <td><?php echo !empty($e->tid) ? $e->tid : 'Not Paid Yet'; ?></td>
-                <td>
-                    <?php if ($e->status == "Pending") { ?>
-                        <a data-toggle="modal" data-target="#myModal" onclick="document.getElementById('payid').value='<?php echo $e->id ?>'" class="btn btn-primary btn-xs">Pay</a>
-                    <?php } ?>
-                    <!-- <a href="<?php echo site_url('income/reward_remove/' . $e->id) ?>" class="btn btn-danger btn-xs"
-                       onclick="return confirm('Are you sure want to delete this reward ?')">Delete</a> -->
-                </td>
+    <table id="example" class="table table-striped">
+        <thead>
+            <tr style="font-weight: bold">
+                <th>S.N.</th>
+                <th>User ID</th>
+                <th>Reward Name</th>
+                <th>Achieve Date</th>
+                <th>Paid Date</th>
+                <th>Delivery Detail</th>
+                <th>#</th>
             </tr>
-        <?php } ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php
+            $sn = 1;
+            foreach ($data as $e) {
+    
+            ?>
+                <tr>
+                    <td><?php echo $sn++; ?></td>
+                    <td><?php echo config_item('ID_EXT') . $e->userid ?></td>
+                    <td>
+                        <?php
+                        if ($e->reward_id == 1) {
+                            echo $this->db_model->select('reward_name', 'reward_setting', array('id' => $e->reward_id));
+                        } elseif ($e->reward_id == 2) {
+                            echo $this->db_model->select('reward_name', 'reward_setting', array('id' => $e->reward_id));
+                        } elseif ($e->reward_id == 3) {
+                            echo $this->db_model->select('reward_name', 'reward_setting', array('id' => $e->reward_id));
+                        } elseif ($e->reward_id == 4) {
+                            echo $this->db_model->select('reward_name', 'reward_setting', array('id' => $e->reward_id));
+                        } elseif ($e->reward_id == 5) {
+                            echo $this->db_model->select('reward_name', 'reward_setting', array('id' => $e->reward_id));
+                        } else {
+                            echo $e->reward_id;
+                        }
+                        ?>
+                    </td>
+                    <td><?php echo $e->date ?></td>
+                    <td><?php echo ($e->paid_date == 0000 - 00 - 0) ? 'Not Paid Yet' : $e->paid_date;  ?></td>
+                    <td><?php echo !empty($e->tid) ? $e->tid : 'Not Paid Yet'; ?></td>
+                    <td>
+                        <?php if ($e->status == "Pending") { ?>
+                            <a data-toggle="modal" data-target="#myModal" onclick="document.getElementById('payid').value='<?php echo $e->id ?>'" class="btn btn-primary btn-xs">Pay</a>
+                        <?php } ?>
+                        <!-- <a href="<?php echo site_url('income/reward_remove/' . $e->id) ?>" class="btn btn-danger btn-xs"
+                           onclick="return confirm('Are you sure want to delete this reward ?')">Delete</a> -->
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
 
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-sm">

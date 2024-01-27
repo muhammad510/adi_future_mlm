@@ -36,8 +36,7 @@
         <strong>{{member_name}}</strong> 
     </div>
     <div class="col-md-6">
-        <strong>Date Of Joining:</strong> 
-        <strong>{{member_join_date}}</strong>
+       
     </div>
 </div>
 <div class="">

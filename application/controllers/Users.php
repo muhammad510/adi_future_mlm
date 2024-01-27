@@ -447,6 +447,7 @@ class Users extends CI_Controller
     public function search_topup()
     {
         $data['title'] = 'Search Topup';
+        $data['amount'] = $this->db->select('prod_price')->from('product')->get()->result_array();
         $data['layout'] = 'member/search_topup.php';
         $this->load->view('admin/base', $data);
     }

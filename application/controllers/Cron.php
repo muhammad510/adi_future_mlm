@@ -21,7 +21,9 @@ class Cron extends CI_Controller
     public function weekly()
     {
         $this->payout();
-        //$this->direct_reward();
+        $this->rank_update();
+        // $this->direct_reward();
+        $this->reward();
         echo "<div align=\"center\">Nothing is here so pack your bag and go home little baby..</div>";
     }
     public function daily()

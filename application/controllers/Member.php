@@ -25,10 +25,11 @@ class Member extends CI_Controller
 
     public function index()
     {
-        $data['detail'] = $this->db_model->select_multi('total_a, total_b, total_c, total_d, total_e', 'member', array('id' => $this->session->user_id));
+        $data['detail'] = $this->db_model->select_multi('total_a, total_b, total_c, total_d, total_e,my_img', 'member', array('id' => $this->session->user_id));
         $data['title'] = 'Dashboard';
         $data['breadcrumb'] = 'dashboard';
         $data['products'] = $this->db->get('product')->result_array();
+         $data['news']=$this->db->select('*')->where('id',1)->where('status',1)->from('news')->get()->row();
         $data['epin']      = $this->db->select('epin,amount')->Where(array('issue_to' => $this->session->user_id, 'status' => 'Un-used'))->get('epin')->result_array();
         $this->load->view('member/base', $data);
     }
@@ -99,6 +100,7 @@ class Member extends CI_Controller
         $this->form_validation->set_rules('to', 'To User ID', 'trim|required');
         $this->form_validation->set_rules('qty', 'Number of e-PINs', 'trim|required');
         if ($this->form_validation->run() == false) {
+            $data['package']=$this->db->select('*')->from('product')->get()->result();
             $data['title'] = 'Transfer e-PIN';
             $data['layout'] = 'epin/transfer_epin.php';
             $this->load->view('member/base', $data);
@@ -526,6 +528,26 @@ class Member extends CI_Controller
         }
     }
 
+    function id_card()
+    {
+         
+        $user_id=$this->session->user_id;
+        $data['user']=$this->db->select('*')->from('member')->where('id',$user_id)->get()->row();
+      
+       
+        $data['title'] = 'Id Card Preview';
+        $data['layout'] = "profile/id_card.php";
+        $this->load->view('member/base', $data);
+
+    }
+
+    function print_id_card()
+    {
+        $user_id=$this->session->user_id;
+        $data['user']=$this->db->select('*')->from('member')->where('id',$user_id)->get()->row();
+        $this->load->view('member/profile/_print_id_card', $data);
+    }
+
     public function welcome_letter()
     {
         $data['file_data'] = file_get_contents(FCPATH . "uploads/welcome_letter.txt");
@@ -884,6 +906,36 @@ class Member extends CI_Controller
                 redirect(site_url('tree/my-tree'));
             }
         }
+    }
+    function update_profile_picture()
+    {
+        $data['title'] = 'Update Image';
+        $data['request'] = $this->db->select('*')->from('epin_request')->where('requested_by', $this->session->userdata('user_id'))->order_by('id', 'desc')->get()->result_array();
+        $data['epin_value'] = $this->db->select('prod_price')->from('product')->get()->result();
+        $data['layout'] = 'profile/profile_picture.php';
+        $this->load->view('member/base', $data);
+    }
+    function update_image()
+    {
+        $mem_id=$this->input->post('mem_id');
+       $da= $this->upload_image('member', 'image');
+      
+      if($da['icon']=='success')
+      {
+        $img=$da['text'];
+        $data=array(
+            'my_img'=>$img,
+        );
+        $memb = $this->db->select('my_img')->where('id', $mem_id)->get('member')->row();
+        unlink($memb->my_img);
+        $this->db->where('id',$mem_id)->update('member',$data);
+        $data=array('text'=>"<p style='padding:10px;background:green;color:white'>Successfully Updated Image!<p>" ,"icon"=>"success");
+      }
+      else{
+        $data=array('text'=>"<p style='padding:10px;border:1px solid red;color:white'>".$da['text']."</p>","icon"=>"error");
+      }
+      
+      echo json_encode($data);
     }
 
 

@@ -40,10 +40,10 @@
         <label for="status" class="control-label">Status</label>
         <select class="form-control" id="status"
                 name="status">
-            <option><?php echo $data->status ?></option>
-            <option>Active</option>
-            <option>Block</option>
-            <!-- <option>Suspend</option> -->
+            <option value="">Select</option>
+            <option value="Active"   <?php echo ($data->status=='Active')?'selected':'';?>>Active</option>
+            <option value="Block"    <?php echo ($data->status=='Block')?'selected':'';?>>Block</option>
+            <option value="Suspend" <?php echo ($data->status=='Suspend')?'selected':'';?>>Suspend</option>
         </select>
     </div>
 </div>
@@ -92,11 +92,11 @@
         <input type="text" class="form-control" value="<?php echo set_value('bank_branch', $profile->bank_branch) ?>"
                id="bank_branch" name="bank_branch">
     </div>
-    <div class="form-group col-sm-6">
+    <!-- <div class="form-group col-sm-6">
         <label for="btc_address" class="control-label">BTC Address.</label>
         <input type="text" class="form-control" value="<?php echo set_value('btc_address', $profile->btc_address) ?>"
                id="btc_address" name="btc_address">
-    </div>
+    </div> -->
     <div class="form-group col-sm-6">
         <label for="nominee_name" class="control-label">Nominee Name.</label>
         <input type="text" class="form-control" value="<?php echo set_value('nominee_name', $profile->btc_address) ?>"

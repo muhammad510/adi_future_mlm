@@ -134,8 +134,8 @@ ADI FUTURE, a dynamic MLM (Multi-Level Marketing) company, is driven by a missio
 							<h6>TEAM MEMBER</h6>
 						</div>
 						<div class="section_main_title">
-							<h1>Our Awesome Creative</h1>
-							<h1>Team Member</h1>
+							<h2>Our Awesome Creative Team Member</h2>
+							
 						</div>
 						<div class="em_bar">
 							<div class="em_bar_bg"></div>
@@ -152,6 +152,9 @@ ADI FUTURE, a dynamic MLM (Multi-Level Marketing) company, is driven by a missio
 				</div>
 			</div>
 			<div class="row">
+			<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+				</div>
+
 				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
 					<div class="team_style_three mb-40">
 						<div class="team_style_three_inner">
@@ -193,45 +196,11 @@ ADI FUTURE, a dynamic MLM (Multi-Level Marketing) company, is driven by a missio
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-					<div class="team_style_three mb-40">
-						<div class="team_style_three_inner">
-							<div class="team_style_three-thumb">
-								<div class="team_style_three_thumb_inner">
-									<img src="<?php echo base_url()?>theme_assets/images/team3.jpg" alt="" />
-								</div>
-							</div>
-							<div class="team_style_three_content">
-								<div class="team_style_three_title">
-									<h4>Ashish Kumar </h4>
-								</div>
-								<div class="team_style_three_sub_title">
-									<span>FOUNDER</span>
-								</div>
-								
-							</div>
-						</div>
-					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-					<div class="team_style_three mb-40">
-						<div class="team_style_three_inner">
-							<div class="team_style_three-thumb">
-								<div class="team_style_three_thumb_inner">
-									<img src="<?php echo base_url()?>theme_assets/images/team4.jpg" alt="" />
-								</div>
-							</div>
-							<div class="team_style_three_content">
-								<div class="team_style_three_title">
-									<h4>Rakesh Kumar</h4>
-								</div>
-								<div class="team_style_three_sub_title mt-2" >
-									<span>MANAGER</span>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div>
+
+
+				
+
 				
 			</div>
 		</div>
@@ -249,9 +218,7 @@ ADI FUTURE, a dynamic MLM (Multi-Level Marketing) company, is driven by a missio
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="section_title white text_center mb-60 mt-3">
-						<div class="phone_number mb-3">
-							<h5>+91 9955215097</h5>
-						</div>
+						
 						<div class="section_main_title">
 							<h1>To make requests for the</h1>
 							<h1>further information</h1>

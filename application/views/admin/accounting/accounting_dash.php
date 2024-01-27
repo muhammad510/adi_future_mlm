@@ -7,15 +7,19 @@
  * Developed for: Camwel Corporate Solution PVT LTD
  **************************************************************************************************/
 ?>
-<div class="row">
-    <div class="col-sm-12">
-        Hi, <?php echo $this->session->name ?><br/>
-        We are now presenting you some company financial calculation. This is just a set of system generated data.
-        Please donot assume
-        this
-        data as final data. Please check with your CA or tax consultation before any finalization.<p>&nbsp;</p>
+<div class="table-responsive">
+    <div class="row">
+        <div class="col-sm-12">
+            Hi, <?php echo $this->session->name ?><br/>
+            We are now presenting you some company financial calculation. This is just a set of system generated data.
+            Please donot assume
+            this
+            data as final data. Please check with your CA or tax consultation before any finalization.<p>&nbsp;</p>
+        </div>
     </div>
+
 </div>
+
 
 <div class="row hr_divider">
     <div class="col-sm-12 table-responsive">

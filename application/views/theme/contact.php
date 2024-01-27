@@ -52,7 +52,7 @@
 							<h4>Address</h4>
 						</div>
 						<div class="contact_address_text">
-							<p> 95 G/F Main, 25 FT Road, BLK-E-3RD      Molar Band Extn, Badarpur (South      Delhi),</p>
+							<p><?php echo config_item('company_address')?></p>
 						</div>
 					</div>
 				</div>
@@ -65,8 +65,8 @@
 							<h4>Call Us</h4><br>
 						</div>
 						<div class="contact_address_text">
-							<a href="tel:9955215097">
-								<p>+91 9955215097</p>
+							<a href="tel:<?php echo config_item('mobile')?>">
+								<p>+91-<?php echo config_item('mobile')?></p>
 							</a>
 						</div><br>
 					</div>
@@ -80,8 +80,8 @@
 							<h4>Mail Us</h4>
 						</div><br>
 						<div class="contact_address_text">
-							<a href="mail:info@adifuture.com">
-								<p>info@adifuture.com</p>
+							<a href="mail:<?php echo config_item('info_email')?>">
+								<p><?php echo config_item('support_email')?></p>
 
 							</a>
 						</div><br>

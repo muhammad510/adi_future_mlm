@@ -8,6 +8,11 @@
  * Developed for: Camwel Corporate Solution PVT LTD
  **************************************************************************************************/
 ?>
+
+<div class="table-responsive">
+
+
+
 <table id="example" class="table table-striped">
     <thead>
         <tr>

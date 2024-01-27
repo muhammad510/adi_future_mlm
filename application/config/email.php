@@ -11,8 +11,8 @@
 // Email Setting Start
 
 $config['protocol'] = 'smtp';
-$config['smtp_host'] = 'mail.multiproducts.in';
-$config['smtp_user'] = 'support@multiproducts.in';
+$config['smtp_host'] = config_item('support_email');
+$config['smtp_user'] = config_item('support_email');
 $config['smtp_pass'] = 'Multi@1212#@#M';
 $config['smtp_port'] = '465';
 $config['smtp_crypto'] = 'ssl';

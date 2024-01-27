@@ -1,4 +1,3 @@
-
 <div class="main_contact_area pt-80 bg_color2 pb-90">
 	<div class="container" style="background-color:rgb(177,177,177,0.3); width:400px!important; height:auto; margin:auto; padding:44px;border-radius:8px;">
 		<div class="row" style="width:400px!important; height:auto; margin:auto;">
@@ -18,7 +17,7 @@
 		<div class="row" style="">
 			<div class="col-xl-12">
 				<div class="contact_from">
-					<form action="<?php echo base_url()?>Site/login" method="post">
+					<form action="<?php echo base_url() ?>Site/login" method="post">
 
 						<div class="row">
 
@@ -34,18 +33,24 @@
 									<input type="password" required class="form-control" id="password" name="password">
 								</div>
 							</div>
-							<div class="">
-								<p style="padding-left:18px;">Create a new account. <span style="padding-left:64px;"><a href="<?php echo base_url()?>Site/register">Sign Up</a></span></p>
-							</div>
 
-							<div class="col-lg-12">
+
+							<div class="col-lg-12 py-3">
 
 								<div class="quote_btn text_center">
 									<button class="btn" type="submit" name="submit">Login</button>
 								</div>
 							</div>
+
 						</div>
 					</form>
+
+					<div>
+						<!-- <p style="padding-left:18px;"><a href="<?php echo base_url() ?>/site/forget_password">Forgot password</a> <span style="padding-left:64px;"><a href="<?php echo base_url() ?>Site/register">Sign Up</a></span></p> -->
+
+						<span style="float: left;"><a href="<?php echo base_url() ?>site/forget_password">Forgot password</a></span>
+						<span style="float: right;"> <a href="<?php echo base_url() ?>Site/register">Sign Up</a></span>
+					</div>
 					<div id="status"></div>
 				</div>
 			</div>

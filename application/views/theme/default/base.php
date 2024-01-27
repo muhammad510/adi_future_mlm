@@ -23,13 +23,15 @@
     <?php
     $this->load->view('theme/include/header');
     ?>
-
+          
     <?php if (trim($layout) == "") { ?>
         <div style="margin: 10%">
             <h2 align="center">Welcome to <?php echo config_item('company_name') ?></h2>
             <div align="center">Please click above to login or sign up</div>
         </div>
     <?php } else {
+    echo $this->session->flashdata('site_flash');
+
         include_once(APPPATH . "views/theme/" . $layout);
     } ?>
 

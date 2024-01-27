@@ -49,31 +49,35 @@ $data = $this->db->get('withdraw_request')->result();
 </form>
 <p>&nbsp;</p>
 <hr />
-<table id="example" class="table table-striped">
-    <thead>
-        <tr>
-            <th>S.N.</th>
-            <th>User ID</th>
-            <th>Amount</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Transaction Detail</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        $sn = 1;
-        foreach ($data as $e) {
 
-        ?>
+<div class="table-responsive">
+    <table id="example" class="table table-striped">
+        <thead>
             <tr>
-                <td><?php echo $sn++; ?></td>
-                <td><?php echo config_item('ID_EXT') . $e->userid ?></td>
-                <td><?php echo config_item('currency') . $e->amount ?></td>
-                <td><?php echo $e->date ?></td>
-                <td><?php echo $e->status ?></td>
-                <td><?php echo $e->tid ?></td>
+                <th>S.N.</th>
+                <th>User ID</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Transaction Detail</th>
             </tr>
-        <?php } ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php
+            $sn = 1;
+            foreach ($data as $e) {
+    
+            ?>
+                <tr>
+                    <td><?php echo $sn++; ?></td>
+                    <td><?php echo config_item('ID_EXT') . $e->userid ?></td>
+                    <td><?php echo config_item('currency') . $e->amount ?></td>
+                    <td><?php echo $e->date ?></td>
+                    <td><?php echo $e->status ?></td>
+                    <td><?php echo $e->tid ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+
+</div>

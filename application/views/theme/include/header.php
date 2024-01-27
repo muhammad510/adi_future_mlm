@@ -8,9 +8,9 @@
 					<div class="header_top_menu_address">
 						<div class="header_top_menu_address_inner">
 							<ul>
-								<li><a href="mailto:info@adifuture.com;"><i class="fa fa-envelope-o"></i> info@adifuture.com</a></li>
+								<li><a href="mailto:<?php echo config_item('info_email')?>"><i class="fa fa-envelope-o"></i><?php echo config_item('info_email')?></a></li>
 
-								<li><a href="tel:9955215097;"><i class="fa fa-phone"></i>+91 9955215097</a></li>
+								<li><a href="tel:<?php echo config_item('mobile')?>"><i class="fa fa-phone"></i><?php echo config_item('mobile')?></a></li>
 							</ul>
 						</div>
 					</div>
@@ -19,10 +19,12 @@
 					<div class="header_top_menu_icon">
 						<div class="header_top_menu_icon_inner">
 							<ul>
-								<li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-								<li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="<?php echo config_item('facebook')?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="<?php echo config_item('twitter')?>" target="_blank"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="<?php echo config_item('pinterest')?>" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+								<li><a href="<?php echo config_item('linkedin')?>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="<?php echo config_item('instagram')?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
+								<li><a href="<?php echo config_item('youtube')?>" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -42,7 +44,7 @@
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="menu">
-					<a href="<?php echo base_url() ?>" class="logo"><img class="down" src="<?php echo base_url() ?>theme_assets/images/adi_image/logo_2 - Copy.png" alt="" style="height:36px;width:156px;"> <img class="main_sticky" src="<?php echo base_url() ?>theme_assets/images/adi_image/logo_2 - Copy.png" style="height:36px;width:156px;" alt=""></a>
+					<a href="<?php echo base_url() ?>" class="logo"><img class="down" src="<?php echo base_url() ?>uploads/logo.png" alt="" style="height:36px;width:156px;"> <img class="main_sticky" src="<?php echo base_url() ?>uploads/logo.png" style="height:36px;width:156px;" alt=""></a>
 					<ul class="clearfix">
 						<li><a href="<?php echo base_url() ?>site/index">Home</a></li>
 						<li><a href="<?php echo base_url() ?>site/about">About Us</a></li>
@@ -54,7 +56,6 @@
 							</ul>
 						</li>
 						<li><a href="<?php echo base_url() ?>site/agent">Agent</a></li>
-						<li><a href="<?php echo base_url() ?>site/our_team">Our Team</a></li>
 						<li><a href="<?php echo base_url() ?>site/contact">Contact us</a></li>
 						<li>
 							<a href="<?php echo base_url() ?>Site/register">Join Us</a>
